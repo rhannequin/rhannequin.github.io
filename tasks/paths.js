@@ -4,6 +4,7 @@ module.exports = {
       , images: 'src/images/'
       , stylesheets: 'src/styles/'
       , scripts: 'src/scripts/'
+      , templates: 'src/templates/'
     }
 
   , dist: {

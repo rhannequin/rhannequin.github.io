@@ -9,8 +9,6 @@ var gulp       = require('gulp')
 module.exports = function() {
   return gulp.src(paths.sources.scripts + 'main.js')
     .pipe(plumber())
-    .pipe(browserify(
-      opts.minify ? {transform : ['uglifyify']} : {}
-    ))
+    .pipe(browserify())
     .pipe(gulp.dest(paths.dist.scripts))
 }

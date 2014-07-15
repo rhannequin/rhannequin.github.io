@@ -7,10 +7,10 @@ var gulp     = require('gulp')
 module.exports = function() {
   return gulp.src(paths.sources.images + '**/*')
     .pipe(plumber())
-    .pipe(cache(imagemin({
+    .pipe(imagemin({
         optimizationLevel: 5
       , progressive: true
       , interlaced: true
-    })))
+    }))
     .pipe(gulp.dest(paths.dist.images))
 }
