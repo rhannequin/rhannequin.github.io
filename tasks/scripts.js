@@ -1,8 +1,6 @@
 var gulp       = require('gulp')
   , plumber    = require('gulp-plumber')
-  , jshint     = require('gulp-jshint')
-  , concat     = require('gulp-concat')
-  , uglify     = require('gulp-uglify')
+  // , uglify     = require('gulp-uglify')
   , browserify = require('gulp-browserify')
   , paths      = require('./paths')
 
