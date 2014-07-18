@@ -1,5 +1,5 @@
 var gulp    = require('gulp')
-  , clean   = require('gulp-clean')
+  , rimraf   = require('gulp-rimraf')
   , plumber = require('gulp-plumber')
   , paths   = require('./paths')
 
@@ -10,5 +10,5 @@ module.exports = function() {
       , paths.dist.images + '**/*'
     ], {read: false})
     .pipe(plumber())
-    .pipe(clean())
+    .pipe(rimraf())
 }
