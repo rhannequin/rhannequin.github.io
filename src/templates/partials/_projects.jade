@@ -7,15 +7,17 @@ div.col-1-1
 
       div.col-1-2
         div.content
-          include projects/_spaceapi
-          include projects/_meetformeal
-          include projects/_webservices
-          include projects/_ayouken
-          include projects/_webappgenerator
-          include projects/_labowebesgi
-          include projects/_stalkhub
-          include projects/_countdownlaunch
-          include projects/_foursquarehack
+          each project in projects
+            - var slug = project.title.toLowerCase().replace(/ /g,'-').replace(/[^\w-]+/g,'')
+            h3( class="js-project-title",
+                data-target=".js-project-description-#{slug}",
+                data-link="#{project.link}").
+              #{project.title}
+            div(class="project-description js-project-description-#{slug}")
+              h4.js-projet-sources
+                a(href='#{slug}') Go to this project
+              p
+                != project.description
 
       div.col-1-2
         div.content.project-descriptions
