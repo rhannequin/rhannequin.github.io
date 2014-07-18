@@ -58,8 +58,21 @@
   // padding-top: 5rem;
   padding-bottom: 5rem;
 
+  .projects .js-project-title.current-project {
+    color: $mainBlue;
+  }
+
   .languages, .methods, .softwares, .experience {
     text-align: center;
+  }
+}
+
+.js-enabled {
+  .project-description, .js-projet-sources {
+    display: none;
+  }
+  .js-project-title {
+    cursor: pointer;
   }
 }
 
