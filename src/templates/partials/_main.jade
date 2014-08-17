@@ -4,6 +4,8 @@ section.rh-main
       div.content
         // Start container
 
+        include _about
+
         div.grid.grid-pad.projects
           include _projects
 
@@ -19,9 +21,10 @@ section.rh-main
         div.grid.grid-pad.experience
           include _experience
 
-        div.grid.grid-pad
+        div.grid.grid-pad.school
           include _school
 
-        include _other
+        .other
+          include _other
 
         // End container
