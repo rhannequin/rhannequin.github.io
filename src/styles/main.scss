@@ -11,7 +11,7 @@
   .experience,
   .school,
   .other {
-    padding: 100px 0;
+    padding: 50px 0;
     border-bottom: 1px solid rgba(0, 0, 0, 0.3);
   }
 
@@ -45,13 +45,40 @@
   height: 100%;
   width: 100%;
 
+  h1, h2 {
+    font-family: "Times New Roman";
+  }
+
+  h1 {
+    font-size: 500%;
+    margin: 0;
+  }
+
+  h2 {
+    font-size: 400%;
+    margin: 10px 0;
+  }
+
+  h3 {
+    margin: 10px 0;
+  }
+
+  // Social networks
+  p a img {
+    opacity: 0.6;
+    &:hover {
+      opacity: 1;
+    }
+  }
+
   .container {
     text-align: center;
     max-width: 500px;
     padding: 5px;
-    margin-top: 25%;
+    margin-top: 20%;
     border-radius: 90px;
-    background-color: rgba(188, 199, 224, 0.6);
+    // background-color: rgba(188, 199, 224, 0.6);
+    color: #FFF;
 
     .col-1-1 {
       margin: 0px;
@@ -70,9 +97,13 @@
   min-height: 100%;
   font-size: 1.1rem;
   line-height: 1.7rem;
-  // padding-top: 5rem;
   padding-bottom: 5rem;
 
+  h2 {
+    font-size: 300%;
+    font-family: 'Times New Roman';
+    color: rgba(43, 105, 255, 1);
+  }
   .projects .js-project-title.current-project {
     color: $mainBlue;
   }
@@ -83,7 +114,7 @@
 
   .experience {
     .company-logo {
-      height: 200px;
+      height: 150px;
       width: 100%;
       white-space: nowrap;
       text-align: center; margin: 1em 0;
@@ -101,6 +132,13 @@
       }
     }
   }
+
+  hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.3);
+  }
 }
 
 .js-enabled {
@@ -116,9 +154,16 @@
 @media handheld, only screen and (max-width: 767px) {
 
   .rh-intro {
+    h1 {
+      font-size: 200%;
+    }
+    h2 {
+      font-size: 150%;
+    }
     .container {
       max-width: 1000px;
       padding: 20px;
+      margin-top: 45%;
     }
   }
 
@@ -130,11 +175,47 @@
       margin: 0;
       padding: 0;
 
+      h2 {
+        font-size: 150%;
+      }
       .grid.grid-pad {
         margin: 0;
         padding: 10px;
+      }
+      .projects h3.js-project-title {
+        margin: 0;
+        padding-right: 10px;
+        width: 200px;
+        font-size: 14px;
+        display: inline-block;
+      }
+      .projects h2 {
+        font-family: 'Open Sans', sans-serif;
       }
     }
   }
 
 }
+
+@media only screen and (max-height: 320px) {
+
+  .rh-intro {
+    .container {
+      margin-top: 10%;
+    }
+
+    h1, h2, h3, p {
+      margin: 0;
+    }
+
+    h1 {
+      font-size: 200%;
+    }
+
+    h2 {
+      font-size: 150%;
+    }
+  }
+
+}
+
