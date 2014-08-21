@@ -334,7 +334,7 @@ html, body {
   width: 100%;
 }
 .rh-intro h1, .rh-intro h2 {
-  font-family: "Times New Roman";
+  font-family: 'Oswald', sans-serif;
 }
 .rh-intro h1 {
   font-size: 500%;
@@ -347,6 +347,12 @@ html, body {
 .rh-intro h3 {
   margin: 10px 0;
 }
+.rh-intro .ruby {
+  color: #9B111E;
+}
+.rh-intro .javascript {
+  color: #F0DB4F;
+}
 .rh-intro p a img {
   opacity: 0.6;
 }
@@ -357,7 +363,7 @@ html, body {
   text-align: center;
   max-width: 500px;
   padding: 5px;
-  margin-top: 20%;
+  margin-top: 18%;
   border-radius: 90px;
   color: #FFF;
 }
@@ -377,19 +383,30 @@ html, body {
   line-height: 1.7rem;
   padding-bottom: 5rem;
 }
+.rh-main a:link {
+  color: #4662bf;
+}
+.rh-main a:visited {
+  color: #202f60;
+}
+.rh-main a:hover {
+  text-decoration: none;
+}
 .rh-main h2 {
   font-size: 300%;
-  font-family: 'Times New Roman';
-  color: #2b69ff;
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  color: #4662bf;
+  text-align: center;
 }
 .rh-main .projects .js-project-title.current-project {
   color: #4662bf;
 }
-.rh-main .languages, .rh-main .methods, .rh-main .softwares, .rh-main .experience {
+.rh-main .languages, .rh-main .methods, .rh-main .softwares, .rh-main .experience, .rh-main .school, .rh-main .other {
   text-align: center;
 }
 .rh-main .experience .company-logo {
-  height: 150px;
+  height: 200px;
   width: 100%;
   white-space: nowrap;
   text-align: center;
@@ -404,6 +421,13 @@ html, body {
   vertical-align: middle;
   max-height: 200px;
   max-width: 100%;
+}
+.rh-main .school ul li {
+  list-style-type: none;
+  padding-bottom: 15px;
+}
+.rh-main .school ul li .diploma {
+  font-weight: bold;
 }
 .rh-main hr {
   display: block;

@@ -27,7 +27,7 @@
       , title = el.innerHTML
       , link = el.getAttribute('data-link')
       , content = doc.querySelector(selector).innerHTML
-      , htmlTitle = '<h2><a href="' + link + '">' + title + '</a></h2>'
+      , htmlTitle = '<h3><a href="' + link + '">' + title + '</a></h3>'
     addCurrentClass(el)
     doc.querySelector('.project-descriptions').innerHTML = htmlTitle + content
   }
