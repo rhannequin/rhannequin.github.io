@@ -17,6 +17,11 @@ gulp.task('watch', require(tasks + 'watch'))
 
 gulp.task('dist', ['clean', 'html', 'styles', 'scripts', 'images'])
 
+// Deploy
+gulp.task('copy', require(tasks + 'copy'))
+gulp.task('deploy', ['dist', 'copy'], require(tasks + 'deploy'))
+
+// Default
 gulp.task('default', ['dist'], function() {
   gulp.start('server', 'watch')
 })
