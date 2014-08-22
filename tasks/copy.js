@@ -3,7 +3,6 @@ var gulp  = require('gulp')
 
   , files = [
       paths.root + 'README.md'
-    , paths.root + 'LICENSE'
   ]
 
 module.exports = function() {
