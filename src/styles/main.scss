@@ -163,6 +163,8 @@
 
   .school {
     ul {
+      padding: 0;
+
       li {
         list-style-type: none;
         padding-bottom: 15px;
@@ -243,6 +245,16 @@
 
 }
 
+@media only screen and (max-height: 400px) {
+
+  .rh-intro {
+    .container {
+      margin-top: 0;
+    }
+  }
+
+}
+
 @media only screen and (max-height: 320px) {
 
   .rh-intro {
@@ -264,4 +276,5 @@
   }
 
 }
+
 
