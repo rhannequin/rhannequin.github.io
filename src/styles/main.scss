@@ -126,8 +126,17 @@
     color: $mainBlue;
     text-align: center;
   }
-  .projects .js-project-title.current-project {
-    color: $mainBlue;
+
+  .projects {
+    .js-project-title.current-project {
+      color: $mainBlue;
+    }
+    .project-img {
+      text-align: center;
+      img {
+        // width: 100%;
+      }
+    }
   }
 
   .languages,

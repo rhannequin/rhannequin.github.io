@@ -16,6 +16,8 @@ div.col-1-1
             div(class="project-description js-project-description-#{slug}")
               h4.js-projet-sources
                 a(href='#{slug}') Go to this project
+              div(class="project-img")
+                img(src='#{project.image}')
               p
                 != project.description
 
