@@ -15,4 +15,7 @@ module.exports = {
       , stylesheets: 'dist/assets/css/'
       , scripts: 'dist/assets/js/'
     }
+  , tmp: {
+      root: '.tmp/'
+    }
 }
