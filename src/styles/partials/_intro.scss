@@ -1,0 +1,111 @@
+.rh-intro {
+  position: relative;
+  overflow: hidden;
+  background-color: #000;
+  background-image: url('/assets/img/i-mw.jpg');
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+
+  h1, h2 {
+    font-family: 'Oswald', sans-serif;
+  }
+
+  h1 {
+    font-size: 500%;
+    margin: 0;
+  }
+
+  h2 {
+    font-size: 400%;
+    margin: 10px 0;
+  }
+
+  h3 {
+    margin: 10px 0;
+  }
+
+  .ruby {
+    color: #9B111E;
+  }
+
+  .javascript {
+    color: #F0DB4F;
+  }
+
+  // Social networks
+  p a img {
+    opacity: 0.6;
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  .container {
+    text-align: center;
+    max-width: 500px;
+    padding: 5px;
+    margin-top: 18%;
+    border-radius: 90px;
+    // background-color: rgba(188, 199, 224, 0.6);
+    color: #FFF;
+
+    .col-1-1 {
+      margin: 0px;
+      padding: 0px;
+
+      .content {
+        padding: 0px;
+        margin: 0px;
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media handheld, only screen and (max-width: 767px) {
+  .rh-intro {
+    h1 {
+      font-size: 200%;
+    }
+    h2 {
+      font-size: 150%;
+    }
+    .container {
+      max-width: 1000px;
+      padding: 20px;
+      margin-top: 45%;
+    }
+  }
+}
+
+@media only screen and (max-height: 400px) {
+  .rh-intro {
+    .container {
+      margin-top: 0;
+    }
+  }
+}
+
+@media only screen and (max-height: 320px) {
+  .rh-intro {
+    .container {
+      margin-top: 10%;
+    }
+
+    h1, h2, h3, p {
+      margin: 0;
+    }
+
+    h1 {
+      font-size: 200%;
+    }
+
+    h2 {
+      font-size: 150%;
+    }
+  }
+}

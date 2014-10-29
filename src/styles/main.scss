@@ -1,4 +1,11 @@
-@import 'base.scss';
+// @import 'compass/reset';
+@import 'compass/utilities';
+// @import 'blueprint';
+
+@import 'base';
+@import 'partials';
+
+@import 'simplegrid';
 
 .container {
   max-width: 1000px;
@@ -14,122 +21,9 @@
     padding: 50px 0;
     border-bottom: 1px solid rgba(0, 0, 0, 0.3);
   }
-
-  .about {
-    text-align: center;
-    .face {
-      img {
-        border-radius: 90px;
-        vertical-align: top;
-        border: 3px solid #868593;
-        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.6);
-        margin: 20px 0;
-      }
-    }
-  }
-
-  .other {
-    border: none;
-  }
 }
 
-.rh-intro {
-  position: relative;
-  overflow: hidden;
-  background-color: #000;
-  background-image: url('/assets/img/i-mw.jpg');
-  background-position: 50% 50%;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-  height: 100%;
-  width: 100%;
-
-  h1, h2 {
-    font-family: 'Oswald', sans-serif;
-  }
-
-  h1 {
-    font-size: 500%;
-    margin: 0;
-  }
-
-  h2 {
-    font-size: 400%;
-    margin: 10px 0;
-  }
-
-  h3 {
-    margin: 10px 0;
-  }
-
-  .ruby {
-    color: #9B111E;
-  }
-
-  .javascript {
-    color: #F0DB4F;
-  }
-
-  // Social networks
-  p a img {
-    opacity: 0.6;
-    &:hover {
-      opacity: 1;
-    }
-  }
-
-  .container {
-    text-align: center;
-    max-width: 500px;
-    padding: 5px;
-    margin-top: 18%;
-    border-radius: 90px;
-    // background-color: rgba(188, 199, 224, 0.6);
-    color: #FFF;
-
-    .col-1-1 {
-      margin: 0px;
-      padding: 0px;
-
-      .content {
-        padding: 0px;
-        margin: 0px;
-        width: 100%;
-      }
-    }
-  }
-}
-
-.rh-main {
-  min-height: 100%;
-  font-size: 1.1rem;
-  line-height: 1.7rem;
-  padding-bottom: 1rem;
-
-  a {
-    &:link {
-      color: $mainBlue;
-    }
-    &:visited {
-      color: $visitedBlue;
-    }
-    &:hover {
-      text-decoration: none;
-    }
-  }
-
-  h2 {
-    font-size: 300%;
-    font-family: 'Oswald', sans-serif;
-    text-transform: uppercase;
-    color: $mainBlue;
-    text-align: center;
-  }
-  .projects .js-project-title.current-project {
-    color: $mainBlue;
-  }
-
+.rh-maincontent {
   .languages,
   .methods,
   .softwares,
@@ -138,54 +32,6 @@
   .other,
   footer {
     text-align: center;
-  }
-
-  .experience {
-    .company-logo {
-      height: 200px;
-      width: 100%;
-      white-space: nowrap;
-      text-align: center; margin: 1em 0;
-
-      .centerhelper {
-        display: inline-block;
-        height: 100%;
-        vertical-align: middle;
-      }
-
-      img {
-        vertical-align: middle;
-        max-height: 200px;
-        max-width: 100%;
-      }
-    }
-  }
-
-  .school {
-    ul {
-      padding: 0;
-
-      li {
-        list-style-type: none;
-        padding-bottom: 15px;
-
-        .diploma {
-          font-weight: bold;
-        }
-      }
-    }
-  }
-
-  footer {
-    font-size: 12px;
-    color: rgba(90, 90, 90, 1);
-  }
-
-  hr {
-    display: block;
-    height: 1px;
-    border: 0;
-    border-top: 1px solid rgba(0, 0, 0, 0.3);
   }
 }
 
@@ -200,22 +46,7 @@
 
 
 @media handheld, only screen and (max-width: 767px) {
-
-  .rh-intro {
-    h1 {
-      font-size: 200%;
-    }
-    h2 {
-      font-size: 150%;
-    }
-    .container {
-      max-width: 1000px;
-      padding: 20px;
-      margin-top: 45%;
-    }
-  }
-
-  .rh-main {
+  .rh-maincontent {
     .col-1-1 {
       padding: 0;
     }
@@ -242,39 +73,4 @@
       }
     }
   }
-
 }
-
-@media only screen and (max-height: 400px) {
-
-  .rh-intro {
-    .container {
-      margin-top: 0;
-    }
-  }
-
-}
-
-@media only screen and (max-height: 320px) {
-
-  .rh-intro {
-    .container {
-      margin-top: 10%;
-    }
-
-    h1, h2, h3, p {
-      margin: 0;
-    }
-
-    h1 {
-      font-size: 200%;
-    }
-
-    h2 {
-      font-size: 150%;
-    }
-  }
-
-}
-
-
