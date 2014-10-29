@@ -7,7 +7,8 @@
 
 @import 'simplegrid';
 
-.container {
+.content {
+  margin: auto;
   max-width: 1000px;
 
   .about,
@@ -50,7 +51,7 @@
     .col-1-1 {
       padding: 0;
     }
-    .container {
+    .content {
       margin: 0;
       padding: 0;
 
