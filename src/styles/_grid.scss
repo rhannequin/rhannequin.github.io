@@ -11,6 +11,11 @@
   padding-right: 20px; /* column-space */
 }
 
+@mixin col-1-2() {
+  @include col();
+  width: 50%;
+}
+
 @mixin col-1-3() {
   @include col();
   width: 33.33%;

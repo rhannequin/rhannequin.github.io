@@ -2,3 +2,21 @@ html, body {
   height: 100%;
   width: 100%;
 }
+
+.content {
+  margin: auto;
+  max-width: 1000px;
+
+  .subject {
+    @include row();
+    padding: 50px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    text-align: center;
+  }
+}
+
+.rh-maincontent {
+  footer {
+    text-align: center;
+  }
+}

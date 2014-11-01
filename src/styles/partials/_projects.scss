@@ -1,0 +1,10 @@
+.content .subject__projects {
+  text-align: left;
+
+  .projects__titles {
+    @include col-1-2();
+  }
+  .projects__descriptions {
+    @include col-1-2();
+  }
+}

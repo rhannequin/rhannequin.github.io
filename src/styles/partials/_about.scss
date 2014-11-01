@@ -1,6 +1,5 @@
-.about {
+.subject__about {
   @include row();
-  text-align: center;
   .face {
     @include col-1-3();
     img {

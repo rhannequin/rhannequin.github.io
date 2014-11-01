@@ -1,41 +1,10 @@
-// @import 'compass/reset';
 @import 'compass/utilities';
-// @import 'blueprint';
 @import 'grid';
 
 @import 'base';
 @import 'partials';
 
 @import 'simplegrid';
-
-.content {
-  margin: auto;
-  max-width: 1000px;
-
-  .about,
-  .projects,
-  .languages,
-  .methods,
-  .softwares,
-  .experience,
-  .school,
-  .other {
-    padding: 50px 0;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
-  }
-}
-
-.rh-maincontent {
-  .languages,
-  .methods,
-  .softwares,
-  .experience,
-  .school,
-  .other,
-  footer {
-    text-align: center;
-  }
-}
 
 .js-enabled {
   .project-description, .js-projet-sources {
