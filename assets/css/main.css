@@ -7,6 +7,25 @@ html, body {
   width: 100%;
 }
 
+.content {
+  margin: auto;
+  max-width: 1000px;
+}
+.content .subject {
+  padding: 50px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+.content .subject:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.rh-maincontent footer {
+  text-align: center;
+}
+
 .rh-intro {
   position: relative;
   overflow: hidden;
@@ -131,16 +150,46 @@ html, body {
   border-top: 1px solid rgba(0, 0, 0, 0.3);
 }
 
-.about {
-  text-align: center;
+.subject__about:after {
+  content: "";
+  display: table;
+  clear: both;
 }
-.about .face img {
+.subject__about .face {
+  float: left;
+  padding-right: 20px;
+  /* column-space */
+  width: 33.33%;
+}
+.subject__about .face img {
   border-radius: 90px;
   vertical-align: top;
   border: 3px solid #868593;
   -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.6);
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.6);
   margin: 20px 0;
+}
+.subject__about .description {
+  float: left;
+  padding-right: 20px;
+  /* column-space */
+  width: 66.66%;
+}
+
+.content .subject__projects {
+  text-align: left;
+}
+.content .subject__projects .projects__titles {
+  float: left;
+  padding-right: 20px;
+  /* column-space */
+  width: 50%;
+}
+.content .subject__projects .projects__descriptions {
+  float: left;
+  padding-right: 20px;
+  /* column-space */
+  width: 50%;
 }
 
 .experience .company-logo {
@@ -464,31 +513,6 @@ body {
     height: 0;
   }
 }
-.container {
-  max-width: 1000px;
-}
-.container .about,
-.container .projects,
-.container .languages,
-.container .methods,
-.container .softwares,
-.container .experience,
-.container .school,
-.container .other {
-  padding: 50px 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
-}
-
-.rh-maincontent .languages,
-.rh-maincontent .methods,
-.rh-maincontent .softwares,
-.rh-maincontent .experience,
-.rh-maincontent .school,
-.rh-maincontent .other,
-.rh-maincontent footer {
-  text-align: center;
-}
-
 .js-enabled .project-description, .js-enabled .js-projet-sources {
   display: none;
 }
@@ -500,25 +524,25 @@ body {
   .rh-maincontent .col-1-1 {
     padding: 0;
   }
-  .rh-maincontent .container {
+  .rh-maincontent .content {
     margin: 0;
     padding: 0;
   }
-  .rh-maincontent .container h2 {
+  .rh-maincontent .content h2 {
     font-size: 150%;
   }
-  .rh-maincontent .container .grid.grid-pad {
+  .rh-maincontent .content .grid.grid-pad {
     margin: 0;
     padding: 10px;
   }
-  .rh-maincontent .container .projects h3.js-project-title {
+  .rh-maincontent .content .projects h3.js-project-title {
     margin: 0;
     padding-right: 10px;
     width: 200px;
     font-size: 14px;
     display: inline-block;
   }
-  .rh-maincontent .container .projects h2 {
+  .rh-maincontent .content .projects h2 {
     font-family: 'Open Sans', sans-serif;
   }
 }
