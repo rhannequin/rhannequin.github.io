@@ -1,0 +1,5 @@
+.content .subject__languages {
+  .languages__main .language {
+    @include col-1-2();
+  }
+}

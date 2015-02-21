@@ -1,4 +1,11 @@
-.experience {
+.content .subject__experience {
+  .row {
+    @include row();
+  }
+  .xp {
+    @include col-1-2();
+  }
+
   .company-logo {
     height: 200px;
     width: 100%;

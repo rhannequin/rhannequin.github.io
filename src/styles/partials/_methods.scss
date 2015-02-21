@@ -1,0 +1,5 @@
+.content .subject__methods {
+  .method {
+    @include col-1-3();
+  }
+}

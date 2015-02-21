@@ -1,0 +1,5 @@
+.content .subject__softwares {
+  .soft {
+    @include col-1-3();
+  }
+}
