@@ -1,0 +1,238 @@
+html, body{
+  margin:0;
+  padding:0;
+  height:100%;
+  width:100%;
+  font-family: "Open Sans", sans-serif;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 2.5rem;
+}
+
+a:link {
+  color: #4662bf;
+  text-decoration: underline;
+}
+a:visited {
+  color: #202f60;
+}
+a:hover {
+  text-decoration: none;
+}
+
+@media handheld, only screen and (max-width: 767px) {
+  html, body{
+    line-height: 1.5;
+  }
+}
+
+
+
+/* INTRO SCREEN */
+
+
+.rh-intro {
+  position: relative;
+  overflow: hidden;
+  background-color: #000;
+  background-image: url("../img/i-mw.jpg");
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+}
+.rh-intro .content {
+  padding: 0px;
+  margin: 0px;
+  width: 100%;
+  text-align: center;
+  padding: 5px;
+  margin-top: 18%;
+  border-radius: 90px;
+  color: #FFF;
+}
+.rh-intro h1, .rh-intro h2 {
+  font-family: 'Oswald', sans-serif;
+}
+.rh-intro h1, .rh-intro h2, .rh-intro h3 {
+  font-weight: bold;
+}
+.rh-intro h1 {
+  font-size: 500%;
+  margin: 0;
+}
+.rh-intro h2 {
+  font-size: 400%;
+  margin: 10px 0;
+}
+.rh-intro h3 {
+  margin: 10px 0;
+}
+.rh-intro .ruby {
+  color: #9B111E;
+}
+.rh-intro .javascript {
+  color: #F0DB4F;
+}
+.rh-intro p a img {
+  opacity: 0.6;
+}
+.rh-intro p a img:hover {
+  opacity: 1;
+}
+
+@media handheld, only screen and (max-width: 767px) {
+  .rh-intro .content {
+    max-width: 1000px;
+    padding: 20px;
+    margin-top: 45%;
+  }
+  .rh-intro h1, .rh-intro h2, .rh-intro h3 {
+    font-weight: normal;
+  }
+  .rh-intro h1 {
+    font-size: 200%;
+  }
+  .rh-intro h2 {
+    font-size: 150%;
+  }
+}
+@media only screen and (max-height: 400px) {
+  .rh-intro .content {
+    margin-top: 0;
+  }
+}
+@media only screen and (max-height: 320px) {
+  .rh-intro .content {
+    margin-top: 10%;
+  }
+  .rh-intro h1, .rh-intro h2, .rh-intro h3, .rh-intro p {
+    margin: 0;
+  }
+  .rh-intro h1 {
+    font-size: 200%;
+  }
+  .rh-intro h2 {
+    font-size: 150%;
+  }
+}
+
+
+
+/* MAIN CONTENT */
+
+
+.about, .languages, .methods, .softwares, .experiences, .school, .other, footer {
+  text-align: center;
+}
+
+.about img {
+  margin-top: 60px;
+  border-radius: 90px;
+  vertical-align: top;
+  border: 3px solid #868593;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.6);
+}
+
+.about h2,
+.projects h2,
+.languages h2,
+.methods h2,
+.softwares h2,
+.experiences h2,
+.school h2,
+.other h2 {
+  margin: 70px 0;
+  font-size: 300%;
+  font-weight: bold;
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  color: #4662bf;
+}
+
+.projects h2 {
+  text-align: center;
+}
+
+.about h3,
+.projects h3,
+.languages h3,
+.languages h4,
+.methods h3,
+.softwares h3,
+.experiences h3,
+.school h3,
+.other h3 {
+  font-weight: bold;
+}
+
+.js-enabled .js-project-description, .js-enabled .js-project-sources {
+  display: none;
+}
+
+.js-enabled .projects h3 {
+  cursor: pointer;
+}
+
+.experiences .company-logo {
+  height: 200px;
+  width: 100%;
+  white-space: nowrap;
+  margin: 1em 0;
+}
+
+.experiences .centerhelper {
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+
+.experiences .company-logo img {
+  vertical-align: middle;
+  max-height: 200px;
+  max-width: 100%;
+}
+
+.school ul {
+  padding: 0;
+}
+
+.school ul li {
+  list-style-type: none;
+  padding-bottom: 15px;
+}
+
+.school ul li .diploma {
+  font-weight: bold;
+}
+
+footer {
+  font-size: 12px;
+  color: #5a5a5a;
+}
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+
+/* MEDIA QUERIES */
+
+@media handheld, only screen and (max-width: 767px) {
+  .about h2,
+  .projects h2,
+  .languages h2,
+  .methods h2,
+  .softwares h2,
+  .experiences h2,
+  .school h2,
+  .other h2 {
+    margin: 35px 0;
+    font-size: 150%;
+  }
+}
