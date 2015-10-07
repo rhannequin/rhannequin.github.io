@@ -168,6 +168,11 @@ a:hover {
   font-weight: bold;
 }
 
+
+
+/* PROJECTS */
+
+
 .js-enabled .js-project-description, .js-enabled .js-project-sources {
   display: none;
 }
@@ -176,12 +181,21 @@ a:hover {
   cursor: pointer;
 }
 
+.projects small {
+  color: rgb(144, 144, 144);
+}
+
+
+
+/* EXPERIENCES */
+
 .experiences .company-logo {
   height: 200px;
   width: 100%;
   white-space: nowrap;
   margin: 1em 0;
 }
+
 
 .experiences .centerhelper {
   display: inline-block;
