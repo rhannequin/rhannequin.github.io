@@ -179,6 +179,9 @@ a:hover {
 
 .js-enabled .projects h3 {
   cursor: pointer;
+}
+
+.js-enabled .projects h3:hover {
   color: #202f60;
 }
 
