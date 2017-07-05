@@ -179,6 +179,7 @@ a:hover {
 
 .js-enabled .projects h3 {
   cursor: pointer;
+  color: #4662bf;
 }
 
 .projects small {
