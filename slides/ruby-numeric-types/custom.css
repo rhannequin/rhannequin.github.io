@@ -1,0 +1,48 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic,700italic);
+
+:root {
+  --red: #e03131;
+}
+
+.reveal {
+  font-family: Open Sans, sans-serif;
+}
+
+.reveal a {
+  text-decoration: underline;
+  text-decoration-thickness: 0.2rem;
+}
+
+.reveal a:hover {
+  text-decoration: none;
+}
+
+.reveal .controls button {
+  color: var(--red);
+}
+
+.reveal .progress {
+  color: var(--red);
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  color: var(--red);
+}
+
+.red {
+  color: var(--red);
+}
+
+code {
+  border-radius: .25rem;
+  color: var(--red);
+  font-size: .875em;
+  font-weight: 500;
+  padding: .15rem .3rem;
+  background-color: rgba(224, 49, 49, .1);
+}
