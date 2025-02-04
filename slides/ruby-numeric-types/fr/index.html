@@ -1,0 +1,579 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Les types numériques en Ruby</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/white.css">
+    <link rel="stylesheet" href="custom.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/obsidian.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+          <section data-background-gradient="radial-gradient(#283b95, #17b2c3)">
+            <h1 style="color: white">Les types numériques en Ruby</h1>
+          </section>
+          <section>
+            <h2>Faisons un peu de maths</h2>
+          </section>
+          <section>
+            <pre>
+              <code class="ruby" style="font-size: 2rem; max-height: 500px">
+
+                  0.1 + 0.2
+
+              </code>
+            </pre>
+            <pre class="fragment">
+              <code class="ruby" style="font-size: 2rem;">
+          # => 0.30000000000000004
+              </code>
+            </pre>
+          </section>
+        </section>
+
+        <section>
+          <h2>Sommaire</h2>
+          <p>📚 Tous les types numériques</p>
+          <p>🔍 Précision</p>
+          <p>🏎️ Performance</p>
+          <p>⚙️ Extension</p>
+        </section>
+
+        <section>
+          <section>
+            <p>Rémy Hannequin</p>
+            <p>
+              Développeur
+              <img
+                src="img/thoughtbot.png"
+                alt="Logo de thoughtbot"
+                style="margin: 0; width: 1.5em; height: 1.5em; vertical-align:middle"
+              >
+              <span class="red">thoughtbot</span>
+            </p>
+            <p>
+              🪐
+              <a href="https://github.com/rhannequin/astronoby">Astronoby</a>
+              et
+              <a href="https://github.com/rhannequin/ruby-ephem">Ephem</a>
+              🌙
+            </p>
+            <p><small>@rhannequin</small></p>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Qu'est-ce qu'un nombre en Ruby ?</h2>
+          </section>
+          <section>
+            <p>Les nombres sont des objets de type <code>Numeric</code></p>
+          </section>
+          <section>
+            <p>Contiennent <code>Comparable</code></p>
+            <aside class="notes">
+              <p>Comparable permet d'utiliser les opérateurs de comparaison entre objets</p>
+              <p><code>#positive?</code> <code>#floor</code></p>
+            </aside>
+          </section>
+          <section>
+            <p>Des objets Ruby classiques</p>
+            <aside class="notes">
+              <p>"Immédiats"</p>
+              <p>Ne peuvent pas être instanciés</p>
+              <p>Une unique instance</p>
+              <p>Les opérateurs comme <code>#+</code> sont juste des méthodes</p>
+            </aside>
+          </section>
+        </section>
+
+        <section>
+          <p>
+            <img
+              src="img/all-the-ruby-numeric-types.jpg"
+              alt="'all the' meme, with title 'All the Ruby numeric types'"
+            >
+          </p>
+        </section>
+
+        <section>
+          <section>
+            <h2><code>Integer</code></h2>
+          </section>
+          <section>
+            <p>Auparavant <code>Fixnum</code> et <code>Bignum</code></p>
+            <p><small>Toujours utilisées en interne</small></p>
+            <aside class="notes">
+              <p>Depuis 2.4</p>
+              <p>La bascule dépend du système</p>
+            </aside>
+          </section>
+          <section>
+            <p>Peut pratiquement stocker une valeur illimitée</p>
+            <aside class="notes">
+              <p>Seule la mémoire est la limite</p>
+            </aside>
+          </section>
+          <section>
+            <pre>
+              <code class="ruby" style="max-height: 500px">
+                # Ceci est un objet
+                1
+
+                # Conversion explicite
+                Integer("1")
+                "1".to_i
+
+                # Conversion implicite
+                class Month
+                  def to_int
+                    index
+                  end
+                end
+              </code>
+            </pre>
+            <aside class="notes">
+              <p><code>#to_int</code> utilisées par exemple pour les clés de tableaux</p>
+            </aside>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2><code>Float</code></h2>
+          </section>
+          <section>
+            <p>Précision fixe</p>
+            <br>
+            <p>
+              <small>Double précision en virgule flottante</small>
+              <br>
+              <small>(Norme technique IEEE 754)</small>
+            </p>
+          </section>
+          <section>
+            <p>Similaire à la notation scientifique</p>
+            <p>
+              <code>12.34</code>
+              <br>
+              \[ 1.234 \times 10^{-1} \]
+            </p>
+            <aside class="notes">
+              <ul>
+                <li><em>mantisse</em> : 12</li>
+                <li>base : 10</li>
+                <li>exposant : 34</li>
+              </ul>
+              <p>
+                "Virgule flottante" parce que la virgule flotte entre les
+                chiffres
+              </p>
+            </aside>
+          </section>
+          <section>
+            <img
+              src="img/floats.jpg"
+              alt="'annoyed bird' meme where a small bird tries to say floats are great but a big one is yelling floats are not precise"
+            >
+          </section>
+          <section>
+            <h4>Deux limitations de précision de <code>Float</code></h4>
+          </section>
+          <section>
+            <h4>Limitation en taille</h4>
+            <p><code>Float::MIN</code></p>
+            <p><code>Float::MAX</code></p>
+          </section>
+          <section>
+            <h4>Limitation par arrondi</h4>
+            <small>Base 10</small>
+            \[\frac 1 3 \approx 0.3333333333 \]
+            <br>
+            <small>Base 2</small>
+            \[\frac {1} {10} \approx 0.1000000001 \]
+            <aside class="notes">
+              <p>
+                Les ordinateurs sont suffisamment intelligents pour que
+                l'erreur ne soit visible que lorsque de l'arithmétique
+                la révèle
+              </p>
+            </aside>
+          </section>
+          <section>
+            <pre>
+              <code class="ruby" style="font-size: 1.9rem">
+                0.1 + 0.2 == 0.3
+
+                  # => false
+              </code>
+            </pre>
+          </section>
+          <section>
+            <pre>
+              <code class="ruby">
+                1.0
+
+                1.to_f
+
+                1/2   # => 0   Integer
+                1/2.0 # => 0.5 Float
+              </code>
+            </pre>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2><code>Rational</code></h2>
+          </section>
+          <section>
+            <p>Nombres rationnels</p>
+            <p>Quotient de deux entiers relatifs</p>
+            <aside class="notes">
+              Utile dans le quotidien ("une demi tasse de sucre")
+            </aside>
+          </section>
+          <section>
+            <pre>
+              <code class="ruby">
+                        1/3r
+
+                        1/3.to_r
+
+                        Rational(1, 3)
+              </code>
+            </pre>
+          </section>
+          <section>
+            <p>Les nombres relatifs sont des valeurs <em>exactes</em></p>
+            <pre class="fragment fade-in-then-out">
+              <code class="ruby">
+          1 / 3.0
+          # => 0.3333333333333333, pas _exactement_ 1÷3
+
+          1 / 3r
+          # => (1/3), exactement le nombre 1÷3
+              </code>
+            </pre>
+            <pre class="fragment">
+              <code class="ruby">
+          11.times.inject(0) { |t| t + 0.1 }
+          # => 1.0999999999999999, pas _exactement_ 1.1
+
+          11.times.inject(0) { |t| t + 1 / 10r }
+          # => (11/10), exactement 1.1
+              </code>
+            </pre>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2><code>Complex</code></h2>
+          </section>
+          <section>
+            <p>Aussi appelés nombres <em>imaginaires</em></p>
+            \[\imath^{2} = -1 \]
+          </section>
+          <section>
+            <pre>
+              <code class="ruby">
+                Complex.rect(1, 2) # => (1+2i)
+
+                "3-4i".to_c        # => (3-4i)
+              </code>
+            </pre>
+          </section>
+          <section>
+            <img
+              src="img/one-does-not-simply.jpg"
+              alt="Boromir from The Lord of the Rings says 'One does not simply solve differential equations in Ruby'"
+            >
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2><code>BigDecimal</code></h2>
+          </section>
+          <section>
+            <p>Fait partie de la biliothèque Ruby <strike>cœur</strike> standard</p>
+            <p><code>require "bigdecimal"</code></p>
+          </section>
+          <section>
+            Précision arbitraire
+            <pre>
+              <code class="ruby">
+                BigDecimal("1.5")
+                # => 0.15e1
+
+                BigDecimal(1/3r, 20)
+                # => 0.33333333333333333333e0
+              </code>
+            </pre>
+          </section>
+          <section>
+            <p>Support des mathématiques</p>
+            <pre>
+              <code class="ruby">
+            require "bigdecimal/math"
+
+            Math::PI
+            # => 3.141592653589793
+
+            BigMath.PI(10)
+            # => 0.31415926535897932364198143965603e1
+              </code>
+            </pre>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Les nombres irrationnels</h2>
+          </section>
+          <section>
+            <img
+              src="img/numbers.png"
+              alt="Classification of numbers: natural, whole, integer, rational and complex numbers"
+            >
+            <aside class="notes">
+              <p>
+                Les seuls nombres sont supportés par Ruby
+              </p>
+            </aside>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Quand la précision<br>importe-t-elle ?</h2>
+          </section>
+          <section>
+            <h3>Pour l'argent 💸 ? Oui.</h3>
+            <p>On fait des maths avec</p>
+            <p>Utilisez <code>Integer</code> ou <code>BigDecimal</code></p>
+            <p>
+              Ou des gems comme
+              <a href="https://github.com/RubyMoney/money">money</a>
+            </p>
+          </section>
+          <section>
+            <h3>Dans la vie quotidienne ? Peut-être.</h3>
+            <p>
+              🧑‍🏫Combien puis-je acheter de mangues à 3€<br>
+              avec un billet de 50€ ?
+            </p>
+            <br>
+            <pre>
+              <code class="ruby" style="font-size: 2rem">
+                  50 / 3
+
+                  # => 16
+              </code>
+            </pre>
+          </section>
+          <section>
+            <h3>En science ? Ça dépend.</h3>
+            <p>La différence entre</p>
+            <p><code>1.234567890123456°</code> / <code>1.234567890123457°</code></p>
+            <p>plus petite que la résolution de n'importe quel instrument</p>
+            <aside class="notes">
+              <p>Un grain de poussière situé dans une galaxie lointaine</p>
+            </aside>
+          </section>
+          <section>
+            <p><code>Integer</code>, <code>Rational</code>, <code>BigDecimal</code>: maths</p>
+            <p><code>Float</code>: toutes valeurs non exactes</p>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Quand la performance<br>importe-t-elle ?</h2>
+          </section>
+          <section>
+            Ça dépend, encore.
+          </section>
+          <section>
+            <p><code>Integer</code>, sauf en arithmétique</p>
+            <p>Les <em>float</em> sont optimisés depuis des décennies</p>
+            <p><code>Rational</code> et <code>BigDecimal</code> pour des usages spécifiques</p>
+          </section>
+          <section>
+            <pre>
+              <code class="ruby" style="max-height: 500px;">
+                require "benchable"
+                require "bigdecimal"
+
+                Benchable.bench(:ips, :memory) do
+                  bench "Integer" { 1 + 1 }
+
+                  bench "Float" { 1 + 0.0001 }
+
+                  bench "Rational" { 1 + 1 / 1000r }
+
+                  bench "BigDecimal" do
+                    1 + BigDecimal("0.0001")
+                  end
+                end
+              </code>
+            </pre>
+          </section>
+          <section>
+            <pre>
+              <code style="max-height: 500px;" class="text">
+              Comparaison itérations/vitesse :
+
+                 Integer:  7535799.6 i/s
+                   Float:  7015345.0 i/s - 1.07x plus lent
+                Rational:  3329727.4 i/s - 2.26x plus lent
+              Bigdecimal:  1421481.1 i/s - 5.30x plus lent
+
+
+              Comparaison d'emprunte mémoire :
+
+                 Integer:  80 allouée
+                   Float:  80 allouée  - égal
+                Rational:  240 allouée - 3.00x plus lourd
+              Bigdecimal:  432 allouée - 5.40x plus lourd
+              </code>
+            </pre>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Je veux mon propre type numérique</h2>
+          </section>
+          <section>
+            <h3>Héritage</h3>
+          </section>
+          <section>
+            <p><code>class MyNumber < Numeric</code></p>
+            <br>
+            <p>
+              Nécessaire :
+              <ul>
+                <li>implémenter <code>#coerce</code></li>
+              </ul>
+            </p>
+            <br>
+            <p>
+              Recommandé :
+              <ul>
+                <li>implémenter les opérateurs arithmétiques</li>
+                <li>inclure <code>Comparable</code></li>
+              </ul>
+            </p>
+            <aside class="notes">
+              <p>
+                <code>#coerce</code>
+                permer de faire des opérations entre des objets de types
+                différents
+              </p>
+            </aside>
+          </section>
+          <section>
+            <h3>Objets à valeur</h3>
+          </section>
+          <section>
+            <pre>
+              <code class="ruby" style="max-height: 500px">
+      class Distance
+        attr_reader :meters
+
+        def self.from_m(meters)
+          new(meters)
+        end
+
+        def feet
+          meters * 3.28084
+        end
+
+        # ...
+      end
+
+      distance = Distance.from_m(1) + Distance.from_m(2)
+      distance.feet
+      # => 9.84252
+              </code>
+            </pre>
+          </section>
+          <section>
+            <p>
+              <img
+                src="img/youtube.png"
+                alt="Thumbnail of Rémy's previous talk on Value Objects on Paris.rb's YouTube channel"
+              >
+            </p>
+            <p>
+              <a href="https://www.youtube.com/watch?v=QyGnBrtopCo">
+                https://www.youtube.com/watch?v=QyGnBrtopCo
+              </a>
+            </p>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h3>Conclusion</h3>
+          </section>
+          <section>
+            <p>Ruby supporte la quasi totalité des nombres</p>
+          </section>
+          <section>
+            <p>Ruby permet une balance entre la précision et la performance</p>
+          </section>
+          <section>
+            <p>Ruby est approprié pour des projets scientifiques</p>
+          </section>
+          <section>
+            <p>Ruby permet d'aller au-delà des simples nombres</p>
+          </section>
+        </section>
+
+        <section>
+          <h1>?</h1>
+        </section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+    <script src="plugin/math/math.js"></script>
+    <script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+        controls: false,
+
+        mathjax2: {
+          config: 'TeX-AMS_HTML-full',
+          TeX: {
+            Macros: {
+              R: '\\mathbb{R}',
+              set: [ '\\left\\{#1 \\; ; \\; #2\\right\\}', 2 ]
+            }
+          }
+        },
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.MathJax2 ]
+			});
+		</script>
+	</body>
+</html>
