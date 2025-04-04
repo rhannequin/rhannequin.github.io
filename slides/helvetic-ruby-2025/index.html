@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Modelling the Cosmos in Ruby</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/moon.css">
+    <link rel="stylesheet" href="custom.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/obsidian.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+          <section>
+            <h1>Modelling the Cosmos in Ruby</h1>
+          </section>
+          <section>
+            <h2>The sky is a lie</h2>
+          </section>
+        </section>
+        <section>
+          <p>We see what's in the past</p>
+          <aside class="notes">
+            <p>
+              Because the speed of light is finite, everything we see is at
+              least slightly in the past. When it comes to astronomy, delay can
+              be seconds, minutes, days, years.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <p>Sunrise and sunset times are fake</p>
+          <aside class="notes">
+            <p>
+              The atmosphere refracts light so much that when we witness a
+              Sunset, the Sun has actually set below the horizon for several
+              minutes.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <p>The Pole Star is not at the celestial pole</p>
+          <aside class="notes">
+            <p>
+              From our perspective, the Pole Star slightly wobbles around the
+              celestial pole. Thousands of years ago, another star was way
+              closer to this point.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <p>A day is not 24 hours</p>
+          <aside class="notes">
+            <p>
+              The Earth rotates around its axis in 23 hours, 56 minutes and 4
+              seconds. What we use in everyday life is called a mean solar day,
+              because the actual solar day varies throughout the year.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <p>Now let's build an accurate astronomy library</p>
+          <p>
+            <img src="img/cringe.png" style="width: 400px">
+          </p>
+        </section>
+        <section>
+          <h2>Hi, I'm Rémy</h2>
+        </section>
+        <section>
+          <p>Senior developer at thoughtbot</p>
+        </section>
+        <section>
+          <p>In love with astronomy</p>
+        </section>
+        <section>
+          <h2>What are we going to talk about?</h2>
+        </section>
+        <section>
+          <p>Complex domain models</p>
+          <aside class="notes">
+            <p>
+              Astronomy is a complex domain, it's a good example to illustrate
+              the challenges of domain modelling.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <p>Learn code design techniques</p>
+          <aside class="notes">
+            <p>
+              We will learn about some code design techniques like oriented
+              object design and domain driven design.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <p>Code readability for collaboration and education</p>
+          <aside class="notes">
+            <p>
+              We will see how to write code that is easy to read and
+              understand, so that we can share it with others.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <h2>
+            Domain-Driven Design<br>
+            and OOP<br>
+            in Astronoby
+          </h2>
+        </section>
+        <section>
+          <p>Why?</p>
+        </section>
+        <section>
+          <p>Azimuth: 123°44′47″</p>
+          <p>Altitude: 49°26′13″</p>
+        </section>
+        <section>
+          <p><img src="img/mars.png" alt="Mars" style="width: 200px"></p>
+          <p><img src="img/geneva.jpg" alt="Geneva" style="width: 500px"></p>
+          <aside class="notes">
+            <p>
+              These are coordinates of planet Mars seen from Geneva when we
+              started this talk.
+            </p>
+            <p>
+              Let me present you the suite of physical notions and data
+              manipulations that were needed to get to this point.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <div class="row">
+            <div class="col-35 smaller-text">
+              <p>
+                <span class="fragment visible" data-fragment-index="0">Solar System Barycenter</span>
+                <span class="fragment visible" data-fragment-index="1"><br>Vector</span>
+                <span class="fragment visible" data-fragment-index="3"><br>Light-time</span>
+                <span class="fragment visible" data-fragment-index="5"><br>Precession</span>
+                <span class="fragment visible" data-fragment-index="6"><br>Nutation</span>
+                <span class="fragment visible" data-fragment-index="7"><br>Aberration</span>
+                <span class="fragment visible" data-fragment-index="8"><br>Deflection</span>
+                <span class="fragment visible" data-fragment-index="10"><br>Earth shape</span>
+                <span class="fragment visible" data-fragment-index="14"><br>Terrestrial time</span>
+              </p>
+            </div>
+            <div class="col-65 small-text">
+              <p class="fragment visible" data-fragment-index="2">
+                Barycentric position
+              </p>
+              <p class="fragment visible" data-fragment-index="4">
+                Geocentric astrometric position
+              </p>
+              <p class="fragment visible" data-fragment-index="9">
+                Geocentric apparent position
+              </p>
+              <p class="fragment visible" data-fragment-index="11">
+                Topocentric apparent position
+              </p>
+              <p class="fragment visible" data-fragment-index="12">
+                Equatorial coordinates
+              </p>
+              <p class="fragment visible" data-fragment-index="13">
+                Horizontal coordinates
+              </p>
+            </div>
+          </div>
+          <aside class="notes">
+            <p>
+              Get the position of the Earth and of Mars in a referential
+              centered on the Solar System barycenter, you get a geometric
+              barycentric position. Get the position vector that goes from the
+              Earth to Mars, apply light-time correction because light takes
+              time to arrive and during this time objects move in space, you get
+              a geocentric astrometric position. Apply precession and nutation
+              corrections because the Earth's rotation axis slightly moves,
+              aberration correction because the Earth is a moving object,
+              deflection correction because the light might be bent by
+              relativistic effects of gravity, and you get a geocentric apparent
+              position. Now convert your geographic position on Earth into a
+              topocentric one because the Earth is not a perfect sphere and you
+              get a topocentric apparent position. Finally convert this position
+              vector into equatorial coordinates, and finally into horizontal
+              coordinates. But wait, keep in mind that this computation is done
+              in terrestrial time, which is different that UTC by around 69
+              seconds and this value changes some years, some not. I mentioned
+              position vector, coordinates, referentials, corrections,
+              conversions, time.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <p>
+            How to deal with a large and complex domain?
+          </p>
+          <aside class="notes">
+            <p>
+              How to keep up with so many different notions? You need to define
+              clearly the data you manipulate to be sure you're applying the
+              right correction on the right object and extract the right data
+              from it.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <h2>Domain-Driven Design</h2>
+          <aside class="notes">
+            <p>That's where Domain-Driven Design comes.</p>
+          </aside>
+        </section>
+        <section>
+          <h2>DDD in Astronoby</h2>
+        </section>
+        <section>
+          <h3>Value objects</h3>
+          <p class="fragment visible" data-fragment-index="0">
+            <code>Angle</code>
+          </p>
+          <p class="fragment visible" data-fragment-index="1">
+            <code>Instant</code>
+          </p>
+          <p class="fragment visible" data-fragment-index="2">
+            <code>Distance</code>
+          </p>
+          <p class="fragment visible" data-fragment-index="3">
+            <code>Velocity</code>
+          </p>
+        </section>
+        <section>
+          <h3>Entities</h3>
+          <p class="fragment visible" data-fragment-index="0">
+            <code>SolarSystemBody</code>
+          </p>
+          <p class="fragment visible" data-fragment-index="1">
+            <code>Observer</code>
+          </p>
+          <p class="fragment visible" data-fragment-index="2">
+            <code>Coordinates</code>
+          </p>
+        </section>
+        <section>
+          <h3>Repositories</h3>
+          <p class="fragment visible" data-fragment-index="0">
+            <code>Ephem</code>
+          </p>
+          <p class="fragment visible" data-fragment-index="1">
+            <code>SPK</code>
+          </p>
+        </section>
+        <section>
+          <h3>Domain services</h3>
+          <p class="fragment visible" data-fragment-index="0">
+            <code>RisingTransitSettingEvents</code>
+          </p>
+          <p class="fragment visible" data-fragment-index="1">
+            <code>MoonPhases</code>
+          </p>
+          <p class="fragment visible" data-fragment-index="2">
+            <code>TwilightEvents</code>
+          </p>
+        </section>
+        <section>
+          <h2>Value objects</h2>
+        </section>
+        <section>
+          <p>Replaces primitives</p>
+          <p>Encapsulates data</p>
+          <p>No or little behaviour</p>
+          <aside class="notes">
+            <p>
+              Value object can represent fundamental values and notions that
+              are key to the program while not doing anything special. Their
+              purpose is to encapsulate data and replace primitives to make the
+              code more readable, testable and homogeneous.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <p><code>Time</code></p>
+          <pre>
+            <code class="rb">
+              time = Time.now
+              time.zone
+              # => "CEST"
+            </code>
+          </pre>
+        </section>
+        <section>
+          <p><code>Without value object</code></p>
+          <pre>
+            <code class="rb">
+  declination_radians = declination_degrees * Math::PI / 180
+  latitude_radians = latitude_degrees * Math::PI / 180
+  ha_radians = ha_hours * 15 * Math::PI / 180
+
+  term = Math.sin(declination_radians) *
+         Math.sin(latitude_radians) +
+         Math.cos(declination_radians) *
+         Math.cos(latitude_radians) *
+         Math.cos(ha_radians)
+
+  altitude_degrees = Math.asin(term)
+            </code>
+          </pre>
+        </section>
+        <section>
+          <p><code>Astronoby::Angle</code></p>
+          <pre>
+            <code class="rb">
+          term = declination.sin * latitude.sin +
+                 declination.cos * latitude.cos * ha.cos
+
+          altitude = Angle.asin(term)
+            </code>
+          </pre>
+        </section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+    <script src="plugin/math/math.js"></script>
+    <script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+        controls: false,
+        transition: 'none',
+        progress: false,
+
+        mathjax2: {
+          config: 'TeX-AMS_HTML-full',
+          TeX: {
+            Macros: {
+              R: '\\mathbb{R}',
+              set: [ '\\left\\{#1 \\; ; \\; #2\\right\\}', 2 ]
+            }
+          }
+        },
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealNotes,
+          RevealMath.MathJax2
+        ]
+			});
+		</script>
+	</body>
+</html>
