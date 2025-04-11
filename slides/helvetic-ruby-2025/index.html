@@ -8,7 +8,7 @@
 
 		<link rel="stylesheet" href="dist/reset.css">
 		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/moon.css">
+		<link rel="stylesheet" href="dist/theme/beige.css">
     <link rel="stylesheet" href="custom.css">
 
 		<!-- Theme used for syntax highlighted code -->
@@ -66,7 +66,7 @@
           </aside>
         </section>
         <section>
-          <p>Now let's build an accurate astronomy library</p>
+          <p>Build an accurate astronomy library with that</p>
           <p>
             <img src="img/cringe.png" style="width: 400px">
           </p>
@@ -79,6 +79,9 @@
         </section>
         <section>
           <p>In love with astronomy</p>
+        </section>
+        <section>
+          <p>Let's meet and talk about <strike>food</strike> code</p>
         </section>
         <section>
           <h2>What are we going to talk about?</h2>
@@ -107,6 +110,49 @@
             <p>
               We will see how to write code that is easy to read and
               understand, so that we can share it with others.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <h2>Context: Astronoby</h2>
+        </section>
+        <section>
+          <p>Astronomical data and events accessible in Ruby</p>
+        </section>
+        <section>
+          <p>Position of planets in the sky 🪐</p>
+          <p>🌅 Rising, transit and setting times 🌄</p>
+          <p>Equinoxes and solstices times ☀️</p>
+          <p>Moon phases 🌙</p>
+        </section>
+        <section>
+          <p>Future:</p>
+          <p>Conjunctions, oppositions</p>
+          <p>Eclipses</p>
+          <p>Deep sky objects</p>
+          <p>Stargazing planner</p>
+        </section>
+        <section>
+          <p>Increase scientific support in the Ruby ecosystem</p>
+          <aside class="notes">
+            <p>
+              Python and Ruby are very close to each other, except some syntax
+              differences and some features, they can basically do the same. But
+              Ruby is not known for its scientific ecosystem, Python is. Ruby
+              deserves to have scientific projects to inspire other so
+              contribute to the ecosystem as one where science can happen.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <p>Approach</p>
+          <p>Good idiomatic Ruby code</p>
+          <p>Readable and educational code</p>
+          <aside class="notes">
+            <p>
+              The goal is not to only write algorithms in Ruby and to write them
+              in a way that is readable and understandable. I aim to write code
+              that can explain the mechanisms behind the algorithms by itself.
             </p>
           </aside>
         </section>
@@ -142,67 +188,36 @@
           <div class="row">
             <div class="col-35 smaller-text">
               <p>
-                <span class="fragment visible" data-fragment-index="0">Solar System Barycenter</span>
-                <span class="fragment visible" data-fragment-index="1"><br>Vector</span>
-                <span class="fragment visible" data-fragment-index="3"><br>Light-time</span>
-                <span class="fragment visible" data-fragment-index="5"><br>Precession</span>
-                <span class="fragment visible" data-fragment-index="6"><br>Nutation</span>
-                <span class="fragment visible" data-fragment-index="7"><br>Aberration</span>
-                <span class="fragment visible" data-fragment-index="8"><br>Deflection</span>
-                <span class="fragment visible" data-fragment-index="10"><br>Earth shape</span>
-                <span class="fragment visible" data-fragment-index="14"><br>Terrestrial time</span>
+                <span>Solar System Barycenter</span>
+                <span><br>Vector</span>
+                <span><br>Light-time</span>
+                <span><br>Precession</span>
+                <span><br>Nutation</span>
+                <span><br>Aberration</span>
+                <span><br>Deflection</span>
+                <span><br>Earth shape</span>
+                <span><br>Terrestrial time</span>
               </p>
             </div>
             <div class="col-65 small-text">
-              <p class="fragment visible" data-fragment-index="2">
-                Barycentric position
-              </p>
-              <p class="fragment visible" data-fragment-index="4">
-                Geocentric astrometric position
-              </p>
-              <p class="fragment visible" data-fragment-index="9">
-                Geocentric apparent position
-              </p>
-              <p class="fragment visible" data-fragment-index="11">
-                Topocentric apparent position
-              </p>
-              <p class="fragment visible" data-fragment-index="12">
-                Equatorial coordinates
-              </p>
-              <p class="fragment visible" data-fragment-index="13">
-                Horizontal coordinates
-              </p>
+              <p>Barycentric position</p>
+              <p>Geocentric astrometric position</p>
+              <p>Geocentric apparent position</p>
+              <p>Topocentric apparent position</p>
+              <p>Equatorial coordinates</p>
+              <p>Horizontal coordinates</p>
             </div>
           </div>
-          <aside class="notes">
-            <p>
-              Get the position of the Earth and of Mars in a referential
-              centered on the Solar System barycenter, you get a geometric
-              barycentric position. Get the position vector that goes from the
-              Earth to Mars, apply light-time correction because light takes
-              time to arrive and during this time objects move in space, you get
-              a geocentric astrometric position. Apply precession and nutation
-              corrections because the Earth's rotation axis slightly moves,
-              aberration correction because the Earth is a moving object,
-              deflection correction because the light might be bent by
-              relativistic effects of gravity, and you get a geocentric apparent
-              position. Now convert your geographic position on Earth into a
-              topocentric one because the Earth is not a perfect sphere and you
-              get a topocentric apparent position. Finally convert this position
-              vector into equatorial coordinates, and finally into horizontal
-              coordinates. But wait, keep in mind that this computation is done
-              in terrestrial time, which is different that UTC by around 69
-              seconds and this value changes some years, some not. I mentioned
-              position vector, coordinates, referentials, corrections,
-              conversions, time.
-            </p>
-          </aside>
         </section>
         <section>
           <p>
             How to deal with a large and complex domain?
           </p>
           <aside class="notes">
+            <p>
+              This was my complexe example but I am sure you face and will face
+              many other domains as and more complexe in your carrer.
+            </p>
             <p>
               How to keep up with so many different notions? You need to define
               clearly the data you manipulate to be sure you're applying the
@@ -218,58 +233,155 @@
           </aside>
         </section>
         <section>
+          <p>Development approach</p>
+          <p>Reflects business domain</p>
+          <aside class="notes">
+            <p>
+              Domain-Driven Design is a development approach that focuses on
+              creating systems that deeply reflect the underlying business
+              domain they serve.
+            </p>
+            <p>
+              It was introduced in 2003 by Eric Evans his book "Domain-Driven
+              Design: Tackling Complexity in the Heart of Software"
+            </p>
+          </aside>
+        </section>
+        <section>
+          <div class="row">
+            <div class="col">
+              <p>❌</p>
+              <p class="fragment visible" data-fragment-index="0">
+                <small>Technical layers</small>
+              </p>
+              <p class="fragment visible" data-fragment-index="2">
+                <small>Large exhaustive models</small>
+              </p>
+              <p class="fragment visible" data-fragment-index="4">
+                <small>Uniform objects</small>
+              </p>
+            </div>
+            <div class="col">
+              <p>✅</p>
+              <p class="fragment visible" data-fragment-index="1">
+                <small>Business concepts</small>
+              </p>
+              <p class="fragment visible" data-fragment-index="3">
+                <small>Multiple models with explicit boudaries</small>
+              </p>
+              <p class="fragment visible" data-fragment-index="5">
+                <small>Entities and value objects</small>
+              </p>
+            </div>
+          </div>
+          <aside class="notes">
+            <p>
+              Domain-Driven Design fundamentally shifts how we approach software
+              development. Instead of organizing code around technical concerns
+              like databases and UI layers, DDD encourages us to structure our
+              systems around the actual business concepts and processes they
+              represent.
+            </p>
+            <p>
+              We move away from monolithic models and technical jargon, toward
+              bounded contexts with explicit boundaries and a shared language
+              that both developers and business experts use consistently.
+            </p>
+            <p>
+              The code itself becomes a reflection of how the business thinks
+              and operates. Instead of treating all objects the same way, we
+              distinguish between identity-based entities and attribute-based
+              value objects.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <p>Why DDD?</p>
+          <p>Complex domain</p>
+          <p>Collaboration</p>
+          <aside class="notes">
+            <p>
+              When the domain is complex and collaboration is important between
+              the business knowledge and the technical skills.
+            </p>
+            <p>
+              If your business experts can't recognize their own concepts and
+              workflows in your code structure, you might be missing notions
+              or abstract too much.
+            </p>
+            <p>
+              This makes sense in a project where the code serves as a
+              documentation of the concepts and the workflows.
+            </p>
+          </aside>
+        </section>
+        <section>
           <h2>DDD in Astronoby</h2>
         </section>
         <section>
-          <h3>Value objects</h3>
-          <p class="fragment visible" data-fragment-index="0">
-            <code>Angle</code>
-          </p>
-          <p class="fragment visible" data-fragment-index="1">
-            <code>Instant</code>
-          </p>
-          <p class="fragment visible" data-fragment-index="2">
-            <code>Distance</code>
-          </p>
-          <p class="fragment visible" data-fragment-index="3">
-            <code>Velocity</code>
-          </p>
-        </section>
-        <section>
-          <h3>Entities</h3>
-          <p class="fragment visible" data-fragment-index="0">
-            <code>SolarSystemBody</code>
-          </p>
-          <p class="fragment visible" data-fragment-index="1">
-            <code>Observer</code>
-          </p>
-          <p class="fragment visible" data-fragment-index="2">
-            <code>Coordinates</code>
-          </p>
-        </section>
-        <section>
           <h3>Repositories</h3>
-          <p class="fragment visible" data-fragment-index="0">
+          <p>
             <code>Ephem</code>
           </p>
-          <p class="fragment visible" data-fragment-index="1">
-            <code>SPK</code>
-          </p>
+          <aside class="notes">
+            <p>
+              Repositories are used to retrieve and store entities
+            </p>
+            <p>
+              In Astronoby, Ephem holds the raw data. Its purpose is not
+              behaviour nor transformation, but data storage.
+            </p>
+          </aside>
         </section>
         <section>
           <h3>Domain services</h3>
-          <p class="fragment visible" data-fragment-index="0">
-            <code>RisingTransitSettingEvents</code>
-          </p>
-          <p class="fragment visible" data-fragment-index="1">
-            <code>MoonPhases</code>
-          </p>
-          <p class="fragment visible" data-fragment-index="2">
-            <code>TwilightEvents</code>
-          </p>
+          <p><code>RisingTransitSettingEvents</code></p>
+          <p><code>MoonPhases</code></p>
+          <aside class="notes">
+            <p>
+              Domain services are used to perform operations. They are
+              stateless and do not hold any data.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <h3>Value objects</h3>
+          <p><code>Angle</code></p>
+          <p><code>Instant</code></p>
+          <p><code>Distance</code></p>
+          <aside class="notes">
+            <p>
+              Value objects are defined by their attributes
+            </p>
+            <p>
+              In Astronoby, they represent fundamental physical values
+            </p>
+          </aside>
+        </section>
+        <section>
+          <h3>Entities</h3>
+          <p><code>SolarSystemBody</code></p>
+          <p><code>Observer</code></p>
+          <aside class="notes">
+            <p>
+              Entities are defined by their identity
+            </p>
+            <p>
+              In Astronoby, they represent physical objects, they benefit from
+              data from repositories and are used by domain services.
+            </p>
+          </aside>
         </section>
         <section>
           <h2>Value objects</h2>
+          <aside class="notes">
+            <p>
+              I would like to focus on value objects. While entities,
+              repositories and domain services could be implemented as regular
+              Ruby objects with different behaviours, value objects have a
+              different purpose.
+            </p>
+          </aside>
         </section>
         <section>
           <p>Replaces primitives</p>
@@ -279,8 +391,9 @@
             <p>
               Value object can represent fundamental values and notions that
               are key to the program while not doing anything special. Their
-              purpose is to encapsulate data and replace primitives to make the
-              code more readable, testable and homogeneous.
+              purpose is to encapsulate data and replace primitives like numbers
+              or strings, to make the code more readable, testable and
+              homogeneous.
             </p>
           </aside>
         </section>
@@ -288,11 +401,83 @@
           <p><code>Time</code></p>
           <pre>
             <code class="rb">
-              time = Time.now
-              time.zone
-              # => "CEST"
+                        time = Time.now
+
+                        time.hour
+                        # => 16
+
+                        time.to_i
+                        # => 1747917900
             </code>
           </pre>
+          <aside class="notes">
+            <p>
+              <code>Time</code> is a good example of value object in the Ruby
+              standard library. It encapsulates a point in time and provides
+              methods to access its components like hour, minute.
+            </p>
+            <p>
+              Generally value objects are immutable, while `Time` exposes
+              several methods that modify the object, so it is not an absolute
+              value object.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <pre>
+            <code class="ruby">
+              distance1 = Distance.from_meters(1000)
+              distance2 = Distance.from_kilometers(1)
+
+              distance1 == distance2
+              # => true
+
+              distance3 = distance1 + distance2
+
+              distance3.to_meters
+              # => 2000
+            </code>
+          </pre>
+          <aside class="notes">
+            <p>
+              Value objects are useful when integrated in logic or formulas.
+              With value equality, you can compare them without having to
+              worry about their identity or their format.
+            </p>
+            <p>
+              Here we can instantiate two different objects that represent the
+              same physical value, therefore they should be seen as equal.
+            </p>
+            <p>
+              They can be manipulated together, leading to new objects that
+              represent the result of the operation.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <p>
+            <code>Comparable</code>, <code>#<=></code>, <code>#+</code>
+          </p>
+          <br>
+          <p>
+            <code>Data</code>
+          </p>
+          <aside class="notes">
+            <p>
+              By just using the <code>Comparable</code> module and spaceship
+              operator, your can easily implement your own value object. You
+              can add arithmetic methods like we showed in the
+              <code>Distance</code> object, but be careful with the unit of
+              resulting operations. For example, adding two distances creates a
+              new distance, while multiplying two distances creates an area,
+              which is not the same physical notion.
+            </p>
+            <p>
+              You can also use the newly introduced <code>Data</code> class that
+              natively supports value equality and provides a nice syntax to
+              define your own value objects.
+            </p>
+          </aside>
         </section>
         <section>
           <p><code>Without value object</code></p>
@@ -323,6 +508,195 @@
             </code>
           </pre>
         </section>
+        <section>
+          <h2>From maths to Ruby</h2>
+        </section>
+        <section>
+          <p>
+            <img src="img/celestial-calculations.png" alt="Celestial Calculations" style="width: 800px">
+          </p>
+          <p>
+            <small><em>Celestial Calculations</em> by J. L. Lawrence</small>
+          </p>
+          <aside class="notes">
+            <p>
+              Here is a screenshot from one of the book I used to develop
+              some algorithms in Astronoby. As you can see it contains
+              references to some formulas, uses Greek letters for notations,
+              includes branches in the algorithms, and so on.
+            </p>
+            <p>
+              This is challenging to convert these instructions first into Ruby
+              code, then into testable Ruby code, and then into readable Ruby
+              code.
+            </p>
+            <p>
+              Each new formula, new notion, must make sense in the existing and
+              if possible reuse notions that already exist.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <p>Identify responsibility</p>
+        </section>
+        <section>
+          <blockquote>equation of the center for Earth</blockquote>
+          <blockquote>
+            Earth's true anomaly from the equation of the center
+          </blockquote>
+          <p>Domain service</p>
+        </section>
+        <section>
+          <blockquote>Earth's heliocentric longitude</blockquote>
+          <p>Entity</p>
+        </section>
+        <section>
+          <blockquote>
+            adjust [...] so that if falls in the
+            <br>
+            range [0°, 360°]
+          </blockquote>
+          <p>Value object</p>
+        </section>
+        <section>
+          <h2>The importance of precision</h2>
+        </section>
+        <section>
+          <p>Angular distances</p>
+        </section>
+        <section>
+          <p>1 circle</p>
+          <p>360 degrees (°)</p>
+        </section>
+        <section>
+          <p>Each degree</p>
+          <p>60 arc-minutes</p>
+        </section>
+        <section>
+          <p>Each arc-minute</p>
+          <p>60 arc-seconds</p>
+        </section>
+        <section>
+          <p>1 circle</p>
+          <p>1,296,000 arc-seconds</p>
+        </section>
+        <section>
+          <p>Full Moon</p>
+          <p>0.5°</p>
+          <p>0° 30' 0"</p>
+        </section>
+        <section>
+          <p>Mars at its closest</p>
+          <p>0.007°</p>
+          <p>0° 0' 25"</p>
+        </section>
+        <section>
+          <p>Precision is important in science</p>
+          <p>
+            <img src="img/dog-scientist.png" alt="Dog scientist" style="width: 400px">
+          </p>
+        </section>
+        <section>
+          <p>It's time for some data typing theory 🎉</p>
+        </section>
+        <section>
+          <p><code>Integer</code></p>
+          <p>Infinite precision</p>
+          <p>Until your computer runs out of memory</p>
+        </section>
+        <section>
+          <p><code>Float</code></p>
+          <p>Double-precision floating-point (IEEE 754)</p>
+          <p>Rounding errors</p>
+        </section>
+        <section>
+          <pre>
+            <code class="ruby">
+              0.1 + 0.2 # => 0.30000000000000004
+            </code>
+          </pre>
+        </section>
+        <section>
+          <p><code>Rational</code></p>
+          <p>Exact representation of fractions</p>
+          <pre>
+            <code class="ruby">
+      1/10.0 + 1/10.0 + ... + 1/10.0  # => 0.9999999999999999
+      1/10r  + 1/10r  + ... + 1/10r   # => 1
+            </code>
+          </pre>
+        </section>
+        <section>
+          <p><code>BigDecimal</code></p>
+          <p>Arbitrary precision decimal numbers</p>
+          <pre>
+            <code class="ruby">
+              require "bigdecimal"
+
+              1.2345678901234567890123
+              # => 1.2345678901234567
+
+              BigDecimal("1.2345678901234567890123")
+              # => 0.12345678901234567890123e1
+            </code>
+          </pre>
+        </section>
+        <section>
+          <p>Difference between</p>
+          <p>
+            <small><code>1.234567890123456°</code></small>
+            <br>
+            <small><code>1.234567890123457°</code></small>
+          </p>
+          <p>smaller than any instrument resolution</p>
+          <aside class="notes">
+            A small dust grain or an atom located at an immense distance,
+            far beyond our galaxy, might subtend such a minuscule angle
+          </aside>
+        </section>
+        <section>
+          <p>Pluto's angular size</p>
+          <p>0.00003°</p>
+        </section>
+        <section>
+          <p>Deimos' angular size</p>
+          <p>0.00000008°</p>
+        </section>
+        <section>
+          <p>Rounding error</p>
+          <p>0.00000000000000004</p>
+        </section>
+        <section>
+          <p>
+            Astronomical models or instruments will fail before Ruby is imprecise
+          </p>
+        </section>
+        <section>
+          <h2>Performance</h2>
+        </section>
+        <section>
+          <p>Things that can harm performance</p>
+          <p>Inefficient algorithms</p>
+          <p>Redundant or unnecessary operations</p>
+          <p>Non optimized critical methods</p>
+          <p>Lack of fine-tuned tools in the ecosystem</p>
+        </section>
+        <section>
+          <p>Astronoby suffers from performance issues</p>
+          <p>0.4 seconds mean time for sunrise/sunset times and position</p>
+        </section>
+        <section>
+          <p>Many ways to improve the performance</p>
+          <p>Cache repetitive operations</p>
+          <p>Better algorithms</p>
+          <p>Optimized algorithms</p>
+        </section>
+        <section>
+          <p>It is fine to not use DDD or OOP when it's too heavy-weight</p>
+        </section>
+        <section>
+          <p>Consider writing C modules for critical parts</p>
+        </section>
 			</div>
 		</div>
 
@@ -340,6 +714,7 @@
         controls: false,
         transition: 'none',
         progress: false,
+        // slideNumber: true,
 
         mathjax2: {
           config: 'TeX-AMS_HTML-full',
