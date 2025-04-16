@@ -17,13 +17,11 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>
-          <section>
-            <h1>Modelling the Cosmos in Ruby</h1>
-          </section>
-          <section>
-            <h2>The sky is a lie</h2>
-          </section>
+        <section>
+          <h1>Modelling the Cosmos in Ruby</h1>
+        </section>
+        <section>
+          <h2>The sky is a lie</h2>
         </section>
         <section>
           <p>We see what's in the past</p>
@@ -233,8 +231,9 @@
           </aside>
         </section>
         <section>
-          <p>Development approach</p>
+          <p>Introduced in 2003 by Eric Evans</p>
           <p>Reflects business domain</p>
+          <p>Focus on core domain</p>
           <aside class="notes">
             <p>
               Domain-Driven Design is a development approach that focuses on
@@ -244,6 +243,10 @@
             <p>
               It was introduced in 2003 by Eric Evans his book "Domain-Driven
               Design: Tackling Complexity in the Heart of Software"
+            </p>
+            <p>
+              The main philosophy is focus on the core domain, its logic, its
+              meaning, and build an architecture that reflects it.
             </p>
           </aside>
         </section>
@@ -296,7 +299,71 @@
           </aside>
         </section>
         <section>
-          <p>Why DDD?</p>
+          <h3>Ubiquitous Language</h3>
+          <aside class="notes">
+            <p>
+              To be honest I didn't know the word "ubiquitous" before I learnt
+              about DDD, which means "existing or being everywhere at the same
+              time".
+            </p>
+            <p>
+              The idea is to use a shared vocabulary that both developers and
+              business experts understand. This helps to avoid confusion and
+              miscommunication, ensuring that everyone is on the same page.
+            </p>
+            <p>
+              In the case of Astronoby, domain experts could be scientists
+              interested in contributing to the project and having the
+              scientific knowledge.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <h3>Ubiquitous Language</h3>
+          <div class="row">
+            <div class="col col-50">
+              <p>❌</p>
+              <pre class="fragment visible" data-fragment-index="0">
+                <code class="ruby">
+  class MoonState
+    def self.compute(state, time)
+      new(
+        time: time,
+        state: state
+      )
+    end
+  end
+                </code>
+              </pre>
+            </div>
+            <div class="col col-50">
+              <p>✅</p>
+              <pre class="fragment visible" data-fragment-index="1">
+                <code class="ruby">
+  class MoonPhase
+    def self.full_moon(time)
+      new(
+        time: time,
+        phase: FULL_MOON
+      )
+    end
+  end
+                </code>
+              </pre>
+            </div>
+          </div>
+          <aside class="notes">
+            <p>
+              Instead of using technical jargon like "MoonState" and "compute",
+              which might make sense in to the developers or in some design
+              patterns, we use a more descriptive name like "MoonPhase" and
+              "full_moon" which refer to the actual business concept of a full
+              moon.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <p>When DDD?</p>
           <p>Complex domain</p>
           <p>Collaboration</p>
           <aside class="notes">
@@ -317,6 +384,13 @@
         </section>
         <section>
           <h2>DDD in Astronoby</h2>
+          <aside class="notes">
+            <p>
+              To get more into applying DDD in a real project, I am going to use
+              my experience on Astronoby to illustrate bounded contexts and the
+              separation of concerns.
+            </p>
+          </aside>
         </section>
         <section>
           <h3>Repositories</h3>
@@ -334,6 +408,28 @@
           </aside>
         </section>
         <section>
+          <p><code>Ephem</code></p>
+          <pre>
+            <code class="rb">
+          ephem = Astronoby::Ephem.load("de440s.bsp")
+
+          ephem[0, 3].position_vector_at(2460819)
+          # => Vector[-71204709, -123739936, -53612310]
+            </code>
+          </pre>
+          <aside class="notes">
+            <p>
+              The <code>Ephem</code> module is responsible for loading external
+              data and making it available as raw vectors that the rest of the
+              library will use and transform.
+            </p>
+            <p>
+              As a repository, it is not responsible for any transformation or
+              calculation, it just stores the original data.
+            </p>
+          </aside>
+        </section>
+        <section>
           <h3>Domain services</h3>
           <p><code>RisingTransitSettingEvents</code></p>
           <p><code>MoonPhases</code></p>
@@ -341,6 +437,41 @@
             <p>
               Domain services are used to perform operations. They are
               stateless and do not hold any data.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <p><code>RisingTransitSettingEvents</code></p>
+          <pre>
+            <code class="ruby">
+    calculator =
+      Astronoby::RisingTransitSettingEventsCalculator.new(
+        observer: observer,
+        target_body: Astronoby::Sun,
+        ephem: ephem
+      )
+
+    events = calculator.events_on(date)
+
+    events.rising_time
+    # => 2025-05-23 05:54:08 +0200
+            </code>
+          </pre>
+          <aside class="notes">
+            <p>
+              This module is responsible for calculating the rising, transit and
+              setting times and coordinates of a celestial body.
+            </p>
+            <p>
+              As a domain service, it is not responsible for the data storage,
+              the data transformation or the data representation. It is only
+              responsible for holding some logic and algorithms.
+            </p>
+            <p>
+              It exposes a simple but intuitive API and returns an object with
+              formatted data. The final object is not a domain service but an
+              entity. The domain service only computes. We will talk about
+              entities shortly.
             </p>
           </aside>
         </section>
@@ -359,8 +490,28 @@
           </aside>
         </section>
         <section>
+          <p><code>Angle</code></p>
+          <pre>
+            <code class="ruby">
+        angle = Astronoby::Angle.from_degres(240).hours
+
+        angle.hours
+        # => 16.0
+
+        angle.cos
+        # => -0.5
+            </code>
+          </pre>
+          <aside class="notes">
+            <p>
+              The <code>Angle</code> value object holds the angle value has a
+              convenient API to exposes the value in different formats.
+            </p>
+          </aside>
+        </section>
+        <section>
           <h3>Entities</h3>
-          <p><code>SolarSystemBody</code></p>
+          <p><code>Jupiter</code></p>
           <p><code>Observer</code></p>
           <aside class="notes">
             <p>
@@ -373,6 +524,31 @@
           </aside>
         </section>
         <section>
+          <p><code>Jupiter</code></p>
+          <pre>
+            <code class="ruby">
+          jupiter = Astronoby::Jupiter.new(
+            ephem: ephem,
+            instant: instant
+          )
+
+          jupiter.apparent.distance.km
+          # => 904241448
+            </code>
+          </pre>
+          <aside class="notes">
+            <p>
+              The <code>Jupiter</code> entity holds transformed data that makes
+              sense in its context. Its arttributes are the results of
+              transformations and calculations, while the values are value
+              objects.
+            </p>
+            <p>
+              Their enriched data and identity is then used by domain services.
+            </p>
+          </aside>
+        </section>
+        <section>
           <h2>Value objects</h2>
           <aside class="notes">
             <p>
@@ -380,6 +556,10 @@
               repositories and domain services could be implemented as regular
               Ruby objects with different behaviours, value objects have a
               different purpose.
+            </p>
+            <p>
+              In the context of a presentation about DDD, value object represent
+              major parts of the philosophy.
             </p>
           </aside>
         </section>
@@ -713,7 +893,7 @@
 				hash: true,
         controls: false,
         transition: 'none',
-        progress: false,
+        progress: true,
         // slideNumber: true,
 
         mathjax2: {
