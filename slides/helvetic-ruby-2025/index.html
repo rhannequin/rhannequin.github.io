@@ -2,7 +2,10 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    >
 
 		<title>Modelling the Cosmos in Ruby</title>
 
@@ -231,6 +234,17 @@
           </aside>
         </section>
         <section>
+          <h2>DDD? 👍</h2>
+          <aside class="notes">
+            <p>
+              Quick poll, please raise your hand if you already heard of DDD.
+            </p>
+            <p>
+              Now keep your hand up if you already used it in a project.
+            </p>
+          </aside>
+        </section>
+        <section>
           <p>Introduced in 2003 by Eric Evans</p>
           <p>Reflects business domain</p>
           <p>Focus on core domain</p>
@@ -379,6 +393,31 @@
             <p>
               This makes sense in a project where the code serves as a
               documentation of the concepts and the workflows.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <p>Ruby ❤️ DDD</p>
+          <ul>
+            <li>OOP</li>
+            <li>Expressiveness</li>
+            <li>Modules</li>
+            <li>Metaprogramming</li>
+          </ul>
+          <aside class="notes">
+            <p>
+              Ruby is particularly well suited for DDD because of its
+              object-oriented nature and its expressiveness. It allows us to
+              create clear and concise representations of domain concepts.
+            </p>
+            <p>
+              The use of modules in Ruby allows us to create reusable and
+              composable components and to establish clear and semantic
+              boundaries between different parts of the codebase.
+            </p>
+            <p>
+              Metaprogramming can be used to create domain-specific languages
+              (DSLs) that make the code more expressive and easier to read.
             </p>
           </aside>
         </section>
@@ -549,6 +588,42 @@
           </aside>
         </section>
         <section>
+          <h3>Aggregates</h3>
+          <p><small><small>(not actually in Astronoby)</small></small></p>
+          <p>e. g. <code>Observation</code></p>
+          <aside class="notes">
+            <p>
+              This is not actually part of Astronoby but DDD also provides the
+              idea of aggregates. An aggregate can be seen as a cluster of
+              related objects that are treated as a single unit.
+            </p>
+            <p>
+              We could imagine a <code>Observation</code> aggregate that would
+              hold an <code>Observer</code> entity and would provide computed
+              data based on a time value object and observed coordinates.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <img
+            src="img/ddd-chart.png"
+            alt="DDD Chart"
+            width="1000"
+            style="max-width: 500%; max-height: 500%; margin: 0"
+          >
+          <aside class="notes">
+            <p>
+              Here's a chart that summarizes the different parts of DDD we just
+              presented and how they interact with each other.
+            </p>
+            <p>
+              As you can see, this is not a particularly complicated example nor
+              architecture, the main point is to split the logic and the data
+              into different kind of objects that will behave is a specific way.
+            </p>
+          </aside>
+        </section>
+        <section>
           <h2>Value objects</h2>
           <aside class="notes">
             <p>
@@ -689,193 +764,173 @@
           </pre>
         </section>
         <section>
-          <h2>From maths to Ruby</h2>
-        </section>
-        <section>
-          <p>
-            <img src="img/celestial-calculations.png" alt="Celestial Calculations" style="width: 800px">
-          </p>
-          <p>
-            <small><em>Celestial Calculations</em> by J. L. Lawrence</small>
-          </p>
+          <h2>Testing</h2>
           <aside class="notes">
             <p>
-              Here is a screenshot from one of the book I used to develop
-              some algorithms in Astronoby. As you can see it contains
-              references to some formulas, uses Greek letters for notations,
-              includes branches in the algorithms, and so on.
-            </p>
-            <p>
-              This is challenging to convert these instructions first into Ruby
-              code, then into testable Ruby code, and then into readable Ruby
-              code.
-            </p>
-            <p>
-              Each new formula, new notion, must make sense in the existing and
-              if possible reuse notions that already exist.
+              Ruby is a dynamically typed language, which requires investment in
+              testing to ensure the integrity of the code.
             </p>
           </aside>
         </section>
         <section>
-          <p>Identify responsibility</p>
-        </section>
-        <section>
-          <blockquote>equation of the center for Earth</blockquote>
-          <blockquote>
-            Earth's true anomaly from the equation of the center
-          </blockquote>
-          <p>Domain service</p>
-        </section>
-        <section>
-          <blockquote>Earth's heliocentric longitude</blockquote>
-          <p>Entity</p>
-        </section>
-        <section>
-          <blockquote>
-            adjust [...] so that if falls in the
-            <br>
-            range [0°, 360°]
-          </blockquote>
-          <p>Value object</p>
-        </section>
-        <section>
-          <h2>The importance of precision</h2>
-        </section>
-        <section>
-          <p>Angular distances</p>
-        </section>
-        <section>
-          <p>1 circle</p>
-          <p>360 degrees (°)</p>
-        </section>
-        <section>
-          <p>Each degree</p>
-          <p>60 arc-minutes</p>
-        </section>
-        <section>
-          <p>Each arc-minute</p>
-          <p>60 arc-seconds</p>
-        </section>
-        <section>
-          <p>1 circle</p>
-          <p>1,296,000 arc-seconds</p>
-        </section>
-        <section>
-          <p>Full Moon</p>
-          <p>0.5°</p>
-          <p>0° 30' 0"</p>
-        </section>
-        <section>
-          <p>Mars at its closest</p>
-          <p>0.007°</p>
-          <p>0° 0' 25"</p>
-        </section>
-        <section>
-          <p>Precision is important in science</p>
-          <p>
-            <img src="img/dog-scientist.png" alt="Dog scientist" style="width: 400px">
-          </p>
-        </section>
-        <section>
-          <p>It's time for some data typing theory 🎉</p>
-        </section>
-        <section>
-          <p><code>Integer</code></p>
-          <p>Infinite precision</p>
-          <p>Until your computer runs out of memory</p>
-        </section>
-        <section>
-          <p><code>Float</code></p>
-          <p>Double-precision floating-point (IEEE 754)</p>
-          <p>Rounding errors</p>
-        </section>
-        <section>
-          <pre>
-            <code class="ruby">
-              0.1 + 0.2 # => 0.30000000000000004
-            </code>
-          </pre>
-        </section>
-        <section>
-          <p><code>Rational</code></p>
-          <p>Exact representation of fractions</p>
-          <pre>
-            <code class="ruby">
-      1/10.0 + 1/10.0 + ... + 1/10.0  # => 0.9999999999999999
-      1/10r  + 1/10r  + ... + 1/10r   # => 1
-            </code>
-          </pre>
-        </section>
-        <section>
-          <p><code>BigDecimal</code></p>
-          <p>Arbitrary precision decimal numbers</p>
-          <pre>
-            <code class="ruby">
-              require "bigdecimal"
-
-              1.2345678901234567890123
-              # => 1.2345678901234567
-
-              BigDecimal("1.2345678901234567890123")
-              # => 0.12345678901234567890123e1
-            </code>
-          </pre>
-        </section>
-        <section>
-          <p>Difference between</p>
-          <p>
-            <small><code>1.234567890123456°</code></small>
-            <br>
-            <small><code>1.234567890123457°</code></small>
-          </p>
-          <p>smaller than any instrument resolution</p>
+          <h3>DDD ❤️ Testing</h3>
+          <p>Well-defined objects</p>
+          <p>Bounded contexts</p>
+          <p>Real-life data</p>
           <aside class="notes">
-            A small dust grain or an atom located at an immense distance,
-            far beyond our galaxy, might subtend such a minuscule angle
+            <p>
+              Part of the DDD philosophy is to write testable code. Ruby is
+              particularly well suited for this aspect due to the strong
+              testing culture in the ecosystem and community.
+            </p>
+            <p>
+              With well-defined objects and bounded contexts, it is easy to
+              write tests that cover the different parts of the codebase.
+            </p>
+            <p>
+              The use of real-life data in the tests allows to test the
+              algorithms and the code in a realistic context, which is
+              particularly important in a scientific context.
+            </p>
           </aside>
         </section>
         <section>
-          <p>Pluto's angular size</p>
-          <p>0.00003°</p>
-        </section>
-        <section>
-          <p>Deimos' angular size</p>
-          <p>0.00000008°</p>
-        </section>
-        <section>
-          <p>Rounding error</p>
-          <p>0.00000000000000004</p>
-        </section>
-        <section>
+          <h3>Pragmatism</h3>
+          <p>Source of truth: IMCCE, JPL</p>
           <p>
-            Astronomical models or instruments will fail before Ruby is imprecise
+            <img src="img/imcce.png" alt="IMCCE" style="width: 700px">
           </p>
+          <aside class="notes">
+            <p>
+              DDD is also a pragmatic choice for writing scientific code.
+              Institutes and organizations provide data that can be used to
+              test the algorithms and the code. They enforce the use of their
+              own scientific domain, which is an opportunity but also a
+              constraint. With my limited knowledge of real science, it is hard
+              to know if the data is correct or not, so I need to rely on
+              external sources to validate the results.
+            </p>
+            <p>
+              This is a screenshot from the IMCCE website, which is the
+              Institute of Celestial Mechanics and Computation of Ephemerides.
+              The domain and vocabulary is approximately the same as the one
+              used in Astronoby. It helped me test my results step by step, but
+              also use correct concepts and algorithms.
+            </p>
+            <p>
+              This way, DDD helped having integrity and maintainability.
+            </p>
+          </aside>
         </section>
         <section>
           <h2>Performance</h2>
+          <aside class="notes">
+            <p>
+              As a side and last note, I would like to talk about performance.
+            </p>
+          </aside>
         </section>
         <section>
-          <p>Things that can harm performance</p>
-          <p>Inefficient algorithms</p>
-          <p>Redundant or unnecessary operations</p>
-          <p>Non optimized critical methods</p>
-          <p>Lack of fine-tuned tools in the ecosystem</p>
+          <h3>DDD & performance</h3>
+          <p>Yes, but</p>
+          <aside class="notes">
+            <p>
+              DDD is a great approach to write maintainable and readable code.
+              Nothing in its philosophy prevents you from writing performant
+              code but it can lead to performance issues if not used carefully.
+              It is a matter of how you use it and how you design your code.
+            </p>
+          </aside>
         </section>
         <section>
-          <p>Astronoby suffers from performance issues</p>
-          <p>0.4 seconds mean time for sunrise/sunset times and position</p>
+          <h3>What is your priority?</h3>
+          <p>Readability</p>
+          <p>Accuracy</p>
+          <p>Performance</p>
+          <aside class="notes">
+            <p>
+              The important point is to define your priorities. With Astronoby,
+              I wanted to focus on readability and accuracy. I implemented
+              the scientific domain and laguage for accuracy and
+              maintainability, and DDD helped me achieve that.
+            </p>
+            <p>
+              I also want a library that is performant, I can achieve it, but I
+              won't find guidance in DDD for this aspect.
+            </p>
+          </aside>
         </section>
         <section>
-          <p>Many ways to improve the performance</p>
-          <p>Cache repetitive operations</p>
-          <p>Better algorithms</p>
-          <p>Optimized algorithms</p>
+          <h3>Performance</h3>
+          <p>Algorithms</p>
+          <p>Many objects</p>
+          <p>Low-level interfaces</p>
+          <aside class="notes">
+            <p>
+              To compute astronomical data, I need to find and test algorithms,
+              implement them correctly and efficiently, and then optimize them
+              if needed. DDD is not a magic wand, and in some perspectives, it
+              can hurt the performance, for example by forcing to manipulate
+              too many objects.
+            </p>
+            <p>
+              Some critical parts of the code can be optimized by using
+              low-level interfaces like C extensions. It wouldn't be to go
+              against DDD to use them, but it requires extra care integrate them
+              in the codebase written with a specific philosophy in mind.
+            </p>
+          </aside>
         </section>
         <section>
-          <p>It is fine to not use DDD or OOP when it's too heavy-weight</p>
+          <h2>Conclusion</h2>
         </section>
         <section>
-          <p>Consider writing C modules for critical parts</p>
+          <h3>What we learnt</h3>
+          <p>Domain-Driven Design is hard to pronounce</p>
+          <p>DDD for managing complex domains</p>
+          <p>Ruby expressiveness helps</p>
+          <aside class="notes">
+            <p>
+              Throughout this presentation, we have seen how DDD can help manage
+              complex domains.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <h3>Beyond astronomy</h3>
+          <p>Every complex domain can benefit from DDD</p>
+          <p>Finance, healthcare, logistics</p>
+          <aside class="notes">
+            <p>
+              My example was astronomy but many projects I worked on, and you
+              also do have complex domains that require a clear understanding
+              and implementation of the business concepts and workflows.
+            </p>
+            <p>
+              With a good understanding of the domain, you can apply DDD to many
+              different domains.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <h2>Final Thoughts</h2>
+          <p>Good models illuminate complex realities</p>
+          <p>Code can be both educational and functional</p>
+          <p>Ruby deserves a place in scientific computing</p>
+          <aside class="notes">
+            <p>
+              Just as astronomical models help us understand the cosmos despite
+              its complexity, good software models illuminate complex business
+              domains. With Astronoby, I've tried to show that code can be both
+              educational and functional—teaching about astronomy through its
+              very structure. And finally, I hope this project demonstrates that
+              Ruby, with its expressive syntax and object-oriented nature,
+              deserves a more prominent place in scientific computing.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <h1>?</h1>
         </section>
 			</div>
 		</div>
