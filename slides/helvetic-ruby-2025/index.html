@@ -11,10 +11,7 @@
 
 		<link rel="stylesheet" href="dist/reset.css">
 		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/beige.css">
     <link rel="stylesheet" href="custom.css">
-
-		<!-- Theme used for syntax highlighted code -->
 		<link rel="stylesheet" href="plugin/highlight/obsidian.css">
 	</head>
 	<body>
@@ -121,10 +118,10 @@
           <p>Astronomical data and events accessible in Ruby</p>
         </section>
         <section>
-          <p>Position of planets in the sky 🪐</p>
-          <p>🌅 Rising, transit and setting times 🌄</p>
-          <p>Equinoxes and solstices times ☀️</p>
-          <p>Moon phases 🌙</p>
+          <p class="shorter-text">Position of planets in the sky 🪐</p>
+          <p class="shorter-text">🌅 Rising, transit and setting times 🌄</p>
+          <p class="shorter-text">Equinoxes and solstices times ☀️</p>
+          <p class="shorter-text">Moon phases 🌙</p>
         </section>
         <section>
           <p>Future:</p>
@@ -158,7 +155,7 @@
           </aside>
         </section>
         <section>
-          <h2>
+          <h2 style="font-size: 1.7em;">
             Domain-Driven Design<br>
             and OOP<br>
             in Astronoby
@@ -172,7 +169,13 @@
           <p>Altitude: 49°26′13″</p>
         </section>
         <section>
-          <p><img src="img/mars.png" alt="Mars" style="width: 200px"></p>
+          <p>
+            <img
+              src="img/mars.png"
+              alt="Mars"
+              style="width: 200px; border: 0; box-shadow: none"
+            >
+          </p>
           <p><img src="img/geneva.jpg" alt="Geneva" style="width: 500px"></p>
           <aside class="notes">
             <p>
@@ -266,27 +269,52 @@
         </section>
         <section>
           <div class="row">
-            <div class="col">
+            <div class="col-50">
               <p>❌</p>
-              <p class="fragment visible" data-fragment-index="0">
+              <p
+                class="fragment visible"
+                data-fragment-index="0"
+                style="font-size: 1em"
+              >
                 <small>Technical layers</small>
               </p>
-              <p class="fragment visible" data-fragment-index="2">
+              <p
+                class="fragment visible"
+                data-fragment-index="2"
+                style="font-size: 1em"
+              >
                 <small>Large exhaustive models</small>
               </p>
-              <p class="fragment visible" data-fragment-index="4">
+              <br>
+              <p
+                class="fragment visible"
+                data-fragment-index="4"
+                style="font-size: 1em"
+              >
                 <small>Uniform objects</small>
               </p>
             </div>
-            <div class="col">
+            <div class="col-50">
               <p>✅</p>
-              <p class="fragment visible" data-fragment-index="1">
+              <p
+                class="fragment visible"
+                data-fragment-index="1"
+                style="font-size: 1em"
+              >
                 <small>Business concepts</small>
               </p>
-              <p class="fragment visible" data-fragment-index="3">
+              <p
+                class="fragment visible"
+                data-fragment-index="3"
+                style="font-size: 1em"
+              >
                 <small>Multiple models with explicit boudaries</small>
               </p>
-              <p class="fragment visible" data-fragment-index="5">
+              <p
+                class="fragment visible"
+                data-fragment-index="5"
+                style="font-size: 1em"
+              >
                 <small>Entities and value objects</small>
               </p>
             </div>
@@ -337,33 +365,33 @@
           <div class="row">
             <div class="col col-50">
               <p>❌</p>
-              <pre class="fragment visible" data-fragment-index="0">
-                <code class="ruby">
-  class MoonState
-    def self.compute(state, time)
-      new(
-        time: time,
-        state: state
-      )
-    end
+              <pre
+                class="fragment visible"
+                data-fragment-index="0"
+              ><code class="ruby" style="font-size: 0.7em">
+class MoonState
+  def self.compute(state, time)
+    new(
+      time: time,
+      state: state
+    )
   end
-                </code>
-              </pre>
+end</code></pre>
             </div>
             <div class="col col-50">
               <p>✅</p>
-              <pre class="fragment visible" data-fragment-index="1">
-                <code class="ruby">
-  class MoonPhase
-    def self.full_moon(time)
-      new(
-        time: time,
-        phase: FULL_MOON
-      )
-    end
+              <pre
+                class="fragment visible"
+                data-fragment-index="1"
+              ><code class="ruby" style="font-size: 0.7em">
+class MoonPhase
+  def self.full_moon(time)
+    new(
+      time: time,
+      phase: FULL_MOON
+    )
   end
-                </code>
-              </pre>
+end</code></pre>
             </div>
           </div>
           <aside class="notes">
@@ -448,14 +476,11 @@
         </section>
         <section>
           <p><code>Ephem</code></p>
-          <pre>
-            <code class="rb">
-          ephem = Astronoby::Ephem.load("de440s.bsp")
+          <pre><code class="rb">
+  ephem = Astronoby::Ephem.load("de440s.bsp")
 
-          ephem[0, 3].position_vector_at(2460819)
-          # => Vector[-71204709, -123739936, -53612310]
-            </code>
-          </pre>
+  ephem[0, 3].position_vector_at(2460819)
+  # => Vector[-71204709, -123739936, -53612310]</code></pre>
           <aside class="notes">
             <p>
               The <code>Ephem</code> module is responsible for loading external
@@ -481,21 +506,18 @@
         </section>
         <section>
           <p><code>RisingTransitSettingEvents</code></p>
-          <pre>
-            <code class="ruby">
-    calculator =
-      Astronoby::RisingTransitSettingEventsCalculator.new(
-        observer: observer,
-        target_body: Astronoby::Sun,
-        ephem: ephem
-      )
+          <pre><code class="ruby" style="font-size: 0.8em">
+calculator =
+  Astronoby::RisingTransitSettingEventsCalculator.new(
+    observer: observer,
+    target_body: Astronoby::Sun,
+    ephem: ephem
+  )
 
-    events = calculator.events_on(date)
+events = calculator.events_on(date)
 
-    events.rising_time
-    # => 2025-05-23 05:54:08 +0200
-            </code>
-          </pre>
+events.rising_time
+# => 2025-05-23 05:54:08 +0200</code></pre>
           <aside class="notes">
             <p>
               This module is responsible for calculating the rising, transit and
@@ -530,17 +552,14 @@
         </section>
         <section>
           <p><code>Angle</code></p>
-          <pre>
-            <code class="ruby">
-        angle = Astronoby::Angle.from_degres(240).hours
+          <pre><code class="ruby">
+angle = Astronoby::Angle.from_degres(240).hours
 
-        angle.hours
-        # => 16.0
+angle.hours
+# => 16.0
 
-        angle.cos
-        # => -0.5
-            </code>
-          </pre>
+angle.cos
+# => -0.5</code></pre>
           <aside class="notes">
             <p>
               The <code>Angle</code> value object holds the angle value has a
@@ -564,17 +583,14 @@
         </section>
         <section>
           <p><code>Jupiter</code></p>
-          <pre>
-            <code class="ruby">
-          jupiter = Astronoby::Jupiter.new(
-            ephem: ephem,
-            instant: instant
-          )
+          <pre><code class="ruby">
+        jupiter = Astronoby::Jupiter.new(
+          ephem: ephem,
+          instant: instant
+        )
 
-          jupiter.apparent.distance.km
-          # => 904241448
-            </code>
-          </pre>
+        jupiter.apparent.distance.km
+        # => 904241448</code></pre>
           <aside class="notes">
             <p>
               The <code>Jupiter</code> entity holds transformed data that makes
@@ -589,7 +605,7 @@
         </section>
         <section>
           <h3>Aggregates</h3>
-          <p><small><small>(not actually in Astronoby)</small></small></p>
+          <small><small>(not actually in Astronoby)</small></small>
           <p>e. g. <code>Observation</code></p>
           <aside class="notes">
             <p>
@@ -654,17 +670,14 @@
         </section>
         <section>
           <p><code>Time</code></p>
-          <pre>
-            <code class="rb">
-                        time = Time.now
+          <pre><code class="rb">
+                time = Time.now
 
-                        time.hour
-                        # => 16
+                time.hour
+                # => 16
 
-                        time.to_i
-                        # => 1747917900
-            </code>
-          </pre>
+                time.to_i
+                # => 1747917900</code></pre>
           <aside class="notes">
             <p>
               <code>Time</code> is a good example of value object in the Ruby
@@ -679,20 +692,17 @@
           </aside>
         </section>
         <section>
-          <pre>
-            <code class="ruby">
-              distance1 = Distance.from_meters(1000)
-              distance2 = Distance.from_kilometers(1)
+          <pre><code class="ruby">
+    distance1 = Distance.from_meters(1000)
+    distance2 = Distance.from_kilometers(1)
 
-              distance1 == distance2
-              # => true
+    distance1 == distance2
+    # => true
 
-              distance3 = distance1 + distance2
+    distance3 = distance1 + distance2
 
-              distance3.to_meters
-              # => 2000
-            </code>
-          </pre>
+    distance3.to_meters
+    # => 2000</code></pre>
           <aside class="notes">
             <p>
               Value objects are useful when integrated in logic or formulas.
@@ -736,32 +746,26 @@
         </section>
         <section>
           <p><code>Without value object</code></p>
-          <pre>
-            <code class="rb">
-  declination_radians = declination_degrees * Math::PI / 180
-  latitude_radians = latitude_degrees * Math::PI / 180
-  ha_radians = ha_hours * 15 * Math::PI / 180
+          <pre><code class="rb" style="font-size: 0.7em">
+declination_radians = declination_degrees * Math::PI / 180
+latitude_radians = latitude_degrees * Math::PI / 180
+ha_radians = ha_hours * 15 * Math::PI / 180
 
-  term = Math.sin(declination_radians) *
-         Math.sin(latitude_radians) +
-         Math.cos(declination_radians) *
-         Math.cos(latitude_radians) *
-         Math.cos(ha_radians)
+term = Math.sin(declination_radians) *
+       Math.sin(latitude_radians) +
+       Math.cos(declination_radians) *
+       Math.cos(latitude_radians) *
+       Math.cos(ha_radians)
 
-  altitude_degrees = Math.asin(term)
-            </code>
-          </pre>
+altitude_degrees = Math.asin(term)</code></pre>
         </section>
         <section>
           <p><code>Astronoby::Angle</code></p>
-          <pre>
-            <code class="rb">
-          term = declination.sin * latitude.sin +
-                 declination.cos * latitude.cos * ha.cos
+          <pre><code class="rb">
+term = declination.sin * latitude.sin +
+       declination.cos * latitude.cos * ha.cos
 
-          altitude = Angle.asin(term)
-            </code>
-          </pre>
+altitude = Angle.asin(term)</code></pre>
         </section>
         <section>
           <h2>Testing</h2>
@@ -886,9 +890,24 @@
         </section>
         <section>
           <h3>What we learnt</h3>
-          <p>Domain-Driven Design is hard to pronounce</p>
-          <p>DDD for managing complex domains</p>
-          <p>Ruby expressiveness helps</p>
+          <p
+            class="fragment visible slightly-smaller-text"
+            data-fragment-index="0"
+          >
+            Domain-Driven Design is hard to pronounce
+          </p>
+          <p
+            class="fragment visible slightly-smaller-text"
+            data-fragment-index="1"
+          >
+            DDD for managing complex domains
+          </p>
+          <p
+            class="fragment visible slightly-smaller-text"
+            data-fragment-index="2"
+          >
+            Ruby expressiveness helps
+          </p>
           <aside class="notes">
             <p>
               Throughout this presentation, we have seen how DDD can help manage
@@ -898,8 +917,12 @@
         </section>
         <section>
           <h3>Beyond astronomy</h3>
-          <p>Every complex domain can benefit from DDD</p>
-          <p>Finance, healthcare, logistics</p>
+          <p class="slightly-smaller-text">
+            Every complex domain can benefit from DDD
+          </p>
+          <p class="slightly-smaller-text">
+            Finance, healthcare, logistics
+          </p>
           <aside class="notes">
             <p>
               My example was astronomy but many projects I worked on, and you
@@ -914,9 +937,15 @@
         </section>
         <section>
           <h2>Final Thoughts</h2>
-          <p>Good models illuminate complex realities</p>
-          <p>Code can be both educational and functional</p>
-          <p>Ruby deserves a place in scientific computing</p>
+          <p class="slightly-smaller-text">
+            Good models illuminate complex realities
+          </p>
+          <p class="slightly-smaller-text">
+            Code can be both educational and functional
+          </p>
+          <p class="slightly-smaller-text">
+            Ruby deserves a place in scientific computing
+          </p>
           <aside class="notes">
             <p>
               Just as astronomical models help us understand the cosmos despite
@@ -930,7 +959,7 @@
           </aside>
         </section>
         <section>
-          <h1>?</h1>
+          <h1 style="text-align: center">?</h1>
         </section>
 			</div>
 		</div>

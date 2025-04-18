@@ -1,55 +1,932 @@
-/*@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic,700italic);*/
+/**
+ * Elegant Cosmos Theme for reveal.js
+ * A sophisticated, premium theme inspired by astronomy and the cosmos
+ */
 
-/*:root {*/
-/*  --red: #e03131;*/
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cormorant+Garamond:wght@300;400;600&family=JetBrains+Mono:wght@300;400&display=swap');
+
+:root {
+  /* Sophisticated color palette */
+  --cosmic-bg-dark: #080322;
+  --cosmic-bg-medium: #14103d;
+  --cosmic-bg-light: #1e1a54;
+  --cosmic-text: #f8f9ff;
+  --cosmic-gold: #ffd78c;
+  --cosmic-gold-light: #fff0d6;
+  --cosmic-purple: #9d7dff;
+  --cosmic-blue: #78d7ff;
+  --cosmic-pink: #ff78d7;
+  --cosmic-teal: #78fff0;
+  --cosmic-nebula-1: rgba(157, 125, 255, 0.15);
+  --cosmic-nebula-2: rgba(120, 215, 255, 0.15);
+  --cosmic-nebula-3: rgba(255, 120, 215, 0.15);
+
+  /* Shadows and glows */
+  --cosmic-text-shadow: 0 0 15px rgba(248, 249, 255, 0.3);
+  --cosmic-box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+  --cosmic-gold-glow: 0 0 15px rgba(255, 215, 140, 0.5);
+  --cosmic-purple-glow: 0 0 20px rgba(157, 125, 255, 0.5);
+  --cosmic-blue-glow: 0 0 20px rgba(120, 215, 255, 0.5);
+
+  /* Gradients */
+  --cosmic-gradient-main: linear-gradient(135deg, var(--cosmic-bg-dark) 0%, var(--cosmic-bg-medium) 50%, var(--cosmic-bg-light) 100%);
+  --cosmic-gradient-gold: linear-gradient(135deg, #c9a45b 0%, var(--cosmic-gold) 50%, var(--cosmic-gold-light) 100%);
+  --cosmic-gradient-accent: linear-gradient(135deg, var(--cosmic-purple) 0%, var(--cosmic-blue) 100%);
+
+  /* Fonts */
+  --font-heading: 'Cinzel', serif;
+  --font-body: 'Cormorant Garamond', serif;
+  --font-code: 'JetBrains Mono', monospace;
+}
+
+/* Main background with animated nebula effect */
+.reveal-viewport {
+  background: var(--cosmic-gradient-main);
+  background-color: var(--cosmic-bg-dark); /* Fallback */
+  position: relative;
+  overflow: hidden;
+}
+
+/* Animated nebula effects */
+.reveal-viewport::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(circle at 20% 35%, var(--cosmic-nebula-1) 0%, transparent 25%),
+    radial-gradient(circle at 75% 65%, var(--cosmic-nebula-2) 0%, transparent 30%),
+    radial-gradient(circle at 45% 75%, var(--cosmic-nebula-3) 0%, transparent 20%);
+  opacity: 0.8;
+  z-index: -2;
+  animation: nebula-drift 120s infinite alternate ease-in-out;
+}
+
+/* Star field effect */
+.reveal-viewport::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    radial-gradient(1px 1px at 25% 15%, white, transparent),
+    radial-gradient(1px 1px at 50% 50%, white, transparent),
+    radial-gradient(2px 2px at 35% 75%, white, transparent),
+    radial-gradient(1px 1px at 85% 35%, white, transparent),
+    radial-gradient(1.5px 1.5px at 65% 85%, white, transparent);
+  background-size: 250px 250px;
+  background-repeat: repeat;
+  opacity: 0.4;
+  z-index: -1;
+  animation: twinkle 8s infinite alternate ease-in-out;
+}
+
+.reveal {
+  font-family: var(--font-body);
+  font-size: 42px;
+  font-weight: normal;
+  color: var(--cosmic-text);
+  text-shadow: var(--cosmic-text-shadow);
+}
+
+.reveal .slides {
+  text-align: left;
+}
+
+.reveal .slides section {
+  padding: 20px;
+}
+
+/* HEADINGS */
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  margin: 0 0 24px 0;
+  font-family: var(--font-heading);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0.05em;
+  text-transform: none;
+  text-shadow: var(--cosmic-text-shadow);
+}
+
+.reveal h1 {
+  font-size: 2.6em;
+  background: var(--cosmic-gradient-gold);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.reveal h2 {
+  font-size: 1.8em;
+  color: var(--cosmic-gold);
+  text-shadow: var(--cosmic-gold-glow);
+}
+
+.reveal h2.shorter-subtitle {
+  font-size: 1.7em;
+}
+
+.reveal h3 {
+  font-size: 1.4em;
+  color: var(--cosmic-purple);
+  text-shadow: var(--cosmic-purple-glow);
+}
+
+.reveal h4 {
+  font-size: 1.2em;
+  color: var(--cosmic-blue);
+  text-shadow: var(--cosmic-blue-glow);
+}
+
+/* Title slide styling */
+.reveal .slides > section:first-child {
+  text-align: center;
+}
+
+.reveal .slides > section:first-child h1 {
+  font-size: 3.2em;
+  margin-bottom: 0.3em;
+  position: relative;
+  display: inline-block;
+}
+
+/*.reveal .slides > section:first-child h1::before,*/
+/*.reveal .slides > section:first-child h1::after {*/
+/*  content: '';*/
+/*  position: absolute;*/
+/*  width: 60px;*/
+/*  height: 2px;*/
+/*  background: var(--cosmic-gradient-gold);*/
+/*  top: 50%;*/
 /*}*/
 
-/*.reveal {*/
-/*  font-family: Open Sans, sans-serif;*/
-/*}*/
+.reveal .slides > section:first-child h1::before {
+  left: -90px;
+}
 
-/*.reveal a {*/
-/*  text-decoration: underline;*/
-/*  text-decoration-thickness: 0.2rem;*/
-/*}*/
+.reveal .slides > section:first-child h1::after {
+  right: -90px;
+}
 
-/*.reveal a:hover {*/
-/*  text-decoration: none;*/
-/*}*/
+.reveal .slides > section:first-child h2 {
+  color: var(--cosmic-text);
+  font-weight: 300;
+  font-size: 1.4em;
+  font-family: var(--font-body);
+  text-transform: none;
+  letter-spacing: 0.03em;
+}
 
-/*.reveal .controls button {*/
-/*  color: var(--red);*/
-/*}*/
-
-/*.reveal .progress {*/
-/*  color: var(--red);*/
-/*}*/
-
-/*.reveal h1,*/
-/*.reveal h2,*/
-/*.reveal h3,*/
-/*.reveal h4,*/
-/*.reveal h5,*/
-/*.reveal h6 {*/
-/*  color: var(--red);*/
-/*}*/
-
-/*.red {*/
-/*  color: var(--red);*/
-/*}*/
-
-/*code {*/
-/*  border-radius: .25rem;*/
-/*  color: var(--red);*/
-/*  font-size: .875em;*/
-/*  font-weight: 500;*/
-/*  padding: .15rem .3rem;*/
-/*  background-color: rgba(224, 49, 49, .1);*/
-/*}*/
-
+/* TYPOGRAPHY */
 .reveal p {
-  /*color: #ffffff;*/
-  font-size: 1.5em;
+  margin: 24px 0;
+  line-height: 1.5;
+  font-weight: 300;
+  font-size: 1.6em;
+}
+
+.reveal p.shorter-text {
+  font-size: 1.4em;
+}
+
+.reveal strong,
+.reveal b {
+  font-weight: bold;
+  color: var(--cosmic-gold);
+}
+
+.reveal em,
+.reveal i {
+  font-style: italic;
+  color: var(--cosmic-teal);
+}
+
+.reveal blockquote {
+  display: block;
+  position: relative;
+  width: 90%;
+  margin: 24px auto;
+  padding: 24px;
+  background: rgba(8, 3, 34, 0.6);
+  border-left: none;
+  border-radius: 4px;
+  box-shadow: var(--cosmic-box-shadow);
+  font-family: var(--font-body);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 1.1em;
+}
+
+.reveal blockquote::before {
+  content: '"';
+  position: absolute;
+  top: -10px;
+  left: -8px;
+  color: var(--cosmic-gold);
+  font-size: 60px;
+  font-family: Georgia, serif;
+  text-shadow: var(--cosmic-gold-glow);
+}
+
+.reveal blockquote::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--cosmic-gradient-accent);
+  border-radius: 2px;
+}
+
+/* LISTS */
+.reveal ol,
+.reveal dl,
+.reveal ul {
+  display: inline-block;
+  text-align: left;
+  margin: 0 0 0 1.2em;
+  line-height: 1.6;
+}
+
+.reveal ol {
+  list-style-type: decimal;
+}
+
+.reveal ul {
+  list-style-type: none;
+}
+
+.reveal ul li {
+  position: relative;
+  margin: 0.7em 0;
+  padding-left: 0.5em;
+}
+
+.reveal ul li::before {
+  content: '★';
+  position: absolute;
+  left: -1.2em;
+  color: var(--cosmic-gold);
+  font-size: 0.7em;
+  text-shadow: var(--cosmic-gold-glow);
+}
+
+.reveal ul ul li::before {
+  content: '✧';
+}
+
+/* LINKS */
+.reveal a {
+  color: var(--cosmic-blue);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border-bottom: 1px dotted var(--cosmic-blue);
+  text-shadow: var(--cosmic-blue-glow);
+}
+
+.reveal a:hover {
+  color: var(--cosmic-teal);
+  border-bottom: 1px solid var(--cosmic-teal);
+  text-shadow: 0 0 10px var(--cosmic-teal);
+}
+
+/* IMAGES */
+.reveal img,
+.reveal video,
+.reveal iframe {
+  max-width: 95%;
+  max-height: 65vh;
+  margin: 0 auto;
+  border-radius: 8px;
+  box-shadow: var(--cosmic-box-shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(157, 125, 255, 0.2);
+}
+
+.reveal img:hover,
+.reveal video:hover {
+  transform: scale(1.02);
+  box-shadow: 0 12px 40px -10px rgba(0, 0, 0, 0.6);
+}
+
+.reveal figure {
+  margin: 24px 0;
+}
+
+.reveal figcaption {
+  font-size: 0.65em;
+  color: var(--cosmic-text);
+  opacity: 0.8;
+  text-align: center;
+  margin-top: 12px;
+  font-style: italic;
+  font-family: var(--font-body);
+}
+
+/* CODE */
+.reveal pre {
+  display: block;
+  position: relative;
+  width: 90%;
+  margin: 24px auto;
+  text-align: left;
+  font-size: 0.75em;
+  font-family: var(--font-code);
+  line-height: 1.4;
+  word-wrap: break-word;
+  box-shadow: var(--cosmic-box-shadow);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.reveal pre::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background: rgba(8, 3, 34, 0.7);
+  border-bottom: 1px solid rgba(157, 125, 255, 0.2);
+  z-index: 2;
+}
+
+.reveal pre::after {
+  content: '';
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  width: 12px;
+  height: 12px;
+  background: var(--cosmic-pink);
+  border-radius: 50%;
+  box-shadow: 24px 0 0 var(--cosmic-gold), 48px 0 0 var(--cosmic-teal);
+  z-index: 3;
+}
+
+.reveal pre > code {
+  display: block;
+  padding: 20px 20px 20px;
+  overflow: auto;
+  max-height: 450px;
+  word-wrap: normal;
+  background: rgba(8, 3, 34, 0.6);
+  color: var(--cosmic-text);
+  border-radius: 8px;
+  font-weight: 300;
+}
+
+/* Code highlighting */
+.reveal code .keyword {
+  color: var(--cosmic-purple);
+  font-weight: bold;
+}
+
+.reveal code .string {
+  color: var(--cosmic-teal);
+}
+
+.reveal code .number {
+  color: var(--cosmic-pink);
+}
+
+.reveal code .comment {
+  color: #6a7a8b;
+  font-style: italic;
+}
+
+/* Inline code */
+.reveal code {
+  font-family: var(--font-code);
+  font-size: 0.9em;
+  /*padding: 0.1em 0.4em;*/
+  background-color: rgba(8, 3, 34, 0.6);
+  color: var(--cosmic-text);
+  border-radius: 4px;
+  font-weight: 300;
+  border: 1px solid rgba(157, 125, 255, 0.2);
+}
+
+.reveal p code {
+  padding: 0 15px;
+}
+
+/* TABLES */
+.reveal table {
+  margin: 24px auto;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: rgba(8, 3, 34, 0.6);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: var(--cosmic-box-shadow);
+  border: 1px solid rgba(157, 125, 255, 0.2);
+}
+
+.reveal table th {
+  font-weight: normal;
+  background: var(--cosmic-bg-medium);
+  color: var(--cosmic-gold);
+  padding: 0.8em 1em;
+  text-align: left;
+  border-bottom: 2px solid rgba(157, 125, 255, 0.4);
+  font-family: var(--font-heading);
+  letter-spacing: 0.05em;
+}
+
+.reveal table td {
+  padding: 0.6em 1em;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.reveal table tr:last-child td {
+  border-bottom: none;
+}
+
+.reveal table tr:nth-child(even) {
+  background-color: rgba(30, 26, 84, 0.3);
+}
+
+.reveal table tr {
+  transition: background-color 0.3s ease;
+}
+
+.reveal table tr:hover {
+  background-color: rgba(157, 125, 255, 0.1);
+}
+
+/* SLIDES STATES */
+.reveal .slides section .fragment {
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s ease;
+}
+
+.reveal .slides section .fragment.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.reveal .slides section .fragment.highlight-blue {
+  opacity: 1;
+  visibility: visible;
+}
+
+.reveal .slides section .fragment.highlight-blue.visible {
+  color: var(--cosmic-blue);
+  text-shadow: var(--cosmic-blue-glow);
+}
+
+.reveal .slides section .fragment.highlight-purple {
+  opacity: 1;
+  visibility: visible;
+}
+
+.reveal .slides section .fragment.highlight-purple.visible {
+  color: var(--cosmic-purple);
+  text-shadow: var(--cosmic-purple-glow);
+}
+
+.reveal .slides section .fragment.highlight-gold {
+  opacity: 1;
+  visibility: visible;
+}
+
+.reveal .slides section .fragment.highlight-gold.visible {
+  color: var(--cosmic-gold);
+  text-shadow: var(--cosmic-gold-glow);
+}
+
+/* PROGRESS BAR */
+.reveal .progress {
+  background: rgba(255, 255, 255, 0.1);
+  height: 4px;
+}
+
+.reveal .progress span {
+  background: var(--cosmic-gradient-accent);
+  transition: width 0.8s cubic-bezier(0.26, 0.86, 0.44, 0.98);
+}
+
+/* SLIDE NUMBER */
+.reveal .slide-number {
+  background-color: transparent;
+  font-size: 0.6em;
+  color: var(--cosmic-text);
+  opacity: 0.6;
+  font-family: var(--font-code);
+}
+
+/* CONTROLS */
+.reveal .controls {
+  color: var(--cosmic-gold);
+}
+
+.reveal .controls button {
+  transition: all 0.3s ease;
+}
+
+.reveal .controls button:hover {
+  color: var(--cosmic-teal);
+  text-shadow: var(--cosmic-gold-glow);
+}
+
+/* PRINT BACKGROUND */
+@media print {
+  .backgrounds {
+    background-color: var(--cosmic-bg-dark);
+  }
+}
+
+/* CUSTOM CLASSES */
+.reveal .text-center {
+  text-align: center;
+}
+
+.reveal .gold-text {
+  color: var(--cosmic-gold);
+  text-shadow: var(--cosmic-gold-glow);
+}
+
+.reveal .purple-text {
+  color: var(--cosmic-purple);
+  text-shadow: var(--cosmic-purple-glow);
+}
+
+.reveal .blue-text {
+  color: var(--cosmic-blue);
+  text-shadow: var(--cosmic-blue-glow);
+}
+
+.reveal .fancy-text {
+  font-family: var(--font-heading);
+  letter-spacing: 0.05em;
+}
+
+/* Elegant callout box for important information */
+.reveal .callout {
+  background: rgba(8, 3, 34, 0.6);
+  border-radius: 8px;
+  padding: 20px 25px;
+  margin: 24px 0;
+  box-shadow: var(--cosmic-box-shadow);
+  position: relative;
+  border: 1px solid rgba(157, 125, 255, 0.2);
+  overflow: hidden;
+}
+
+.reveal .callout::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--cosmic-gradient-accent);
+}
+
+.reveal .callout::after {
+  content: '✧';
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  color: var(--cosmic-gold);
+  font-size: 20px;
+  opacity: 0.6;
+}
+
+/* Box to highlight code output */
+.reveal .code-output {
+  background: rgba(8, 3, 34, 0.6);
+  border: 1px solid rgba(255, 215, 140, 0.3);
+  border-radius: 8px;
+  padding: 20px;
+  margin: 24px 0;
+  font-family: var(--font-code);
+  color: var(--cosmic-text);
+  position: relative;
+  box-shadow: var(--cosmic-box-shadow);
+}
+
+.reveal .code-output::before {
+  content: 'Output';
+  position: absolute;
+  top: -12px;
+  left: 15px;
+  background: var(--cosmic-bg-dark);
+  padding: 0 10px;
+  font-size: 0.7em;
+  color: var(--cosmic-gold);
+  letter-spacing: 0.05em;
+}
+
+/* Two-column layout */
+.reveal .columns {
+  display: flex;
+  margin: 24px 0;
+  gap: 30px;
+}
+
+.reveal .column {
+  flex: 1;
+}
+
+/* Divider */
+.reveal .divider {
+  display: flex;
+  align-items: center;
+  margin: 40px 0;
+  color: var(--cosmic-gold);
+  font-size: 0.8em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-family: var(--font-heading);
+}
+
+.reveal .divider::before,
+.reveal .divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--cosmic-gradient-gold);
+  opacity: 0.6;
+}
+
+.reveal .divider::before {
+  margin-right: 15px;
+}
+
+.reveal .divider::after {
+  margin-left: 15px;
+}
+
+/* Elegant equation styling */
+.reveal .math {
+  color: var(--cosmic-text);
+  font-family: 'Latin Modern Math', serif;
+  text-align: center;
+  margin: 30px 0;
+  font-size: 1.2em;
+  position: relative;
+  padding: 20px;
+}
+
+.reveal .math::before,
+.reveal .math::after {
+  content: '';
+  position: absolute;
+  left: 25%;
+  right: 25%;
+  height: 1px;
+  background: var(--cosmic-gradient-accent);
+  opacity: 0.4;
+}
+
+.reveal .math::before {
+  top: 0;
+}
+
+.reveal .math::after {
+  bottom: 0;
+}
+
+/* Space/Astronomy diagram container */
+.reveal .diagram {
+  background: rgba(8, 3, 34, 0.7);
+  border-radius: 8px;
+  padding: 25px;
+  margin: 24px 0;
+  box-shadow: var(--cosmic-box-shadow);
+  border: 1px solid rgba(157, 125, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.reveal .diagram::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(circle at 20% 35%, var(--cosmic-nebula-1) 0%, transparent 30%),
+    radial-gradient(circle at 75% 65%, var(--cosmic-nebula-2) 0%, transparent 40%);
+  opacity: 0.2;
+  z-index: 0;
+}
+
+.reveal .diagram > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Mermaid diagrams */
+.reveal .mermaid {
+  background: transparent !important;
+  font-family: var(--font-body) !important;
+}
+
+/* Reference section styling */
+.reveal .references {
+  font-size: 0.65em;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 15px;
+  margin-top: 50px;
+  opacity: 0.8;
+}
+
+.reveal .references h3 {
+  font-size: 1.3em;
+  margin-bottom: 15px;
+}
+
+/* Final slide styling */
+.reveal .thank-you {
+  text-align: center;
+}
+
+.reveal .thank-you h2 {
+  color: var(--cosmic-gold);
+  text-align: center;
+  font-size: 2.8em;
+  margin-bottom: 30px;
+  text-shadow: var(--cosmic-gold-glow);
+  position: relative;
+  display: inline-block;
+}
+
+.reveal .thank-you h2::before,
+.reveal .thank-you h2::after {
+  content: '★';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--cosmic-gold);
+  font-size: 0.5em;
+}
+
+.reveal .thank-you h2::before {
+  left: -40px;
+}
+
+.reveal .thank-you h2::after {
+  right: -40px;
+}
+
+.reveal .contact-info {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 50px;
+  font-size: 0.8em;
+}
+
+.reveal .contact-info p {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Animations */
+@keyframes nebula-drift {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+  100% {
+    transform: translateX(-2%) translateY(2%);
+  }
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+/* Code presentation enhancements */
+.reveal .code-highlight {
+  background-color: rgba(255, 215, 140, 0.1);
+  border-radius: 2px;
+}
+
+/* Timeline element */
+.reveal .timeline {
+  position: relative;
+  padding-left: 50px;
+  margin: 40px 0;
+}
+
+.reveal .timeline::before {
+  content: '';
+  position: absolute;
+  left: 15px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--cosmic-gradient-accent);
+}
+
+.reveal .timeline-item {
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.reveal .timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -50px;
+  top: 6px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--cosmic-gold);
+  box-shadow: var(--cosmic-gold-glow);
+}
+
+.reveal .timeline-date {
+  font-family: var(--font-heading);
+  color: var(--cosmic-blue);
+  font-size: 0.8em;
+  margin-bottom: 8px;
+}
+
+/* Fancy quote */
+.reveal .fancy-quote {
+  position: relative;
+  padding: 40px 40px 40px 60px;
+  font-size: 1.3em;
+  font-style: italic;
+  background: rgba(8, 3, 34, 0.5);
+  border-radius: 8px;
+  margin: 30px 0;
+  font-weight: 300;
+  line-height: 1.6;
+  border: 1px solid rgba(157, 125, 255, 0.15);
+}
+
+.reveal .fancy-quote::before {
+  content: '"';
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 80px;
+  color: var(--cosmic-gold);
+  font-family: Georgia, serif;
+  opacity: 0.5;
+  line-height: 0.8;
+}
+
+.reveal .fancy-quote .quote-author {
+  display: block;
+  text-align: right;
+  font-size: 0.7em;
+  margin-top: 10px;
+  font-style: normal;
+  color: var(--cosmic-blue);
+}
+
+/* Section divider slide */
+.reveal .section-divider {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.reveal .section-divider h2 {
+  font-size: 3em;
+  background: var(--cosmic-gradient-gold);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 30px;
+}
+
+.reveal .section-divider .constellation {
+  font-size: 1.8em;
+  letter-spacing: 0.3em;
+  color: var(--cosmic-gold);
+  margin-bottom: 20px;
+  text-shadow: var(--cosmic-gold-glow);
 }
 
 .row {
@@ -76,14 +953,22 @@
   padding-right: 1%;
 }
 
-.small-text {
+.reveal .slightly-smaller-text {
+  font-size: 1.2em;
+}
+
+.reveal .small-text {
   font-size: 0.7em;
 }
 
-.smaller-text {
+.reveal .smaller-text {
   font-size: 0.5em;
 }
 
 .col pre {
   width: 100%;
+}
+
+small {
+  font-size: 75%;
 }
