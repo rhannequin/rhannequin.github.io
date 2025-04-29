@@ -1,0 +1,1003 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    >
+
+		<title>Modelling the Cosmos in Ruby</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+    <link rel="stylesheet" href="custom.css">
+		<link rel="stylesheet" href="plugin/highlight/obsidian.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+        <section>
+          <h1>Modelling the Cosmos in Ruby</h1>
+        </section>
+        <section>
+          <h2>The sky is a lie</h2>
+        </section>
+        <section>
+          <p>We see what's in the past</p>
+          <aside class="notes">
+            <p>
+              Because the speed of light is finite, everything we see is at
+              least slightly in the past. When it comes to astronomy, delay can
+              be seconds, minutes, days, years.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <p>Sunrise and sunset times are fake</p>
+          <aside class="notes">
+            <p>
+              The atmosphere refracts light so much that when we witness a
+              Sunset, the Sun has actually set below the horizon for several
+              minutes.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <p>The Pole Star is not at the celestial pole</p>
+          <aside class="notes">
+            <p>
+              From our perspective, the Pole Star slightly wobbles around the
+              celestial pole. Thousands of years ago, another star was way
+              closer to this point.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <p>A day is not 24 hours</p>
+          <aside class="notes">
+            <p>
+              The Earth rotates around its axis in 23 hours, 56 minutes and 4
+              seconds. What we use in everyday life is called a mean solar day,
+              because the actual solar day varies throughout the year.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <p>Build an accurate astronomy library with that</p>
+          <p>
+            <img src="img/cringe.png" style="width: 400px">
+          </p>
+        </section>
+        <section>
+          <h2>Hi, I'm Rémy</h2>
+        </section>
+        <section>
+          <p>Senior developer at thoughtbot</p>
+        </section>
+        <section>
+          <p>In love with astronomy</p>
+        </section>
+        <section>
+          <p>Let's meet and talk about <strike>food</strike> code</p>
+        </section>
+        <section>
+          <h2>What are we going to talk about?</h2>
+        </section>
+        <section>
+          <p>Complex domain models</p>
+          <aside class="notes">
+            <p>
+              Astronomy is a complex domain, it's a good example to illustrate
+              the challenges of domain modelling.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <p>Learn code design techniques</p>
+          <aside class="notes">
+            <p>
+              We will learn about some code design techniques like oriented
+              object design and domain driven design.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <p>Code readability for collaboration and education</p>
+          <aside class="notes">
+            <p>
+              We will see how to write code that is easy to read and
+              understand, so that we can share it with others.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <h2>Context: Astronoby</h2>
+        </section>
+        <section>
+          <p>Astronomical data and events accessible in Ruby</p>
+        </section>
+        <section>
+          <p class="shorter-text">Position of planets in the sky 🪐</p>
+          <p class="shorter-text">🌅 Rising, transit and setting times 🌄</p>
+          <p class="shorter-text">Equinoxes and solstices times ☀️</p>
+          <p class="shorter-text">Moon phases 🌙</p>
+        </section>
+        <section>
+          <p>Future:</p>
+          <p>Conjunctions, oppositions</p>
+          <p>Eclipses</p>
+          <p>Deep sky objects</p>
+          <p>Stargazing planner</p>
+        </section>
+        <section>
+          <p>Increase scientific support in the Ruby ecosystem</p>
+          <aside class="notes">
+            <p>
+              Python and Ruby are very close to each other, except some syntax
+              differences and some features, they can basically do the same. But
+              Ruby is not known for its scientific ecosystem, Python is. Ruby
+              deserves to have scientific projects to inspire other so
+              contribute to the ecosystem as one where science can happen.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <p>Approach</p>
+          <p>Good idiomatic Ruby code</p>
+          <p>Readable and educational code</p>
+          <aside class="notes">
+            <p>
+              The goal is not to only write algorithms in Ruby and to write them
+              in a way that is readable and understandable. I aim to write code
+              that can explain the mechanisms behind the algorithms by itself.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <h2 style="font-size: 1.7em;">
+            Domain-Driven Design<br>
+            and OOP<br>
+            in Astronoby
+          </h2>
+        </section>
+        <section>
+          <p>Why?</p>
+        </section>
+        <section>
+          <p>Azimuth: 123°44′47″</p>
+          <p>Altitude: 49°26′13″</p>
+        </section>
+        <section>
+          <p>
+            <img
+              src="img/mars.png"
+              alt="Mars"
+              style="width: 200px; border: 0; box-shadow: none"
+            >
+          </p>
+          <p><img src="img/geneva.jpg" alt="Geneva" style="width: 500px"></p>
+          <aside class="notes">
+            <p>
+              These are coordinates of planet Mars seen from Geneva when we
+              started this talk.
+            </p>
+            <p>
+              Let me present you the suite of physical notions and data
+              manipulations that were needed to get to this point.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <div class="row">
+            <div class="col-35 smaller-text">
+              <p>
+                <span>Solar System Barycenter</span>
+                <span><br>Vector</span>
+                <span><br>Light-time</span>
+                <span><br>Precession</span>
+                <span><br>Nutation</span>
+                <span><br>Aberration</span>
+                <span><br>Deflection</span>
+                <span><br>Earth shape</span>
+                <span><br>Terrestrial time</span>
+              </p>
+            </div>
+            <div class="col-65 small-text">
+              <p>Barycentric position</p>
+              <p>Geocentric astrometric position</p>
+              <p>Geocentric apparent position</p>
+              <p>Topocentric apparent position</p>
+              <p>Equatorial coordinates</p>
+              <p>Horizontal coordinates</p>
+            </div>
+          </div>
+        </section>
+        <section>
+          <p>
+            How to deal with a large and complex domain?
+          </p>
+          <aside class="notes">
+            <p>
+              This was my complexe example but I am sure you face and will face
+              many other domains as and more complexe in your carrer.
+            </p>
+            <p>
+              How to keep up with so many different notions? You need to define
+              clearly the data you manipulate to be sure you're applying the
+              right correction on the right object and extract the right data
+              from it.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <h2>Domain-Driven Design</h2>
+          <aside class="notes">
+            <p>That's where Domain-Driven Design comes.</p>
+          </aside>
+        </section>
+        <section>
+          <h2>DDD? 👍</h2>
+          <aside class="notes">
+            <p>
+              Quick poll, please raise your hand if you already heard of DDD.
+            </p>
+            <p>
+              Now keep your hand up if you already used it in a project.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <p>Introduced in 2003 by Eric Evans</p>
+          <p>Reflects business domain</p>
+          <p>Focus on core domain</p>
+          <aside class="notes">
+            <p>
+              Domain-Driven Design is a development approach that focuses on
+              creating systems that deeply reflect the underlying business
+              domain they serve.
+            </p>
+            <p>
+              It was introduced in 2003 by Eric Evans his book "Domain-Driven
+              Design: Tackling Complexity in the Heart of Software"
+            </p>
+            <p>
+              The main philosophy is focus on the core domain, its logic, its
+              meaning, and build an architecture that reflects it.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <div class="row">
+            <div class="col-50">
+              <p>❌</p>
+              <p
+                class="fragment visible"
+                data-fragment-index="0"
+                style="font-size: 1em"
+              >
+                <small>Technical layers</small>
+              </p>
+              <p
+                class="fragment visible"
+                data-fragment-index="2"
+                style="font-size: 1em"
+              >
+                <small>Large exhaustive models</small>
+              </p>
+              <br>
+              <p
+                class="fragment visible"
+                data-fragment-index="4"
+                style="font-size: 1em"
+              >
+                <small>Uniform objects</small>
+              </p>
+            </div>
+            <div class="col-50">
+              <p>✅</p>
+              <p
+                class="fragment visible"
+                data-fragment-index="1"
+                style="font-size: 1em"
+              >
+                <small>Business concepts</small>
+              </p>
+              <p
+                class="fragment visible"
+                data-fragment-index="3"
+                style="font-size: 1em"
+              >
+                <small>Multiple models with explicit boudaries</small>
+              </p>
+              <p
+                class="fragment visible"
+                data-fragment-index="5"
+                style="font-size: 1em"
+              >
+                <small>Entities and value objects</small>
+              </p>
+            </div>
+          </div>
+          <aside class="notes">
+            <p>
+              Domain-Driven Design fundamentally shifts how we approach software
+              development. Instead of organizing code around technical concerns
+              like databases and UI layers, DDD encourages us to structure our
+              systems around the actual business concepts and processes they
+              represent.
+            </p>
+            <p>
+              We move away from monolithic models and technical jargon, toward
+              bounded contexts with explicit boundaries and a shared language
+              that both developers and business experts use consistently.
+            </p>
+            <p>
+              The code itself becomes a reflection of how the business thinks
+              and operates. Instead of treating all objects the same way, we
+              distinguish between identity-based entities and attribute-based
+              value objects.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <h3>Ubiquitous Language</h3>
+          <aside class="notes">
+            <p>
+              To be honest I didn't know the word "ubiquitous" before I learnt
+              about DDD, which means "existing or being everywhere at the same
+              time".
+            </p>
+            <p>
+              The idea is to use a shared vocabulary that both developers and
+              business experts understand. This helps to avoid confusion and
+              miscommunication, ensuring that everyone is on the same page.
+            </p>
+            <p>
+              In the case of Astronoby, domain experts could be scientists
+              interested in contributing to the project and having the
+              scientific knowledge.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <h3>Ubiquitous Language</h3>
+          <div class="row">
+            <div class="col col-50">
+              <p>❌</p>
+              <pre
+                class="fragment visible"
+                data-fragment-index="0"
+              ><code class="ruby" style="font-size: 0.7em">
+class MoonState
+  def self.compute(state, time)
+    new(
+      time: time,
+      state: state
+    )
+  end
+end</code></pre>
+            </div>
+            <div class="col col-50">
+              <p>✅</p>
+              <pre
+                class="fragment visible"
+                data-fragment-index="1"
+              ><code class="ruby" style="font-size: 0.7em">
+class MoonPhase
+  def self.full_moon(time)
+    new(
+      time: time,
+      phase: FULL_MOON
+    )
+  end
+end</code></pre>
+            </div>
+          </div>
+          <aside class="notes">
+            <p>
+              Instead of using technical jargon like "MoonState" and "compute",
+              which might make sense in to the developers or in some design
+              patterns, we use a more descriptive name like "MoonPhase" and
+              "full_moon" which refer to the actual business concept of a full
+              moon.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <p>When DDD?</p>
+          <p>Complex domain</p>
+          <p>Collaboration</p>
+          <aside class="notes">
+            <p>
+              When the domain is complex and collaboration is important between
+              the business knowledge and the technical skills.
+            </p>
+            <p>
+              If your business experts can't recognize their own concepts and
+              workflows in your code structure, you might be missing notions
+              or abstract too much.
+            </p>
+            <p>
+              This makes sense in a project where the code serves as a
+              documentation of the concepts and the workflows.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <p>Ruby ❤️ DDD</p>
+          <ul>
+            <li>OOP</li>
+            <li>Expressiveness</li>
+            <li>Modules</li>
+            <li>Metaprogramming</li>
+          </ul>
+          <aside class="notes">
+            <p>
+              Ruby is particularly well suited for DDD because of its
+              object-oriented nature and its expressiveness. It allows us to
+              create clear and concise representations of domain concepts.
+            </p>
+            <p>
+              The use of modules in Ruby allows us to create reusable and
+              composable components and to establish clear and semantic
+              boundaries between different parts of the codebase.
+            </p>
+            <p>
+              Metaprogramming can be used to create domain-specific languages
+              (DSLs) that make the code more expressive and easier to read.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <h2>DDD in Astronoby</h2>
+          <aside class="notes">
+            <p>
+              To get more into applying DDD in a real project, I am going to use
+              my experience on Astronoby to illustrate bounded contexts and the
+              separation of concerns.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <h3>Repositories</h3>
+          <p>
+            <code>Ephem</code>
+          </p>
+          <aside class="notes">
+            <p>
+              Repositories are used to retrieve and store entities
+            </p>
+            <p>
+              In Astronoby, Ephem holds the raw data. Its purpose is not
+              behaviour nor transformation, but data storage.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <p><code>Ephem</code></p>
+          <pre><code class="rb">
+  ephem = Astronoby::Ephem.load("de440s.bsp")
+
+  ephem[0, 3].position_vector_at(2460819)
+  # => Vector[-71204709, -123739936, -53612310]</code></pre>
+          <aside class="notes">
+            <p>
+              The <code>Ephem</code> module is responsible for loading external
+              data and making it available as raw vectors that the rest of the
+              library will use and transform.
+            </p>
+            <p>
+              As a repository, it is not responsible for any transformation or
+              calculation, it just stores the original data.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <h3>Domain services</h3>
+          <p><code>RisingTransitSettingEvents</code></p>
+          <p><code>MoonPhases</code></p>
+          <aside class="notes">
+            <p>
+              Domain services are used to perform operations. They are
+              stateless and do not hold any data.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <p><code>RisingTransitSettingEvents</code></p>
+          <pre><code class="ruby" style="font-size: 0.8em">
+calculator =
+  Astronoby::RisingTransitSettingEventsCalculator.new(
+    observer: observer,
+    target_body: Astronoby::Sun,
+    ephem: ephem
+  )
+
+events = calculator.events_on(date)
+
+events.rising_time
+# => 2025-05-23 05:54:08 +0200</code></pre>
+          <aside class="notes">
+            <p>
+              This module is responsible for calculating the rising, transit and
+              setting times and coordinates of a celestial body.
+            </p>
+            <p>
+              As a domain service, it is not responsible for the data storage,
+              the data transformation or the data representation. It is only
+              responsible for holding some logic and algorithms.
+            </p>
+            <p>
+              It exposes a simple but intuitive API and returns an object with
+              formatted data. The final object is not a domain service but an
+              entity. The domain service only computes. We will talk about
+              entities shortly.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <h3>Value objects</h3>
+          <p><code>Angle</code></p>
+          <p><code>Instant</code></p>
+          <p><code>Distance</code></p>
+          <aside class="notes">
+            <p>
+              Value objects are defined by their attributes
+            </p>
+            <p>
+              In Astronoby, they represent fundamental physical values
+            </p>
+          </aside>
+        </section>
+        <section>
+          <p><code>Angle</code></p>
+          <pre><code class="ruby">
+angle = Astronoby::Angle.from_degres(240).hours
+
+angle.hours
+# => 16.0
+
+angle.cos
+# => -0.5</code></pre>
+          <aside class="notes">
+            <p>
+              The <code>Angle</code> value object holds the angle value has a
+              convenient API to exposes the value in different formats.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <h3>Entities</h3>
+          <p><code>Jupiter</code></p>
+          <p><code>Observer</code></p>
+          <aside class="notes">
+            <p>
+              Entities are defined by their identity
+            </p>
+            <p>
+              In Astronoby, they represent physical objects, they benefit from
+              data from repositories and are used by domain services.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <p><code>Jupiter</code></p>
+          <pre><code class="ruby">
+        jupiter = Astronoby::Jupiter.new(
+          ephem: ephem,
+          instant: instant
+        )
+
+        jupiter.apparent.distance.km
+        # => 904241448</code></pre>
+          <aside class="notes">
+            <p>
+              The <code>Jupiter</code> entity holds transformed data that makes
+              sense in its context. Its arttributes are the results of
+              transformations and calculations, while the values are value
+              objects.
+            </p>
+            <p>
+              Their enriched data and identity is then used by domain services.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <h3>Aggregates</h3>
+          <small><small>(not actually in Astronoby)</small></small>
+          <p>e. g. <code>Observation</code></p>
+          <aside class="notes">
+            <p>
+              This is not actually part of Astronoby but DDD also provides the
+              idea of aggregates. An aggregate can be seen as a cluster of
+              related objects that are treated as a single unit.
+            </p>
+            <p>
+              We could imagine a <code>Observation</code> aggregate that would
+              hold an <code>Observer</code> entity and would provide computed
+              data based on a time value object and observed coordinates.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <img
+            src="img/ddd-chart.png"
+            alt="DDD Chart"
+            width="1000"
+            style="max-width: 500%; max-height: 500%; margin: 0"
+          >
+          <aside class="notes">
+            <p>
+              Here's a chart that summarizes the different parts of DDD we just
+              presented and how they interact with each other.
+            </p>
+            <p>
+              As you can see, this is not a particularly complicated example nor
+              architecture, the main point is to split the logic and the data
+              into different kind of objects that will behave is a specific way.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <h2>Value objects</h2>
+          <aside class="notes">
+            <p>
+              I would like to focus on value objects. While entities,
+              repositories and domain services could be implemented as regular
+              Ruby objects with different behaviours, value objects have a
+              different purpose.
+            </p>
+            <p>
+              In the context of a presentation about DDD, value object represent
+              major parts of the philosophy.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <p>Replaces primitives</p>
+          <p>Encapsulates data</p>
+          <p>No or little behaviour</p>
+          <aside class="notes">
+            <p>
+              Value object can represent fundamental values and notions that
+              are key to the program while not doing anything special. Their
+              purpose is to encapsulate data and replace primitives like numbers
+              or strings, to make the code more readable, testable and
+              homogeneous.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <p><code>Time</code></p>
+          <pre><code class="rb">
+                time = Time.now
+
+                time.hour
+                # => 16
+
+                time.to_i
+                # => 1747917900</code></pre>
+          <aside class="notes">
+            <p>
+              <code>Time</code> is a good example of value object in the Ruby
+              standard library. It encapsulates a point in time and provides
+              methods to access its components like hour, minute.
+            </p>
+            <p>
+              Generally value objects are immutable, while `Time` exposes
+              several methods that modify the object, so it is not an absolute
+              value object.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <pre><code class="ruby">
+    distance1 = Distance.from_meters(1000)
+    distance2 = Distance.from_kilometers(1)
+
+    distance1 == distance2
+    # => true
+
+    distance3 = distance1 + distance2
+
+    distance3.to_meters
+    # => 2000</code></pre>
+          <aside class="notes">
+            <p>
+              Value objects are useful when integrated in logic or formulas.
+              With value equality, you can compare them without having to
+              worry about their identity or their format.
+            </p>
+            <p>
+              Here we can instantiate two different objects that represent the
+              same physical value, therefore they should be seen as equal.
+            </p>
+            <p>
+              They can be manipulated together, leading to new objects that
+              represent the result of the operation.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <p>
+            <code>Comparable</code>, <code>#<=></code>, <code>#+</code>
+          </p>
+          <br>
+          <p>
+            <code>Data</code>
+          </p>
+          <aside class="notes">
+            <p>
+              By just using the <code>Comparable</code> module and spaceship
+              operator, your can easily implement your own value object. You
+              can add arithmetic methods like we showed in the
+              <code>Distance</code> object, but be careful with the unit of
+              resulting operations. For example, adding two distances creates a
+              new distance, while multiplying two distances creates an area,
+              which is not the same physical notion.
+            </p>
+            <p>
+              You can also use the newly introduced <code>Data</code> class that
+              natively supports value equality and provides a nice syntax to
+              define your own value objects.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <p><code>Without value object</code></p>
+          <pre><code class="rb" style="font-size: 0.7em">
+declination_radians = declination_degrees * Math::PI / 180
+latitude_radians = latitude_degrees * Math::PI / 180
+ha_radians = ha_hours * 15 * Math::PI / 180
+
+term = Math.sin(declination_radians) *
+       Math.sin(latitude_radians) +
+       Math.cos(declination_radians) *
+       Math.cos(latitude_radians) *
+       Math.cos(ha_radians)
+
+altitude_degrees = Math.asin(term)</code></pre>
+        </section>
+        <section>
+          <p><code>Astronoby::Angle</code></p>
+          <pre><code class="rb">
+term = declination.sin * latitude.sin +
+       declination.cos * latitude.cos * ha.cos
+
+altitude = Angle.asin(term)</code></pre>
+        </section>
+        <section>
+          <h2>Testing</h2>
+          <aside class="notes">
+            <p>
+              Ruby is a dynamically typed language, which requires investment in
+              testing to ensure the integrity of the code.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <h3>DDD ❤️ Testing</h3>
+          <p>Well-defined objects</p>
+          <p>Bounded contexts</p>
+          <p>Real-life data</p>
+          <aside class="notes">
+            <p>
+              Part of the DDD philosophy is to write testable code. Ruby is
+              particularly well suited for this aspect due to the strong
+              testing culture in the ecosystem and community.
+            </p>
+            <p>
+              With well-defined objects and bounded contexts, it is easy to
+              write tests that cover the different parts of the codebase.
+            </p>
+            <p>
+              The use of real-life data in the tests allows to test the
+              algorithms and the code in a realistic context, which is
+              particularly important in a scientific context.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <h3>Pragmatism</h3>
+          <p>Source of truth: IMCCE, JPL</p>
+          <p>
+            <img src="img/imcce.png" alt="IMCCE" style="width: 700px">
+          </p>
+          <aside class="notes">
+            <p>
+              DDD is also a pragmatic choice for writing scientific code.
+              Institutes and organizations provide data that can be used to
+              test the algorithms and the code. They enforce the use of their
+              own scientific domain, which is an opportunity but also a
+              constraint. With my limited knowledge of real science, it is hard
+              to know if the data is correct or not, so I need to rely on
+              external sources to validate the results.
+            </p>
+            <p>
+              This is a screenshot from the IMCCE website, which is the
+              Institute of Celestial Mechanics and Computation of Ephemerides.
+              The domain and vocabulary is approximately the same as the one
+              used in Astronoby. It helped me test my results step by step, but
+              also use correct concepts and algorithms.
+            </p>
+            <p>
+              This way, DDD helped having integrity and maintainability.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <h2>Performance</h2>
+          <aside class="notes">
+            <p>
+              As a side and last note, I would like to talk about performance.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <h3>DDD & performance</h3>
+          <p>Yes, but</p>
+          <aside class="notes">
+            <p>
+              DDD is a great approach to write maintainable and readable code.
+              Nothing in its philosophy prevents you from writing performant
+              code but it can lead to performance issues if not used carefully.
+              It is a matter of how you use it and how you design your code.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <h3>What is your priority?</h3>
+          <p>Readability</p>
+          <p>Accuracy</p>
+          <p>Performance</p>
+          <aside class="notes">
+            <p>
+              The important point is to define your priorities. With Astronoby,
+              I wanted to focus on readability and accuracy. I implemented
+              the scientific domain and laguage for accuracy and
+              maintainability, and DDD helped me achieve that.
+            </p>
+            <p>
+              I also want a library that is performant, I can achieve it, but I
+              won't find guidance in DDD for this aspect.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <h3>Performance</h3>
+          <p>Algorithms</p>
+          <p>Many objects</p>
+          <p>Low-level interfaces</p>
+          <aside class="notes">
+            <p>
+              To compute astronomical data, I need to find and test algorithms,
+              implement them correctly and efficiently, and then optimize them
+              if needed. DDD is not a magic wand, and in some perspectives, it
+              can hurt the performance, for example by forcing to manipulate
+              too many objects.
+            </p>
+            <p>
+              Some critical parts of the code can be optimized by using
+              low-level interfaces like C extensions. It wouldn't be to go
+              against DDD to use them, but it requires extra care integrate them
+              in the codebase written with a specific philosophy in mind.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <h2>Conclusion</h2>
+        </section>
+        <section>
+          <h3>What we learnt</h3>
+          <p
+            class="fragment visible slightly-smaller-text"
+            data-fragment-index="0"
+          >
+            Domain-Driven Design is hard to pronounce
+          </p>
+          <p
+            class="fragment visible slightly-smaller-text"
+            data-fragment-index="1"
+          >
+            DDD for managing complex domains
+          </p>
+          <p
+            class="fragment visible slightly-smaller-text"
+            data-fragment-index="2"
+          >
+            Ruby expressiveness helps
+          </p>
+          <aside class="notes">
+            <p>
+              Throughout this presentation, we have seen how DDD can help manage
+              complex domains.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <h3>Beyond astronomy</h3>
+          <p class="slightly-smaller-text">
+            Every complex domain can benefit from DDD
+          </p>
+          <p class="slightly-smaller-text">
+            Finance, healthcare, logistics
+          </p>
+          <aside class="notes">
+            <p>
+              My example was astronomy but many projects I worked on, and you
+              also do have complex domains that require a clear understanding
+              and implementation of the business concepts and workflows.
+            </p>
+            <p>
+              With a good understanding of the domain, you can apply DDD to many
+              different domains.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <h2>Final Thoughts</h2>
+          <p class="slightly-smaller-text">
+            Good models illuminate complex realities
+          </p>
+          <p class="slightly-smaller-text">
+            Code can be both educational and functional
+          </p>
+          <p class="slightly-smaller-text">
+            Ruby deserves a place in scientific computing
+          </p>
+          <aside class="notes">
+            <p>
+              Just as astronomical models help us understand the cosmos despite
+              its complexity, good software models illuminate complex business
+              domains. With Astronoby, I've tried to show that code can be both
+              educational and functional—teaching about astronomy through its
+              very structure. And finally, I hope this project demonstrates that
+              Ruby, with its expressive syntax and object-oriented nature,
+              deserves a more prominent place in scientific computing.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <h1 style="text-align: center">?</h1>
+        </section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+    <script src="plugin/math/math.js"></script>
+    <script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+        controls: false,
+        transition: 'none',
+        progress: true,
+        // slideNumber: true,
+
+        mathjax2: {
+          config: 'TeX-AMS_HTML-full',
+          TeX: {
+            Macros: {
+              R: '\\mathbb{R}',
+              set: [ '\\left\\{#1 \\; ; \\; #2\\right\\}', 2 ]
+            }
+          }
+        },
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealNotes,
+          RevealMath.MathJax2
+        ]
+			});
+		</script>
+	</body>
+</html>
