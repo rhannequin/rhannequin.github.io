@@ -13,6 +13,9 @@
 		<link rel="stylesheet" href="dist/reveal.css">
     <link rel="stylesheet" href="custom.css">
 		<link rel="stylesheet" href="plugin/highlight/obsidian.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Prosto+One&display=swap">
 	</head>
 	<body>
 		<div class="reveal">
@@ -74,12 +77,31 @@
         </section>
         <section>
           <p>Senior developer at thoughtbot</p>
+          <aside class="notes">
+            <p>
+              thoughtbot is a design and development consultancy. We help
+              companies build and maintain their products. We operate remotely
+              from the EMEA region and the Americas.
+            </p>
+          </aside>
         </section>
         <section>
           <p>In love with astronomy</p>
+          <aside class="notes">
+            <p>
+              I am a passionate amateur astronomer. As you will see today I try
+              to combine my passion for astronomy and my love for programming.
+            </p>
+          </aside>
         </section>
         <section>
           <p>Let's meet and talk about <strike>food</strike> code</p>
+          <aside class="notes">
+            <p>
+              Don't hesitate to reach out to me if you want to talk about
+              astronomy, programming, or anything else.
+            </p>
+          </aside>
         </section>
         <section>
           <h2>What are we going to talk about?</h2>
@@ -116,12 +138,26 @@
         </section>
         <section>
           <p>Astronomical data and events accessible in Ruby</p>
+          <aside class="notes">
+            <p>
+              Astronoby is a Ruby gem I started working on a couple years ago
+              which is meant to provide astronomical data and events in pure
+              Ruby.
+            </p>
+          </aside>
         </section>
         <section>
           <p class="shorter-text">Position of planets in the sky 🪐</p>
-          <p class="shorter-text">🌅 Rising, transit and setting times 🌄</p>
+          <p class="shorter-text">Rising, transit and setting times 🌄</p>
           <p class="shorter-text">Equinoxes and solstices times ☀️</p>
           <p class="shorter-text">Moon phases 🌙</p>
+          <aside class="notes">
+            <p>
+              So far it provides the position of major Solar System bodies,
+              times for events like rising or setting, but also equinoxes and
+              solstices. You can also compute the phases of the Moon.
+            </p>
+          </aside>
         </section>
         <section>
           <p>Future:</p>
@@ -129,6 +165,10 @@
           <p>Eclipses</p>
           <p>Deep sky objects</p>
           <p>Stargazing planner</p>
+          <aside class="notes">
+            I have big plans for the library and in the near future it will
+            implements more events, more celestial bodies and more utilies.
+          </aside>
         </section>
         <section>
           <p>Increase scientific support in the Ruby ecosystem</p>
@@ -167,16 +207,14 @@
         <section>
           <p>Azimuth: 123°44′47″</p>
           <p>Altitude: 49°26′13″</p>
-        </section>
-        <section>
           <p>
             <img
               src="img/mars.png"
               alt="Mars"
-              style="width: 200px; border: 0; box-shadow: none"
+              style="width: 150px; border: 0; box-shadow: none"
             >
           </p>
-          <p><img src="img/geneva.jpg" alt="Geneva" style="width: 500px"></p>
+          <p><img src="img/geneva.jpg" alt="Geneva" style="width: 400px"></p>
           <aside class="notes">
             <p>
               These are coordinates of planet Mars seen from Geneva when we
@@ -212,6 +250,14 @@
               <p>Horizontal coordinates</p>
             </div>
           </div>
+          <aside class="notes">
+            <p>
+              I am not going to go into details, and to be honest you don't even
+              have to read the slide, but I wanted to show you the complexity of
+              going from raw data and transforming it into the coordinates that
+              can be useful to a human.
+            </p>
+          </aside>
         </section>
         <section>
           <p>
@@ -479,7 +525,7 @@ end</code></pre>
           <pre><code class="rb">
   ephem = Astronoby::Ephem.load("de440s.bsp")
 
-  ephem[0, 3].position_vector_at(2460819)
+  ephem[0, 3].position_at(2460819)
   # => Vector[-71204709, -123739936, -53612310]</code></pre>
           <aside class="notes">
             <p>
@@ -495,7 +541,7 @@ end</code></pre>
         </section>
         <section>
           <h3>Domain services</h3>
-          <p><code>RisingTransitSettingEvents</code></p>
+          <p><code>RiseTransitSetCalculator</code></p>
           <p><code>MoonPhases</code></p>
           <aside class="notes">
             <p>
@@ -505,18 +551,18 @@ end</code></pre>
           </aside>
         </section>
         <section>
-          <p><code>RisingTransitSettingEvents</code></p>
+          <p><code>RiseTransitSetCalculator</code></p>
           <pre><code class="ruby" style="font-size: 0.8em">
 calculator =
-  Astronoby::RisingTransitSettingEventsCalculator.new(
+  Astronoby::RiseTransitSetCalculator.new(
+    body: Astronoby::Sun,
     observer: observer,
-    target_body: Astronoby::Sun,
     ephem: ephem
   )
 
-events = calculator.events_on(date)
+event = calculator.event_on(date)
 
-events.rising_time
+event.rising_time
 # => 2025-05-23 05:54:08 +0200</code></pre>
           <aside class="notes">
             <p>
@@ -800,7 +846,7 @@ altitude = Angle.asin(term)</code></pre>
         </section>
         <section>
           <h3>Pragmatism</h3>
-          <p>Source of truth: IMCCE, JPL</p>
+          <p class="small-text">Source of truth: IMCCE, JPL</p>
           <p>
             <img src="img/imcce.png" alt="IMCCE" style="width: 700px">
           </p>
@@ -836,7 +882,7 @@ altitude = Angle.asin(term)</code></pre>
         </section>
         <section>
           <h3>DDD & performance</h3>
-          <p>Yes, but</p>
+          <p>Yes, but,</p>
           <aside class="notes">
             <p>
               DDD is a great approach to write maintainable and readable code.
@@ -959,7 +1005,21 @@ altitude = Angle.asin(term)</code></pre>
           </aside>
         </section>
         <section>
-          <h1 style="text-align: center">?</h1>
+          <p>
+            <img
+              src="img/thoughtbot.svg"
+              alt="thoughtbot LOGO"
+              style="width: 300px; border: 0; box-shadow: none">
+          </p>
+          <aside class="notes">
+            <p>
+              Shoutout to thoughtbot for their support and for allowing me to
+              work on Astronoby during my work time.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <h1>?</h1>
         </section>
 			</div>
 		</div>

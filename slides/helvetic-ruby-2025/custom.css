@@ -13,7 +13,6 @@
   --cosmic-text: #f8f9ff;
   --cosmic-gold: #ffd78c;
   --cosmic-gold-light: #fff0d6;
-  --cosmic-purple: #9d7dff;
   --cosmic-blue: #78d7ff;
   --cosmic-pink: #ff78d7;
   --cosmic-teal: #78fff0;
@@ -25,17 +24,16 @@
   --cosmic-text-shadow: 0 0 15px rgba(248, 249, 255, 0.3);
   --cosmic-box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
   --cosmic-gold-glow: 0 0 15px rgba(255, 215, 140, 0.5);
-  --cosmic-purple-glow: 0 0 20px rgba(157, 125, 255, 0.5);
   --cosmic-blue-glow: 0 0 20px rgba(120, 215, 255, 0.5);
 
   /* Gradients */
   --cosmic-gradient-main: linear-gradient(135deg, var(--cosmic-bg-dark) 0%, var(--cosmic-bg-medium) 50%, var(--cosmic-bg-light) 100%);
   --cosmic-gradient-gold: linear-gradient(135deg, #c9a45b 0%, var(--cosmic-gold) 50%, var(--cosmic-gold-light) 100%);
-  --cosmic-gradient-accent: linear-gradient(135deg, var(--cosmic-purple) 0%, var(--cosmic-blue) 100%);
+  --cosmic-gradient-accent: linear-gradient(135deg, var(--cosmic-gold) 0%, var(--cosmic-blue) 100%);
 
   /* Fonts */
-  --font-heading: 'Cinzel', serif;
-  --font-body: 'Cormorant Garamond', serif;
+  --font-heading: "Prosto One", sans-serif;
+  --font-body: "Prosto One", sans-serif;
   --font-code: 'JetBrains Mono', monospace;
 }
 
@@ -87,14 +85,11 @@
 
 .reveal {
   font-family: var(--font-body);
-  font-size: 42px;
+  font-size: 40px;
   font-weight: normal;
   color: var(--cosmic-text);
   text-shadow: var(--cosmic-text-shadow);
-}
-
-.reveal .slides {
-  text-align: left;
+  text-align: center;
 }
 
 .reveal .slides section {
@@ -115,6 +110,7 @@
   letter-spacing: 0.05em;
   text-transform: none;
   text-shadow: var(--cosmic-text-shadow);
+  text-align: center;
 }
 
 .reveal h1 {
@@ -131,6 +127,7 @@
   font-size: 1.8em;
   color: var(--cosmic-gold);
   text-shadow: var(--cosmic-gold-glow);
+  line-height: 1.5em;
 }
 
 .reveal h2.shorter-subtitle {
@@ -138,9 +135,9 @@
 }
 
 .reveal h3 {
-  font-size: 1.4em;
-  color: var(--cosmic-purple);
-  text-shadow: var(--cosmic-purple-glow);
+  font-size: 1.7em;
+  color: var(--cosmic-gold);
+  text-shadow: var(--cosmic-gold-glow);
 }
 
 .reveal h4 {
@@ -197,7 +194,7 @@
 }
 
 .reveal p.shorter-text {
-  font-size: 1.4em;
+  font-size: 1.2em;
 }
 
 .reveal strong,
@@ -315,12 +312,6 @@
   border: 1px solid rgba(157, 125, 255, 0.2);
 }
 
-.reveal img:hover,
-.reveal video:hover {
-  transform: scale(1.02);
-  box-shadow: 0 12px 40px -10px rgba(0, 0, 0, 0.6);
-}
-
 .reveal figure {
   margin: 24px 0;
 }
@@ -390,7 +381,7 @@
 
 /* Code highlighting */
 .reveal code .keyword {
-  color: var(--cosmic-purple);
+  color: var(--cosmic-gold);
   font-weight: bold;
 }
 
@@ -495,8 +486,8 @@
 }
 
 .reveal .slides section .fragment.highlight-purple.visible {
-  color: var(--cosmic-purple);
-  text-shadow: var(--cosmic-purple-glow);
+  color: var(--cosmic-gold);
+  text-shadow: var(--cosmic-gold-glow);
 }
 
 .reveal .slides section .fragment.highlight-gold {
@@ -561,8 +552,8 @@
 }
 
 .reveal .purple-text {
-  color: var(--cosmic-purple);
-  text-shadow: var(--cosmic-purple-glow);
+  color: var(--cosmic-gold);
+  text-shadow: var(--cosmic-gold-glow);
 }
 
 .reveal .blue-text {
@@ -737,68 +728,6 @@
 .reveal .mermaid {
   background: transparent !important;
   font-family: var(--font-body) !important;
-}
-
-/* Reference section styling */
-.reveal .references {
-  font-size: 0.65em;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding-top: 15px;
-  margin-top: 50px;
-  opacity: 0.8;
-}
-
-.reveal .references h3 {
-  font-size: 1.3em;
-  margin-bottom: 15px;
-}
-
-/* Final slide styling */
-.reveal .thank-you {
-  text-align: center;
-}
-
-.reveal .thank-you h2 {
-  color: var(--cosmic-gold);
-  text-align: center;
-  font-size: 2.8em;
-  margin-bottom: 30px;
-  text-shadow: var(--cosmic-gold-glow);
-  position: relative;
-  display: inline-block;
-}
-
-.reveal .thank-you h2::before,
-.reveal .thank-you h2::after {
-  content: '★';
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--cosmic-gold);
-  font-size: 0.5em;
-}
-
-.reveal .thank-you h2::before {
-  left: -40px;
-}
-
-.reveal .thank-you h2::after {
-  right: -40px;
-}
-
-.reveal .contact-info {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  margin-top: 50px;
-  font-size: 0.8em;
-}
-
-.reveal .contact-info p {
-  margin: 0;
-  display: flex;
-  align-items: center;
-  gap: 8px;
 }
 
 /* Animations */
