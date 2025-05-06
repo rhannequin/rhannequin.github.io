@@ -25,6 +25,12 @@
         </section>
         <section>
           <h2>The sky is a lie</h2>
+          <aside class="notes">
+            <p>
+              Let's start with a hard truth. The sky you see is not what you
+              think it is. It is a lie.
+            </p>
+          </aside>
         </section>
         <section>
           <p>We see what's in the past</p>
@@ -95,7 +101,11 @@
           </aside>
         </section>
         <section>
-          <p>Let's meet and talk about <strike>food</strike> code</p>
+          <p>
+            Let's meet and talk
+            <br>
+            🪐🍔🤖💻🍿
+          </p>
           <aside class="notes">
             <p>
               Don't hesitate to reach out to me if you want to talk about
@@ -135,6 +145,12 @@
         </section>
         <section>
           <h2>Context: Astronoby</h2>
+          <aside class="notes">
+            <p>
+              We are going to use Astronoby as a prop for the rest of the
+              presentation.
+            </p>
+          </aside>
         </section>
         <section>
           <p>Astronomical data and events accessible in Ruby</p>
@@ -183,8 +199,8 @@
           </aside>
         </section>
         <section>
-          <p>Approach</p>
           <p>Good idiomatic Ruby code</p>
+          <br>
           <p>Readable and educational code</p>
           <aside class="notes">
             <p>
@@ -193,16 +209,6 @@
               that can explain the mechanisms behind the algorithms by itself.
             </p>
           </aside>
-        </section>
-        <section>
-          <h2 style="font-size: 1.7em;">
-            Domain-Driven Design<br>
-            and OOP<br>
-            in Astronoby
-          </h2>
-        </section>
-        <section>
-          <p>Why?</p>
         </section>
         <section>
           <p>Azimuth: 123°44′47″</p>
@@ -216,6 +222,9 @@
           </p>
           <p><img src="img/geneva.jpg" alt="Geneva" style="width: 400px"></p>
           <aside class="notes">
+            <p>
+              Let's start with an example.
+            </p>
             <p>
               These are coordinates of planet Mars seen from Geneva when we
               started this talk.
@@ -291,6 +300,10 @@
             <p>
               Now keep your hand up if you already used it in a project.
             </p>
+            <p>
+              Hopefully everyone will leave with at least additional
+              knowledge about DDD.
+            </p>
           </aside>
         </section>
         <section>
@@ -308,7 +321,7 @@
               Design: Tackling Complexity in the Heart of Software"
             </p>
             <p>
-              The main philosophy is focus on the core domain, its logic, its
+              The main philosophy is to focus on the core domain, its logic, its
               meaning, and build an architecture that reflects it.
             </p>
           </aside>
@@ -390,6 +403,9 @@
           <h3>Ubiquitous Language</h3>
           <aside class="notes">
             <p>
+              Ubiquitous language is one of the main points of DDD.
+            </p>
+            <p>
               To be honest I didn't know the word "ubiquitous" before I learnt
               about DDD, which means "existing or being everywhere at the same
               time".
@@ -411,10 +427,7 @@
           <div class="row">
             <div class="col col-50">
               <p>❌</p>
-              <pre
-                class="fragment visible"
-                data-fragment-index="0"
-              ><code class="ruby" style="font-size: 0.7em">
+              <pre><code class="ruby" style="font-size: 0.7em">
 class MoonState
   def self.compute(state, time)
     new(
@@ -426,10 +439,7 @@ end</code></pre>
             </div>
             <div class="col col-50">
               <p>✅</p>
-              <pre
-                class="fragment visible"
-                data-fragment-index="1"
-              ><code class="ruby" style="font-size: 0.7em">
+              <pre><code class="ruby" style="font-size: 0.7em">
 class MoonPhase
   def self.full_moon(time)
     new(
@@ -548,6 +558,10 @@ end</code></pre>
               Domain services are used to perform operations. They are
               stateless and do not hold any data.
             </p>
+            <p>
+              In Astronoby, we have calculators for rising, transit and setting
+              times or for Moon phases.
+            </p>
           </aside>
         </section>
         <section>
@@ -561,6 +575,7 @@ calculator =
   )
 
 event = calculator.event_on(date)
+# => Astronoby::RiseTransitSetEvent object
 
 event.rising_time
 # => 2025-05-23 05:54:08 +0200</code></pre>
@@ -592,7 +607,8 @@ event.rising_time
               Value objects are defined by their attributes
             </p>
             <p>
-              In Astronoby, they represent fundamental physical values
+              In Astronoby, they represent fundamental mathematical and physical
+              values
             </p>
           </aside>
         </section>
@@ -640,7 +656,7 @@ angle.cos
           <aside class="notes">
             <p>
               The <code>Jupiter</code> entity holds transformed data that makes
-              sense in its context. Its arttributes are the results of
+              sense in its context. Its attributes are the results of
               transformations and calculations, while the values are value
               objects.
             </p>
@@ -652,7 +668,7 @@ angle.cos
         <section>
           <h3>Aggregates</h3>
           <small><small>(not actually in Astronoby)</small></small>
-          <p>e. g. <code>Observation</code></p>
+          <p>e.g. <code>Observation</code></p>
           <aside class="notes">
             <p>
               This is not actually part of Astronoby but DDD also provides the
@@ -690,23 +706,19 @@ angle.cos
           <aside class="notes">
             <p>
               I would like to focus on value objects. While entities,
-              repositories and domain services could be implemented as regular
-              Ruby objects with different behaviours, value objects have a
-              different purpose.
-            </p>
-            <p>
-              In the context of a presentation about DDD, value object represent
-              major parts of the philosophy.
+              repositories and domain services could be seen as regular Ruby
+              objects with different behaviours, value objects have a different
+              purpose, they represent a major part of the DDD philosophy.
             </p>
           </aside>
         </section>
         <section>
-          <p>Replaces primitives</p>
-          <p>Encapsulates data</p>
+          <p>Replace primitives</p>
+          <p>Encapsulate data</p>
           <p>No or little behaviour</p>
           <aside class="notes">
             <p>
-              Value object can represent fundamental values and notions that
+              Value objects can represent fundamental values and notions that
               are key to the program while not doing anything special. Their
               purpose is to encapsulate data and replace primitives like numbers
               or strings, to make the code more readable, testable and
@@ -731,9 +743,9 @@ angle.cos
               methods to access its components like hour, minute.
             </p>
             <p>
-              Generally value objects are immutable, while `Time` exposes
-              several methods that modify the object, so it is not an absolute
-              value object.
+              Generally value objects are immutable, while <code>Time</code>
+              exposes several methods that modify the object, so it is not an
+              absolute value object.
             </p>
           </aside>
         </section>
@@ -795,27 +807,62 @@ angle.cos
           <pre><code class="rb" style="font-size: 0.7em">
 declination_radians = declination_degrees * Math::PI / 180
 latitude_radians = latitude_degrees * Math::PI / 180
-ha_radians = ha_hours * 15 * Math::PI / 180
+hour_angle_radians = hour_angle_hours * 15 * Math::PI / 180
 
-term = Math.sin(declination_radians) *
-       Math.sin(latitude_radians) +
-       Math.cos(declination_radians) *
-       Math.cos(latitude_radians) *
-       Math.cos(ha_radians)
+ratio = Math.sin(declination_radians) *
+        Math.sin(latitude_radians) +
+        Math.cos(declination_radians) *
+        Math.cos(latitude_radians) *
+        Math.cos(hour_angle_radians)
 
-altitude_degrees = Math.asin(term)</code></pre>
+altitude_degrees = Math.asin(ratio)</code></pre>
+          <aside class="notes">
+            <p>
+              Here is an example of a formula that computes the altitude of a
+              celestial body. It deals with different notions like the
+              declination, latitude or hour angle, but it is not necessary to
+              know what they are to understand the formula.
+            </p>
+            <p>
+              The code is difficult to read and understand, angles needs to be
+              converted in the right units before beeing used.
+            </p>
+            <p>
+              As a result, we have the altitude angle in degrees, which will
+              probably be converted in other units later.
+            </p>
+          </aside>
         </section>
         <section>
           <p><code>Astronoby::Angle</code></p>
-          <pre><code class="rb">
-term = declination.sin * latitude.sin +
-       declination.cos * latitude.cos * ha.cos
+          <pre><code class="rb" style="font-size: 0.8em">
+ratio = declination.sin * latitude.sin +
+        declination.cos * latitude.cos * hour_angle.cos
 
-altitude = Angle.asin(term)</code></pre>
+altitude = Astronoby::Angle.asin(ratio)</code></pre>
+          <aside class="notes">
+            <p>
+              With value objects, we can use the same formula without worrying
+              about the units. The <code>Angle</code> object will take care of
+              the conversion and the representation.
+            </p>
+            <p>
+              As a result, the altitude is an angle <code>Angle</code>, ready
+              to be used in the rest of the codebase as is.
+            </p>
+            <p>
+              The code is much more readable and understandable, and it is
+              easier to maintain.
+            </p>
+          </aside>
         </section>
         <section>
           <h2>Testing</h2>
           <aside class="notes">
+            <p>
+              While we are getting closer to the end of this talk, I think it is
+              important to talk about testing.
+            </p>
             <p>
               Ruby is a dynamically typed language, which requires investment in
               testing to ensure the integrity of the code.
@@ -846,7 +893,7 @@ altitude = Angle.asin(term)</code></pre>
         </section>
         <section>
           <h3>Pragmatism</h3>
-          <p class="small-text">Source of truth: IMCCE, JPL</p>
+          <p class="small-text">Source of truth: IMCCE, NASA/JPL</p>
           <p>
             <img src="img/imcce.png" alt="IMCCE" style="width: 700px">
           </p>
@@ -861,11 +908,11 @@ altitude = Angle.asin(term)</code></pre>
               external sources to validate the results.
             </p>
             <p>
-              This is a screenshot from the IMCCE website, which is the
-              Institute of Celestial Mechanics and Computation of Ephemerides.
-              The domain and vocabulary is approximately the same as the one
-              used in Astronoby. It helped me test my results step by step, but
-              also use correct concepts and algorithms.
+              This is a screenshot from the IMCCE website, a French institude on
+              celestial mechanics. The domain and vocabulary is approximately
+              the same as the one used in Astronoby. It helped me test my
+              results step by step, but also use correct concepts and
+              algorithms.
             </p>
             <p>
               This way, DDD helped having integrity and maintainability.
@@ -918,13 +965,13 @@ altitude = Angle.asin(term)</code></pre>
           <aside class="notes">
             <p>
               To compute astronomical data, I need to find and test algorithms,
-              implement them correctly and efficiently, and then optimize them
+              implement them correctly and efficiently, and then optimise them
               if needed. DDD is not a magic wand, and in some perspectives, it
               can hurt the performance, for example by forcing to manipulate
               too many objects.
             </p>
             <p>
-              Some critical parts of the code can be optimized by using
+              Some critical parts of the code can be optimised by using
               low-level interfaces like C extensions. It wouldn't be to go
               against DDD to use them, but it requires extra care integrate them
               in the codebase written with a specific philosophy in mind.
@@ -933,31 +980,34 @@ altitude = Angle.asin(term)</code></pre>
         </section>
         <section>
           <h2>Conclusion</h2>
+          <aside class="notes">
+            <p>
+              We did it! Let's wrap up now.
+            </p>
+          </aside>
         </section>
         <section>
           <h3>What we learnt</h3>
-          <p
-            class="fragment visible slightly-smaller-text"
-            data-fragment-index="0"
-          >
+          <br>
+          <p class="slightly-smaller-text">
             Domain-Driven Design is hard to pronounce
           </p>
-          <p
-            class="fragment visible slightly-smaller-text"
-            data-fragment-index="1"
-          >
+          <br>
+          <p class="slightly-smaller-text">
             DDD for managing complex domains
           </p>
-          <p
-            class="fragment visible slightly-smaller-text"
-            data-fragment-index="2"
-          >
+          <br>
+          <p class="slightly-smaller-text">
             Ruby expressiveness helps
           </p>
           <aside class="notes">
             <p>
               Throughout this presentation, we have seen how DDD can help manage
               complex domains.
+            </p>
+            <p>
+              We have also seen how Ruby's expressiveness and object-oriented
+              nature can help implement DDD in a clean and readable way.
             </p>
           </aside>
         </section>
@@ -971,9 +1021,9 @@ altitude = Angle.asin(term)</code></pre>
           </p>
           <aside class="notes">
             <p>
-              My example was astronomy but many projects I worked on, and you
-              also do have complex domains that require a clear understanding
-              and implementation of the business concepts and workflows.
+              My example was astronomy but many projects we all work on also do
+              have complex domains that require a clear understanding and
+              implementation of the business concepts and workflows.
             </p>
             <p>
               With a good understanding of the domain, you can apply DDD to many
@@ -983,24 +1033,32 @@ altitude = Angle.asin(term)</code></pre>
         </section>
         <section>
           <h2>Final Thoughts</h2>
-          <p class="slightly-smaller-text">
-            Good models illuminate complex realities
-          </p>
-          <p class="slightly-smaller-text">
-            Code can be both educational and functional
-          </p>
-          <p class="slightly-smaller-text">
-            Ruby deserves a place in scientific computing
-          </p>
+          <div style="font-size: 80%">
+            <p class="slightly-smaller-text">
+              Good models illuminate complex realities
+            </p>
+            <p class="slightly-smaller-text">
+              Code can be both educational and functional
+            </p>
+            <p class="slightly-smaller-text">
+              Ruby deserves a place in scientific computing
+            </p>
+          </div>
           <aside class="notes">
             <p>
               Just as astronomical models help us understand the cosmos despite
               its complexity, good software models illuminate complex business
-              domains. With Astronoby, I've tried to show that code can be both
-              educational and functional—teaching about astronomy through its
-              very structure. And finally, I hope this project demonstrates that
-              Ruby, with its expressive syntax and object-oriented nature,
-              deserves a more prominent place in scientific computing.
+              domains.
+            </p>
+            <p>
+              With Astronoby, I've tried to show that code can be both
+              educational and functional, teaching about astronomy through its
+              very structure.
+            </p>
+            <p>
+              And finally, I hope this project demonstrates that Ruby, with its
+              expressive syntax and object-oriented nature, deserves a more
+              prominent place in scientific computing.
             </p>
           </aside>
         </section>
@@ -1013,8 +1071,9 @@ altitude = Angle.asin(term)</code></pre>
           </p>
           <aside class="notes">
             <p>
-              Shoutout to thoughtbot for their support and for allowing me to
-              work on Astronoby during my work time.
+              To finish, I would like to giv a special shoutout to thoughtbot
+              for their support and for allowing me to work on Astronoby during
+              my work time.
             </p>
           </aside>
         </section>

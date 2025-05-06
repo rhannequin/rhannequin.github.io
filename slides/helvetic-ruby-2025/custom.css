@@ -275,6 +275,7 @@
   content: '★';
   position: absolute;
   left: -1.2em;
+  top: 5px;
   color: var(--cosmic-gold);
   font-size: 0.7em;
   text-shadow: var(--cosmic-gold-glow);
