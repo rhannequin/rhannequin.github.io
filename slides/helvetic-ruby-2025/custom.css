@@ -294,12 +294,6 @@
   text-shadow: var(--cosmic-blue-glow);
 }
 
-.reveal a:hover {
-  color: var(--cosmic-teal);
-  border-bottom: 1px solid var(--cosmic-teal);
-  text-shadow: 0 0 10px var(--cosmic-teal);
-}
-
 /* IMAGES */
 .reveal img,
 .reveal video,
@@ -413,50 +407,6 @@
 
 .reveal p code {
   padding: 0 15px;
-}
-
-/* TABLES */
-.reveal table {
-  margin: 24px auto;
-  border-collapse: separate;
-  border-spacing: 0;
-  background: rgba(8, 3, 34, 0.6);
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: var(--cosmic-box-shadow);
-  border: 1px solid rgba(157, 125, 255, 0.2);
-}
-
-.reveal table th {
-  font-weight: normal;
-  background: var(--cosmic-bg-medium);
-  color: var(--cosmic-gold);
-  padding: 0.8em 1em;
-  text-align: left;
-  border-bottom: 2px solid rgba(157, 125, 255, 0.4);
-  font-family: var(--font-heading);
-  letter-spacing: 0.05em;
-}
-
-.reveal table td {
-  padding: 0.6em 1em;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.reveal table tr:last-child td {
-  border-bottom: none;
-}
-
-.reveal table tr:nth-child(even) {
-  background-color: rgba(30, 26, 84, 0.3);
-}
-
-.reveal table tr {
-  transition: background-color 0.3s ease;
-}
-
-.reveal table tr:hover {
-  background-color: rgba(157, 125, 255, 0.1);
 }
 
 /* SLIDES STATES */
@@ -901,4 +851,14 @@
 
 small {
   font-size: 75%;
+}
+
+/* Hide line numbers but keep the highlight line background */
+.hljs-ln-n {
+  display: none;
+  counter-reset: linenumber;
+}
+
+.reveal .hljs-ln-numbers {
+  padding: 0
 }

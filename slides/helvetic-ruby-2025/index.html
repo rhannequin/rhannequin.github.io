@@ -182,19 +182,20 @@
           <p>Deep sky objects</p>
           <p>Stargazing planner</p>
           <aside class="notes">
-            I have big plans for the library and in the near future it will
-            implements more events, more celestial bodies and more utilies.
+            I have big plans for the library and soon I will implement more
+            events, more celestial bodies and more utilies.
           </aside>
         </section>
         <section>
           <p>Increase scientific support in the Ruby ecosystem</p>
           <aside class="notes">
             <p>
-              Python and Ruby are very close to each other, except some syntax
-              differences and some features, they can basically do the same. But
-              Ruby is not known for its scientific ecosystem, Python is. Ruby
-              deserves to have scientific projects to inspire other so
-              contribute to the ecosystem as one where science can happen.
+              To compare two different programming languages, Python and Ruby
+              are very close to each other, except some syntax differences and
+              some features, they can basically do the same. But Ruby is not
+              known for its scientific ecosystem, Python is. Ruby deserves to
+              have scientific projects to inspire other so contribute to the
+              ecosystem as one where science can happen.
             </p>
           </aside>
         </section>
@@ -204,8 +205,8 @@
           <p>Readable and educational code</p>
           <aside class="notes">
             <p>
-              The goal is not to only write algorithms in Ruby and to write them
-              in a way that is readable and understandable. I aim to write code
+              The goal is not to only write algorithms in Ruby but to write them
+              in a way that is readable and understandable. I try to write code
               that can explain the mechanisms behind the algorithms by itself.
             </p>
           </aside>
@@ -226,7 +227,7 @@
               Let's start with an example.
             </p>
             <p>
-              These are coordinates of planet Mars seen from Geneva when we
+              These are the coordinates of planet Mars seen from Geneva when we
               started this talk.
             </p>
             <p>
@@ -260,6 +261,11 @@
             </div>
           </div>
           <aside class="notes">
+            <p>
+              We have to deal with different time scales, different definitions
+              of a position, apply the right corrections to the right objects,
+              and deal with coordinates conversions.
+            </p>
             <p>
               I am not going to go into details, and to be honest you don't even
               have to read the slide, but I wanted to show you the complexity of
@@ -427,7 +433,7 @@
           <div class="row">
             <div class="col col-50">
               <p>❌</p>
-              <pre><code class="ruby" style="font-size: 0.7em">
+              <pre><code class="language-ruby" style="font-size: 0.7em">
 class MoonState
   def self.compute(state, time)
     new(
@@ -439,7 +445,7 @@ end</code></pre>
             </div>
             <div class="col col-50">
               <p>✅</p>
-              <pre><code class="ruby" style="font-size: 0.7em">
+              <pre><code class="language-ruby" style="font-size: 0.7em">
 class MoonPhase
   def self.full_moon(time)
     new(
@@ -452,11 +458,11 @@ end</code></pre>
           </div>
           <aside class="notes">
             <p>
-              Instead of using technical jargon like "MoonState" and "compute",
-              which might make sense in to the developers or in some design
-              patterns, we use a more descriptive name like "MoonPhase" and
-              "full_moon" which refer to the actual business concept of a full
-              moon.
+              Instead of using technical jargon like "MoonState" and "compute"
+              in the example on the left, which might make sense in to the
+              developers or in some design patterns, we use a more descriptive
+              name like "MoonPhase" and "full_moon" which refer to the actual
+              business concept of a full moon.
             </p>
           </aside>
         </section>
@@ -466,13 +472,17 @@ end</code></pre>
           <p>Collaboration</p>
           <aside class="notes">
             <p>
+              So when do we apply DDD?
+            </p>
+            <p>
               When the domain is complex and collaboration is important between
               the business knowledge and the technical skills.
             </p>
             <p>
               If your business experts can't recognize their own concepts and
               workflows in your code structure, you might be missing notions
-              or abstract too much.
+              or abstract too much. But only if you are interested in this kind
+              of collaboration.
             </p>
             <p>
               This makes sense in a project where the code serves as a
@@ -501,7 +511,7 @@ end</code></pre>
             </p>
             <p>
               Metaprogramming can be used to create domain-specific languages
-              (DSLs) that make the code more expressive and easier to read.
+              that make the code more expressive and easier to read.
             </p>
           </aside>
         </section>
@@ -522,7 +532,10 @@ end</code></pre>
           </p>
           <aside class="notes">
             <p>
-              Repositories are used to retrieve and store entities
+              Let's start with repositories.
+            </p>
+            <p>
+              They are used to retrieve and store entities.
             </p>
             <p>
               In Astronoby, Ephem holds the raw data. Its purpose is not
@@ -532,16 +545,24 @@ end</code></pre>
         </section>
         <section>
           <p><code>Ephem</code></p>
-          <pre><code class="rb">
+          <pre><code class="language-ruby">
   ephem = Astronoby::Ephem.load("de440s.bsp")
 
   ephem[0, 3].position_at(2460819)
   # => Vector[-71204709, -123739936, -53612310]</code></pre>
           <aside class="notes">
             <p>
+              Here's an example.
+            </p>
+            <p>
               The <code>Ephem</code> module is responsible for loading external
               data and making it available as raw vectors that the rest of the
               library will use and transform.
+            </p>
+            <p>
+              The method <code>position_at</code> compute a position vector
+              which are the distance from Solar System barycenter to the object
+              in the 3-dimensional space.
             </p>
             <p>
               As a repository, it is not responsible for any transformation or
@@ -555,18 +576,21 @@ end</code></pre>
           <p><code>MoonPhases</code></p>
           <aside class="notes">
             <p>
-              Domain services are used to perform operations. They are
-              stateless and do not hold any data.
+              We then have domain services.
             </p>
             <p>
-              In Astronoby, we have calculators for rising, transit and setting
-              times or for Moon phases.
+              They are used to perform operations. They are stateless and do not
+              hold any data.
+            </p>
+            <p>
+              In Astronoby, we have calculators for event times or for Moon
+              phases.
             </p>
           </aside>
         </section>
         <section>
           <p><code>RiseTransitSetCalculator</code></p>
-          <pre><code class="ruby" style="font-size: 0.8em">
+          <pre><code class="language-ruby" style="font-size: 0.8em">
 calculator =
   Astronoby::RiseTransitSetCalculator.new(
     body: Astronoby::Sun,
@@ -581,13 +605,13 @@ event.rising_time
 # => 2025-05-23 05:54:08 +0200</code></pre>
           <aside class="notes">
             <p>
-              This module is responsible for calculating the rising, transit and
-              setting times and coordinates of a celestial body.
+              This module for example is responsible for calculating the rising,
+              transit and setting times of a celestial body.
             </p>
             <p>
-              As a domain service, it is not responsible for the data storage,
-              the data transformation or the data representation. It is only
-              responsible for holding some logic and algorithms.
+              As a domain service, it is not responsible for the data storage or
+              the data representation. It is only responsible for holding some
+              logic and algorithms.
             </p>
             <p>
               It exposes a simple but intuitive API and returns an object with
@@ -614,7 +638,7 @@ event.rising_time
         </section>
         <section>
           <p><code>Angle</code></p>
-          <pre><code class="ruby">
+          <pre><code class="language-ruby">
 angle = Astronoby::Angle.from_degres(240).hours
 
 angle.hours
@@ -645,7 +669,7 @@ angle.cos
         </section>
         <section>
           <p><code>Jupiter</code></p>
-          <pre><code class="ruby">
+          <pre><code class="language-ruby">
         jupiter = Astronoby::Jupiter.new(
           ephem: ephem,
           instant: instant
@@ -655,8 +679,8 @@ angle.cos
         # => 904241448</code></pre>
           <aside class="notes">
             <p>
-              The <code>Jupiter</code> entity holds transformed data that makes
-              sense in its context. Its attributes are the results of
+              Here, the <code>Jupiter</code> entity holds transformed data that
+              makes sense in its context. Its attributes are the results of
               transformations and calculations, while the values are value
               objects.
             </p>
@@ -671,9 +695,12 @@ angle.cos
           <p>e.g. <code>Observation</code></p>
           <aside class="notes">
             <p>
-              This is not actually part of Astronoby but DDD also provides the
-              idea of aggregates. An aggregate can be seen as a cluster of
-              related objects that are treated as a single unit.
+              Finally we have aggregates.
+            </p>
+            <p>
+              This is not actually part of Astronoby but DDD also provides this
+              idea. An aggregate can be seen as a cluster of related objects
+              that are treated as a single unit.
             </p>
             <p>
               We could imagine a <code>Observation</code> aggregate that would
@@ -695,9 +722,127 @@ angle.cos
               presented and how they interact with each other.
             </p>
             <p>
-              As you can see, this is not a particularly complicated example nor
-              architecture, the main point is to split the logic and the data
-              into different kind of objects that will behave is a specific way.
+              As you can see, this is not a particularly complexe architecture,
+              the main point is to split the logic and the data into different
+              kind of objects that will behave in a specific way.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <pre><code class="language-ruby" style="font-size: 0.7em; max-height: 550px;">
+ephem = Astronoby::Ephem.load("inpop19a.bsp")
+
+time = Time.utc(2025, 5, 23, 14, 45, 0)
+instant = Astronoby::Instant.from_time(time)
+
+geneva = Astronoby::Observer.new(
+  latitude: Astronoby::Angle.from_degrees(46.2044),
+  longitude: Astronoby::Angle.from_degrees(6.1432),
+  elevation: Astronoby::Distance.from_meters(375)
+)
+
+sun = Astronoby::Sun.new(instant: instant, ephem: ephem)
+
+topocentric = sun.observed_by(geneva)
+
+topocentric.horizontal.altitude.degrees
+# => 43.36620058310606</code></pre>
+          <aside class="notes">
+            <p>
+              I would like to show you a simple example from Astronoby that
+              highlights the explicit boundaries and domain-specific vocabulary
+              that DDD promotes.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <pre><code class="language-ruby" style="font-size: 0.7em; max-height: 550px;" data-line-numbers="2|4-5|7-11|13|15|17-18">
+ephem = Astronoby::Ephem.load("inpop19a.bsp")
+
+time = Time.utc(2025, 5, 23, 14, 45, 0)
+instant = Astronoby::Instant.from_time(time)
+
+geneva = Astronoby::Observer.new(
+  latitude: Astronoby::Angle.from_degrees(46.2044),
+  longitude: Astronoby::Angle.from_degrees(6.1432),
+  elevation: Astronoby::Distance.from_meters(375)
+)
+
+sun = Astronoby::Sun.new(instant: instant, ephem: ephem)
+
+topocentric = sun.observed_by(geneva)
+
+topocentric.horizontal.altitude.degrees
+# => 43.36620058310606</code></pre>
+          <aside class="notes">
+            <p>
+              We first have an <code>ephem</code> that loads the raw data from
+              an ephemeris file. In DDD, it is a repository.
+            </p>
+            <p>
+              Then, we have <code>instant</code>, a value object that
+              represents a point in time. It handles internally the conversion
+              of this time in different time scales when needed.
+            </p>
+            <p>
+              <code>geneva</code> is also a value object. It represents an
+              observer here in Geneva, defined by their GPS coordinates. Note
+              that each element is also a value object as a separation of
+              concerns. The observer represents a bounded context, and its
+              angles and elevation handle their own values.
+            </p>
+            <p>
+              Then, we have the <code>sun</code>, an entity generated from the
+              transformation of raw data from the <code>ephem</code> repository
+              depending on the <code>instant</code> constraint.
+            </p>
+            <p>
+              This entity exposes a method <code>observed_by</code> that
+              generates a topocentric position, meaning it describes a position
+              in the sky centered on an observer on Earth.
+            </p>
+            <p>
+              This method could actually be seen as a domain service. For a
+              readable API preferred to keep it in the entity, but it could make
+              sense to have a dedicated domain service.
+            </p>
+            <p>
+              Finally, the generated <code>topocentric</code> object is also
+              kind of a value object. It exposes its position through different
+              coordinates types.
+            </p>
+            <p>
+              <code>horizontal</code> is the type we want to describe where the
+              Sun is in the sky up and down, left and right, which itself,
+              again, exposes attributes as value objects.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <pre><code class="language-ruby" style="font-size: 0.7em; max-height: 550px;">
+ephem = Astronoby::Ephem.load("inpop19a.bsp")
+
+time = Time.utc(2025, 5, 23, 14, 45, 0)
+instant = Astronoby::Instant.from_time(time)
+
+geneva = Astronoby::Observer.new(
+  latitude: Astronoby::Angle.from_degrees(46.2044),
+  longitude: Astronoby::Angle.from_degrees(6.1432),
+  elevation: Astronoby::Distance.from_meters(375)
+)
+
+sun = Astronoby::Sun.new(instant: instant, ephem: ephem)
+
+topocentric = sun.observed_by(geneva)
+
+topocentric.horizontal.altitude.degrees
+# => 43.36620058310606</code></pre>
+          <aside class="notes">
+            <p>
+              I am not advocating for following this pattern constantly, but in
+              the case of Astronoby, DDD is a good fit as every object
+              corresponds to a physical notion that could be understood by
+              the domain experts, like scientists.
             </p>
           </aside>
         </section>
@@ -728,7 +873,7 @@ angle.cos
         </section>
         <section>
           <p><code>Time</code></p>
-          <pre><code class="rb">
+          <pre><code class="language-ruby">
                 time = Time.now
 
                 time.hour
@@ -750,7 +895,7 @@ angle.cos
           </aside>
         </section>
         <section>
-          <pre><code class="ruby">
+          <pre><code class="language-ruby">
     distance1 = Distance.from_meters(1000)
     distance2 = Distance.from_kilometers(1)
 
@@ -804,7 +949,7 @@ angle.cos
         </section>
         <section>
           <p><code>Without value object</code></p>
-          <pre><code class="rb" style="font-size: 0.7em">
+          <pre><code class="language-ruby" style="font-size: 0.7em">
 declination_radians = declination_degrees * Math::PI / 180
 latitude_radians = latitude_degrees * Math::PI / 180
 hour_angle_radians = hour_angle_hours * 15 * Math::PI / 180
@@ -835,7 +980,7 @@ altitude_degrees = Math.asin(ratio)</code></pre>
         </section>
         <section>
           <p><code>Astronoby::Angle</code></p>
-          <pre><code class="rb" style="font-size: 0.8em">
+          <pre><code class="language-ruby" style="font-size: 0.8em">
 ratio = declination.sin * latitude.sin +
         declination.cos * latitude.cos * hour_angle.cos
 
@@ -1027,7 +1172,7 @@ altitude = Astronoby::Angle.asin(ratio)</code></pre>
             </p>
             <p>
               With a good understanding of the domain, you can apply DDD to many
-              different domains.
+              different projects.
             </p>
           </aside>
         </section>
@@ -1051,7 +1196,7 @@ altitude = Astronoby::Angle.asin(ratio)</code></pre>
               domains.
             </p>
             <p>
-              With Astronoby, I've tried to show that code can be both
+              With Astronoby and DDD, I've tried to show that code can be both
               educational and functional, teaching about astronomy through its
               very structure.
             </p>
@@ -1071,7 +1216,7 @@ altitude = Astronoby::Angle.asin(ratio)</code></pre>
           </p>
           <aside class="notes">
             <p>
-              To finish, I would like to giv a special shoutout to thoughtbot
+              To finish, I would like to give a special shoutout to thoughtbot
               for their support and for allowing me to work on Astronoby during
               my work time.
             </p>
