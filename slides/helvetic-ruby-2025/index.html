@@ -800,8 +800,7 @@ topocentric.horizontal.altitude.degrees
               This entity exposes a method <code>observed_by</code> that
               generates a topocentric position, meaning it describes a position
               in the sky centered on an observer on Earth.
-            </p>
-            <p>
+              <br>
               This method could actually be seen as a domain service. For a
               readable API preferred to keep it in the entity, but it could make
               sense to have a dedicated domain service.
@@ -810,8 +809,7 @@ topocentric.horizontal.altitude.degrees
               Finally, the generated <code>topocentric</code> object is also
               kind of a value object. It exposes its position through different
               coordinates types.
-            </p>
-            <p>
+              <br>
               <code>horizontal</code> is the type we want to describe where the
               Sun is in the sky up and down, left and right, which itself,
               again, exposes attributes as value objects.
@@ -838,6 +836,10 @@ topocentric = sun.observed_by(geneva)
 topocentric.horizontal.altitude.degrees
 # => 43.36620058310606</code></pre>
           <aside class="notes">
+            <p>
+              And we finally have the altitude, that can be displayed in
+              multiple ways.
+            </p>
             <p>
               I am not advocating for following this pattern constantly, but in
               the case of Astronoby, DDD is a good fit as every object
@@ -1159,20 +1161,48 @@ altitude = Astronoby::Angle.asin(ratio)</code></pre>
         <section>
           <h3>Beyond astronomy</h3>
           <p class="slightly-smaller-text">
-            Every complex domain can benefit from DDD
+            1. Identify
           </p>
           <p class="slightly-smaller-text">
-            Finance, healthcare, logistics
+            2. Map the boundaries
+          </p>
+          <p class="slightly-smaller-text">
+            3. Value objects
+          </p>
+          <p class="slightly-smaller-text">
+            4. Separate
+          </p>
+          <p class="slightly-smaller-text">
+            5. Don't overthink
           </p>
           <aside class="notes">
             <p>
-              My example was astronomy but many projects we all work on also do
-              have complex domains that require a clear understanding and
-              implementation of the business concepts and workflows.
+              Many projects we all work on also do have complex domains that
+              require a clear understanding and implementation of the business
+              concepts and workflows.
             </p>
             <p>
-              With a good understanding of the domain, you can apply DDD to many
-              different projects.
+              To apply DDD to your own project, first identify your core domain.
+              Talk to your stakeholders and document the key terms they use
+              consistently.
+            </p>
+            <p>
+              Then, map the boundaries between different parts of your system.
+              Where does one context end and another begin?
+            </p>
+            <p>
+              Start small with value objects. Look for primitive obsession in
+              your code, places where you're passing around strings, numbers, or
+              IDs that actually represent domain concepts.
+            </p>
+            <p>
+              Separate your data access from your business logic. This makes
+              it easier to test and maintain.
+            </p>
+            <p>
+              Finally, remember that DDD is about making your code more
+              expressive and maintainable, not about following rules perfectly.
+              Prioritize what helps your team understand the domain.
             </p>
           </aside>
         </section>
@@ -1222,8 +1252,10 @@ altitude = Astronoby::Angle.asin(ratio)</code></pre>
             </p>
           </aside>
         </section>
-        <section>
-          <h1>?</h1>
+        <section data-background="img/suns.jpeg">
+          <h2 style="margin-top: 450px; font-size: 2.5em">
+            Thank you
+          </h2>
         </section>
 			</div>
 		</div>
