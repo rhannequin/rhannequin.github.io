@@ -15,13 +15,17 @@
 		<link rel="stylesheet" href="plugin/highlight/obsidian.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Prosto+One&display=swap">
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Prosto+One&display=swap">
 	</head>
 	<body>
 		<div class="reveal">
 			<div class="slides">
         <section>
-          <h1>Modelling the Cosmos in Ruby</h1>
+          <h1 style="margin: 0">
+            Modelling the Cosmos in Ruby
+          </h1>
         </section>
         <section>
           <h2>The sky is a lie</h2>
@@ -75,19 +79,29 @@
         <section>
           <p>Build an accurate astronomy library with that</p>
           <p>
-            <img src="img/cringe.png" style="width: 400px">
+            <img src="img/cringe.png" style="width: 300px" alt="Cringe meme">
           </p>
         </section>
         <section>
           <h2>Hi, I'm Rémy</h2>
+          <br>
+          <p>✌️</p>
         </section>
         <section>
           <p>Senior developer at thoughtbot</p>
+          <br>
+          <p>
+            <img
+              src="img/thoughtbot.svg"
+              alt="thoughtbot LOGO"
+              style="width: 200px; border: 0; box-shadow: none">
+          </p>
           <aside class="notes">
             <p>
               thoughtbot is a design and development consultancy. We help
-              companies build and maintain their products. We operate remotely
-              from the EMEA region and the Americas.
+              companies build and maintain their products while leveling up
+              their team and processes. We operate remotely from the EMEA region
+              and the Americas.
             </p>
           </aside>
         </section>
@@ -205,9 +219,10 @@
           <p>Readable and educational code</p>
           <aside class="notes">
             <p>
-              The goal is not to only write algorithms in Ruby but to write them
-              in a way that is readable and understandable. I try to write code
-              that can explain the mechanisms behind the algorithms by itself.
+              The goal is not to only write algorithms in Ruby but lso to write
+              them in a way that is readable and understandable. I try to write
+              code that can explain by itself the mechanisms behind the
+              algorithms.
             </p>
           </aside>
         </section>
@@ -218,8 +233,7 @@
             <img
               src="img/mars.png"
               alt="Mars"
-              style="width: 150px; border: 0; box-shadow: none"
-            >
+              style="width: 150px; border: 0; box-shadow: none">
           </p>
           <p><img src="img/geneva.jpg" alt="Geneva" style="width: 400px"></p>
           <aside class="notes">
@@ -249,6 +263,12 @@
                 <span><br>Deflection</span>
                 <span><br>Earth shape</span>
                 <span><br>Terrestrial time</span>
+              </p>
+              <p style="text-align: left">
+                <img
+                  src="img/dead-inside.jpg"
+                  alt="Dead Inside meme"
+                  style="width: 100px; border-radius: 50%; margin-top: 50px;">
               </p>
             </div>
             <div class="col-65 small-text">
@@ -280,8 +300,8 @@
           </p>
           <aside class="notes">
             <p>
-              This was my complexe example but I am sure you face and will face
-              many other domains as and more complexe in your carrer.
+              This was my complex example, but I know many of you face more
+              complex domains in your projects.
             </p>
             <p>
               How to keep up with so many different notions? You need to define
@@ -484,10 +504,6 @@ end</code></pre>
               or abstract too much. But only if you are interested in this kind
               of collaboration.
             </p>
-            <p>
-              This makes sense in a project where the code serves as a
-              documentation of the concepts and the workflows.
-            </p>
           </aside>
         </section>
         <section>
@@ -560,8 +576,8 @@ end</code></pre>
               library will use and transform.
             </p>
             <p>
-              The method <code>position_at</code> compute a position vector
-              which are the distance from Solar System barycenter to the object
+              The method <code>position_at</code> computes a position vector
+              which is the distance from Solar System barycenter to the object
               in the 3-dimensional space.
             </p>
             <p>
@@ -605,8 +621,8 @@ event.rising_time
 # => 2025-05-23 05:54:08 +0200</code></pre>
           <aside class="notes">
             <p>
-              This module for example is responsible for calculating the rising,
-              transit and setting times of a celestial body.
+              This module, for example, is responsible for calculating the
+              rising, transit and setting times of a celestial body.
             </p>
             <p>
               As a domain service, it is not responsible for the data storage or
@@ -616,8 +632,7 @@ event.rising_time
             <p>
               It exposes a simple but intuitive API and returns an object with
               formatted data. The final object is not a domain service but an
-              entity. The domain service only computes. We will talk about
-              entities shortly.
+              entity or a value object. We will talk about these right after.
             </p>
           </aside>
         </section>
@@ -628,11 +643,11 @@ event.rising_time
           <p><code>Distance</code></p>
           <aside class="notes">
             <p>
-              Value objects are defined by their attributes
+              Value objects are objects defined by their attributes.
             </p>
             <p>
               In Astronoby, they represent fundamental mathematical and physical
-              values
+              values.
             </p>
           </aside>
         </section>
@@ -648,8 +663,8 @@ angle.cos
 # => -0.5</code></pre>
           <aside class="notes">
             <p>
-              The <code>Angle</code> value object holds the angle value has a
-              convenient API to exposes the value in different formats.
+              The <code>Angle</code> value object holds the angle value and has
+              a convenient API to expose it in different formats.
             </p>
           </aside>
         </section>
@@ -659,7 +674,7 @@ angle.cos
           <p><code>Observer</code></p>
           <aside class="notes">
             <p>
-              Entities are defined by their identity
+              Entities are defined by their identity.
             </p>
             <p>
               In Astronoby, they represent physical objects, they benefit from
@@ -679,10 +694,9 @@ angle.cos
         # => 904241448</code></pre>
           <aside class="notes">
             <p>
-              Here, the <code>Jupiter</code> entity holds transformed data that
-              makes sense in its context. Its attributes are the results of
-              transformations and calculations, while the values are value
-              objects.
+              Here, the <code>Jupiter</code> entity holds transformed data. Its
+              attributes are the results of transformations and calculations,
+              while the values are value objects.
             </p>
             <p>
               Their enriched data and identity is then used by domain services.
@@ -703,9 +717,9 @@ angle.cos
               that are treated as a single unit.
             </p>
             <p>
-              We could imagine a <code>Observation</code> aggregate that would
-              hold an <code>Observer</code> entity and would provide computed
-              data based on a time value object and observed coordinates.
+              We could imagine a <code>Observation</code> aggregate as the
+              combination of an <code>Observer</code> entity and the computed
+              data from service domains.
             </p>
           </aside>
         </section>
@@ -713,18 +727,20 @@ angle.cos
           <img
             src="img/ddd-chart.png"
             alt="DDD Chart"
-            width="1000"
-            style="max-width: 500%; max-height: 500%; margin: 0"
-          >
+            style="width: 1000px; max-width: 500%; max-height: 500%; margin: 0">
           <aside class="notes">
             <p>
               Here's a chart that summarizes the different parts of DDD we just
               presented and how they interact with each other.
             </p>
             <p>
-              As you can see, this is not a particularly complexe architecture,
-              the main point is to split the logic and the data into different
-              kind of objects that will behave in a specific way.
+              As you can see, this is not a complexe architecture, the main
+              point is to split the logic and the data into different kinds of
+              objects that will behave in a specific way.
+            </p>
+            <p>
+              I'm sure this is something many of you already do every day, so
+              you might be using DDD without even knowing it.
             </p>
           </aside>
         </section>
@@ -756,7 +772,10 @@ topocentric.horizontal.altitude.degrees
           </aside>
         </section>
         <section>
-          <pre><code class="language-ruby" style="font-size: 0.7em; max-height: 550px;" data-line-numbers="2|4-5|7-11|13|15|17-18">
+          <pre><code
+            class="language-ruby"
+            style="font-size: 0.7em; max-height: 550px;"
+            data-line-numbers="2|4-5|7-11|13|15|17-18">
 ephem = Astronoby::Ephem.load("inpop19a.bsp")
 
 time = Time.utc(2025, 5, 23, 14, 45, 0)
@@ -781,15 +800,15 @@ topocentric.horizontal.altitude.degrees
             </p>
             <p>
               Then, we have <code>instant</code>, a value object that
-              represents a point in time. It handles internally the conversion
-              of this time in different time scales when needed.
+              represents a point in time. It handles the conversion of this time
+              in different time scales when needed.
             </p>
             <p>
-              <code>geneva</code> is also a value object. It represents an
-              observer here in Geneva, defined by their GPS coordinates. Note
-              that each element is also a value object as a separation of
-              concerns. The observer represents a bounded context, and its
-              angles and elevation handle their own values.
+              <code>geneva</code> is an entity. It represents an observer here
+              in Geneva, defined by their GPS coordinates. Note that each
+              element is a value object as a separation of concerns. The
+              observer represents a bounded context, and its components handle
+              their own values.
             </p>
             <p>
               Then, we have the <code>sun</code>, an entity generated from the
@@ -798,12 +817,13 @@ topocentric.horizontal.altitude.degrees
             </p>
             <p>
               This entity exposes a method <code>observed_by</code> that
-              generates a topocentric position, meaning it describes a position
-              in the sky centered on an observer on Earth.
+              generates a topocentric position, it describes a position in the
+              sky centered on an observer on Earth. Note that I'm not using a
+              synonym, but the actual term used by astronomers.
               <br>
-              This method could actually be seen as a domain service. For a
-              readable API preferred to keep it in the entity, but it could make
-              sense to have a dedicated domain service.
+              This method could actually be seen as a domain service. I
+              preferred to keep it in the entity to have areadable API, but it
+              could make sense to have a dedicated domain service.
             </p>
             <p>
               Finally, the generated <code>topocentric</code> object is also
@@ -844,7 +864,7 @@ topocentric.horizontal.altitude.degrees
               I am not advocating for following this pattern constantly, but in
               the case of Astronoby, DDD is a good fit as every object
               corresponds to a physical notion that could be understood by
-              the domain experts, like scientists.
+              scientists.
             </p>
           </aside>
         </section>
@@ -854,7 +874,7 @@ topocentric.horizontal.altitude.degrees
             <p>
               I would like to focus on value objects. While entities,
               repositories and domain services could be seen as regular Ruby
-              objects with different behaviours, value objects have a different
+              objects with different behaviors, value objects have a different
               purpose, they represent a major part of the DDD philosophy.
             </p>
           </aside>
@@ -912,7 +932,8 @@ topocentric.horizontal.altitude.degrees
             <p>
               Value objects are useful when integrated in logic or formulas.
               With value equality, you can compare them without having to
-              worry about their identity or their format.
+              worry about their identity or their format, which is the default
+              in Ruby
             </p>
             <p>
               Here we can instantiate two different objects that represent the
@@ -934,18 +955,18 @@ topocentric.horizontal.altitude.degrees
           </p>
           <aside class="notes">
             <p>
-              By just using the <code>Comparable</code> module and spaceship
-              operator, your can easily implement your own value object. You
-              can add arithmetic methods like we showed in the
+              By just adding the <code>Comparable</code> module and implementing
+              the spaceship operator, your can easily implement your own value
+              object. You can add arithmetic methods like we showed in the
               <code>Distance</code> object, but be careful with the unit of
               resulting operations. For example, adding two distances creates a
               new distance, while multiplying two distances creates an area,
-              which is not the same physical notion.
+              which is a different physical notion.
             </p>
             <p>
-              You can also use the newly introduced <code>Data</code> class that
-              natively supports value equality and provides a nice syntax to
-              define your own value objects.
+              You can also use the newly <code>Data</code> class, introduced in
+              Ruby 3.2, that natively supports value equality and provides a
+              nice syntax to define your own value objects.
             </p>
           </aside>
         </section>
@@ -971,8 +992,9 @@ altitude_degrees = Math.asin(ratio)</code></pre>
               know what they are to understand the formula.
             </p>
             <p>
-              The code is difficult to read and understand, angles needs to be
-              converted in the right units before beeing used.
+              The code is difficult to read and understand, angles need to be
+              converted in the right units before being used, which leads to
+              verbose name for clarity.
             </p>
             <p>
               As a result, we have the altitude angle in degrees, which will
@@ -987,6 +1009,12 @@ ratio = declination.sin * latitude.sin +
         declination.cos * latitude.cos * hour_angle.cos
 
 altitude = Astronoby::Angle.asin(ratio)</code></pre>
+          <p>
+            <img
+              src="img/wow.gif"
+              alt="Rainbow drool meme"
+              style="width: 75px">
+          </p>
           <aside class="notes">
             <p>
               With value objects, we can use the same formula without worrying
@@ -994,12 +1022,12 @@ altitude = Astronoby::Angle.asin(ratio)</code></pre>
               the conversion and the representation.
             </p>
             <p>
-              As a result, the altitude is an angle <code>Angle</code>, ready
-              to be used in the rest of the codebase as is.
+              As a result, the altitude is an angle object, ready to be used in
+              the rest of the codebase as-is.
             </p>
             <p>
-              The code is much more readable and understandable, and it is
-              easier to maintain.
+              The code is much more readable and understandable in my opinion,
+              and is easier to maintain.
             </p>
           </aside>
         </section>
@@ -1177,9 +1205,9 @@ altitude = Astronoby::Angle.asin(ratio)</code></pre>
           </p>
           <aside class="notes">
             <p>
-              Many projects we all work on also do have complex domains that
+              Many projects we all work on also have complex domains that
               require a clear understanding and implementation of the business
-              concepts and workflows.
+              concepts.
             </p>
             <p>
               To apply DDD to your own project, first identify your core domain.
@@ -1222,7 +1250,7 @@ altitude = Astronoby::Angle.asin(ratio)</code></pre>
           <aside class="notes">
             <p>
               Just as astronomical models help us understand the cosmos despite
-              its complexity, good software models illuminate complex business
+              its complexity, good software illuminates complex business
               domains.
             </p>
             <p>
@@ -1233,7 +1261,7 @@ altitude = Astronoby::Angle.asin(ratio)</code></pre>
             <p>
               And finally, I hope this project demonstrates that Ruby, with its
               expressive syntax and object-oriented nature, deserves a more
-              prominent place in scientific computing.
+              prominent place in science.
             </p>
           </aside>
         </section>
@@ -1247,8 +1275,8 @@ altitude = Astronoby::Angle.asin(ratio)</code></pre>
           <aside class="notes">
             <p>
               To finish, I would like to give a special shoutout to thoughtbot
-              for their support and for allowing me to work on Astronoby during
-              my work time.
+              for their support and for allowing me to work on Astronoby and
+              collaborating with the community during investment time.
             </p>
           </aside>
         </section>
@@ -1264,7 +1292,6 @@ altitude = Astronoby::Angle.asin(ratio)</code></pre>
 		<script src="plugin/notes/notes.js"></script>
 		<script src="plugin/markdown/markdown.js"></script>
 		<script src="plugin/highlight/highlight.js"></script>
-    <script src="plugin/math/math.js"></script>
     <script>
 			// More info about initialization & config:
 			// - https://revealjs.com/initialization/
@@ -1276,22 +1303,11 @@ altitude = Astronoby::Angle.asin(ratio)</code></pre>
         progress: true,
         // slideNumber: true,
 
-        mathjax2: {
-          config: 'TeX-AMS_HTML-full',
-          TeX: {
-            Macros: {
-              R: '\\mathbb{R}',
-              set: [ '\\left\\{#1 \\; ; \\; #2\\right\\}', 2 ]
-            }
-          }
-        },
-
 				// Learn about plugins: https://revealjs.com/plugins/
 				plugins: [
           RevealMarkdown,
           RevealHighlight,
           RevealNotes,
-          RevealMath.MathJax2
         ]
 			});
 		</script>
