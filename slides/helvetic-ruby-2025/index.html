@@ -109,7 +109,7 @@
           <p>In love with astronomy</p>
           <aside class="notes">
             <p>
-              I am a passionate amateur astronomer. As you will see today I try
+              I am a passionate amateur astronomer. As you will see today, I try
               to combine my passion for astronomy and my love for programming.
             </p>
           </aside>
@@ -196,7 +196,7 @@
           <p>Deep sky objects</p>
           <p>Stargazing planner</p>
           <aside class="notes">
-            I have big plans for the library and soon I will implement more
+            I have big plans for the library and soon it will implement more
             events, more celestial bodies and more utilies.
           </aside>
         </section>
@@ -208,7 +208,7 @@
               are very close to each other, except some syntax differences and
               some features, they can basically do the same. But Ruby is not
               known for its scientific ecosystem, Python is. Ruby deserves to
-              have scientific projects to inspire other so contribute to the
+              have scientific projects to inspire others to contribute to the
               ecosystem as one where science can happen.
             </p>
           </aside>
@@ -674,7 +674,7 @@ angle.cos
           <p><code>Observer</code></p>
           <aside class="notes">
             <p>
-              Entities are defined by their identity.
+              Finally, we have entities, which are defined by their identity.
             </p>
             <p>
               In Astronoby, they represent physical objects, they benefit from
@@ -700,26 +700,6 @@ angle.cos
             </p>
             <p>
               Their enriched data and identity is then used by domain services.
-            </p>
-          </aside>
-        </section>
-        <section>
-          <h3>Aggregates</h3>
-          <small><small>(not actually in Astronoby)</small></small>
-          <p>e.g. <code>Observation</code></p>
-          <aside class="notes">
-            <p>
-              Finally we have aggregates.
-            </p>
-            <p>
-              This is not actually part of Astronoby but DDD also provides this
-              idea. An aggregate can be seen as a cluster of related objects
-              that are treated as a single unit.
-            </p>
-            <p>
-              We could imagine a <code>Observation</code> aggregate as the
-              combination of an <code>Observer</code> entity and the computed
-              data from service domains.
             </p>
           </aside>
         </section>
@@ -857,7 +837,7 @@ topocentric.horizontal.altitude.degrees
 # => 43.36620058310606</code></pre>
           <aside class="notes">
             <p>
-              And we finally have the altitude, that can be displayed in
+              And we finally have the altitude that can be displayed in
               multiple ways.
             </p>
             <p>
@@ -905,7 +885,7 @@ topocentric.horizontal.altitude.degrees
                 # => 1747917900</code></pre>
           <aside class="notes">
             <p>
-              <code>Time</code> is a good example of value object in the Ruby
+              <code>Time</code> is a good example of a value object in the Ruby
               standard library. It encapsulates a point in time and provides
               methods to access its components like hour, minute.
             </p>
@@ -1060,7 +1040,7 @@ altitude = Astronoby::Angle.asin(ratio)</code></pre>
               write tests that cover the different parts of the codebase.
             </p>
             <p>
-              The use of real-life data in the tests allows to test the
+              The use of real-life data in the tests allows testing the
               algorithms and the code in a realistic context, which is
               particularly important in a scientific context.
             </p>
@@ -1083,8 +1063,8 @@ altitude = Astronoby::Angle.asin(ratio)</code></pre>
               external sources to validate the results.
             </p>
             <p>
-              This is a screenshot from the IMCCE website, a French institude on
-              celestial mechanics. The domain and vocabulary is approximately
+              This is a screenshot from the IMCCE website, a French institute on
+              celestial mechanics. The domain and vocabulary are approximately
               the same as the one used in Astronoby. It helped me test my
               results step by step, but also use correct concepts and
               algorithms.
@@ -1147,9 +1127,9 @@ altitude = Astronoby::Angle.asin(ratio)</code></pre>
             </p>
             <p>
               Some critical parts of the code can be optimised by using
-              low-level interfaces like C extensions. It wouldn't be to go
-              against DDD to use them, but it requires extra care integrate them
-              in the codebase written with a specific philosophy in mind.
+              low-level interfaces like C extensions. It wouldn't go against DDD
+              to use them, but it requires extra care to integrate them in a
+              codebase written with a specific philosophy in mind.
             </p>
           </aside>
         </section>
