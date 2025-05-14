@@ -51,7 +51,7 @@
           <aside class="notes">
             <p>
               The atmosphere refracts light so much that when we witness a
-              Sunset, the Sun has actually set below the horizon for several
+              sunset, the Sun has actually set below the horizon for several
               minutes.
             </p>
           </aside>
@@ -85,7 +85,7 @@
         <section>
           <h2>Hi, I'm Rémy</h2>
           <br>
-          <p>✌️</p>
+          <p class="slightly-smaller-text">@rhannequin</p>
         </section>
         <section>
           <p>Senior developer at thoughtbot</p>
@@ -196,8 +196,10 @@
           <p>Deep sky objects</p>
           <p>Stargazing planner</p>
           <aside class="notes">
-            I have big plans for the library and soon it will implement more
-            events, more celestial bodies and more utilies.
+            <p>
+              I have big plans for the library and soon it will implement more
+              events, more celestial bodies and more utilies.
+            </p>
           </aside>
         </section>
         <section>
@@ -210,19 +212,6 @@
               known for its scientific ecosystem, Python is. Ruby deserves to
               have scientific projects to inspire others to contribute to the
               ecosystem as one where science can happen.
-            </p>
-          </aside>
-        </section>
-        <section>
-          <p>Good idiomatic Ruby code</p>
-          <br>
-          <p>Readable and educational code</p>
-          <aside class="notes">
-            <p>
-              The goal is not to only write algorithms in Ruby but lso to write
-              them in a way that is readable and understandable. I try to write
-              code that can explain by itself the mechanisms behind the
-              algorithms.
             </p>
           </aside>
         </section>
@@ -963,7 +952,7 @@ ratio = Math.sin(declination_radians) *
         Math.cos(latitude_radians) *
         Math.cos(hour_angle_radians)
 
-altitude_degrees = Math.asin(ratio)</code></pre>
+altitude_radians = Math.asin(ratio)</code></pre>
           <aside class="notes">
             <p>
               Here is an example of a formula that computes the altitude of a
@@ -977,7 +966,7 @@ altitude_degrees = Math.asin(ratio)</code></pre>
               verbose name for clarity.
             </p>
             <p>
-              As a result, we have the altitude angle in degrees, which will
+              As a result, we have the altitude angle in radians, which will
               probably be converted in other units later.
             </p>
           </aside>
@@ -1018,18 +1007,17 @@ altitude = Astronoby::Angle.asin(ratio)</code></pre>
               While we are getting closer to the end of this talk, I think it is
               important to talk about testing.
             </p>
-            <p>
-              Ruby is a dynamically typed language, which requires investment in
-              testing to ensure the integrity of the code.
-            </p>
           </aside>
         </section>
         <section>
           <h3>DDD ❤️ Testing</h3>
           <p>Well-defined objects</p>
           <p>Bounded contexts</p>
-          <p>Real-life data</p>
           <aside class="notes">
+            <p>
+              Ruby is a dynamically typed language, which requires investment in
+              testing to ensure the integrity of the code.
+            </p>
             <p>
               Part of the DDD philosophy is to write testable code. Ruby is
               particularly well suited for this aspect due to the strong
@@ -1038,11 +1026,6 @@ altitude = Astronoby::Angle.asin(ratio)</code></pre>
             <p>
               With well-defined objects and bounded contexts, it is easy to
               write tests that cover the different parts of the codebase.
-            </p>
-            <p>
-              The use of real-life data in the tests allows testing the
-              algorithms and the code in a realistic context, which is
-              particularly important in a scientific context.
             </p>
           </aside>
         </section>
@@ -1103,7 +1086,7 @@ altitude = Astronoby::Angle.asin(ratio)</code></pre>
             <p>
               The important point is to define your priorities. With Astronoby,
               I wanted to focus on readability and accuracy. I implemented
-              the scientific domain and laguage for accuracy and
+              the scientific domain and language for accuracy and
               maintainability, and DDD helped me achieve that.
             </p>
             <p>
