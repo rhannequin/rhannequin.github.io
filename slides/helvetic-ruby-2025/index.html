@@ -257,7 +257,7 @@
                 <img
                   src="img/dead-inside.jpg"
                   alt="Dead Inside meme"
-                  style="width: 100px; border-radius: 50%; margin-top: 50px;">
+                  style="width: 100px; height: 100px; border-radius: 50%; margin-top: 50px;">
               </p>
             </div>
             <div class="col-65 small-text">
@@ -916,7 +916,7 @@ topocentric.horizontal.altitude.degrees
         </section>
         <section>
           <p>
-            <code>Comparable</code>, <code>#<=></code>, <code>#+</code>
+            <code>Comparable</code>&nbsp;&nbsp;&nbsp;<code>#<=></code>
           </p>
           <br>
           <p>
@@ -1058,61 +1058,138 @@ altitude = Astronoby::Angle.asin(ratio)</code></pre>
           </aside>
         </section>
         <section>
-          <h2>Performance</h2>
+          <p>Unit tests</p>
+          <p class="slightly-smaller-text">⬇️</p>
+          <p>Integration tests</p>
+          <p class="slightly-smaller-text">⬇️</p>
+          <p>Scientific validation</p>
           <aside class="notes">
             <p>
-              As a side and last note, I would like to talk about performance.
+              DDD helps having a scientific approach to testing.
+            </p>
+            <p>
+              By the way, it would be so great if we could have tests in real
+              life for everything we build don't you think?
+            </p>
+            <p>
+              Anyway, we start with the lower level, unit tests for value
+              objects and entities. They are easy to test in isolation due to
+              their clear boundaries.
+            </p>
+            <p>
+              Then, we have integration tests for domain services and
+              repositories. They are used to test the collaborations between
+              domain objects.
+            </p>
+            <p>
+              Finally, we have scientific validation, which is the process of
+              comparing the results with official data. This is important to
+              check the accuracy of the results and ensure that the code is
+              correct.
             </p>
           </aside>
         </section>
         <section>
-          <h3>DDD & performance</h3>
-          <p>Yes, but,</p>
+          <h2>Beyond astronomy</h2>
           <aside class="notes">
             <p>
-              DDD is a great approach to write maintainable and readable code.
-              Nothing in its philosophy prevents you from writing performant
-              code but it can lead to performance issues if not used carefully.
-              It is a matter of how you use it and how you design your code.
+              As a side and last note, I would like to share how to apply DDD to
+              other projects, maybe yours.
             </p>
           </aside>
         </section>
         <section>
-          <h3>What is your priority?</h3>
-          <p>Readability</p>
-          <p>Accuracy</p>
-          <p>Performance</p>
+          <h3>Identify</h3>
+          <p>Talk to the stakeholders</p>
+          <p>Document the vocabulary</p>
           <aside class="notes">
             <p>
-              The important point is to define your priorities. With Astronoby,
-              I wanted to focus on readability and accuracy. I implemented
-              the scientific domain and language for accuracy and
-              maintainability, and DDD helped me achieve that.
+              Start by identifying the core domains of your project. What are
+              the main concepts and processes that are critical to your
+              business?
             </p>
             <p>
-              I also want a library that is performant, I can achieve it, but I
-              won't find guidance in DDD for this aspect.
+              Talk to your stakeholders and document the vocabulary they use.
+              This will help you understand the business logic and the
+              relationships between different concepts.
             </p>
           </aside>
         </section>
         <section>
-          <h3>Performance</h3>
-          <p>Algorithms</p>
-          <p>Many objects</p>
-          <p>Low-level interfaces</p>
+          <h3>Map the boundaries</h3>
+          <p>Create bounded contexts</p>
+          <p>Add clear interfaces</p>
           <aside class="notes">
             <p>
-              To compute astronomical data, I need to find and test algorithms,
-              implement them correctly and efficiently, and then optimise them
-              if needed. DDD is not a magic wand, and in some perspectives, it
-              can hurt the performance, for example by forcing to manipulate
-              too many objects.
+              Map the boundaries between different parts of your system. Where
+              does one context end and another begin?
             </p>
             <p>
-              Some critical parts of the code can be optimised by using
-              low-level interfaces like C extensions. It wouldn't go against DDD
-              to use them, but it requires extra care to integrate them in a
-              codebase written with a specific philosophy in mind.
+              Look for natural divisions in language and responsibility.
+            </p>
+            <p>
+              Remember that bounded contexts are often naturally occurring
+              in how your teams are shaped.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <h3>Value objects</h3>
+          <p>Primitive obsession</p>
+          <p>Find literals</p>
+          <aside class="notes">
+            <p>
+              Start small with value objects. Look for primitive obsession in
+              your code, places where you're passing around strings, numbers, or
+              IDs that actually represent domain concepts.
+            </p>
+            <p>
+              Don't hesitate to make them immutable if they are manipulated
+              frequently, to avoid bugs.
+            </p>
+            <p>
+              Such objects can be money, date ranges, emails, phone numbers.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <h3>Separate responsibilities</h3>
+          <p>Split the logic</p>
+          <p><em>"Tell, Don't Ask"</em></p>
+          <aside class="notes">
+            <p>
+              Use repositories to abstract data access, domain services for
+              operations, and entities for business logic.
+            </p>
+            <p>
+              In a Rails project, for example, we avoid having fat controllers,
+              but we also avoid monolithic god-object models.
+            </p>
+            <p>
+              The "Tell, Don't Ask" principle encourages us to tell objects
+              what to do instead of asking them for information and then
+              performing operations on that information.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <h3>Don't overthink</h3>
+          <p>Prioritize</p>
+          <p>Stay flexible</p>
+          <aside class="notes">
+            <p>
+              Finally, don't overthink.
+            </p>
+            <p>
+              DDD doesn't require all building blocks in every project.
+            </p>
+            <p>
+              Start small: apply to one bounded context first. Focus on the
+              most complex or changing part of your system.
+            </p>
+            <p>
+              Remember: The goal is shared understanding, not architectural
+              purity.
             </p>
           </aside>
         </section>
@@ -1146,54 +1223,6 @@ altitude = Astronoby::Angle.asin(ratio)</code></pre>
             <p>
               We have also seen how Ruby's expressiveness and object-oriented
               nature can help implement DDD in a clean and readable way.
-            </p>
-          </aside>
-        </section>
-        <section>
-          <h3>Beyond astronomy</h3>
-          <p class="slightly-smaller-text">
-            1. Identify
-          </p>
-          <p class="slightly-smaller-text">
-            2. Map the boundaries
-          </p>
-          <p class="slightly-smaller-text">
-            3. Value objects
-          </p>
-          <p class="slightly-smaller-text">
-            4. Separate
-          </p>
-          <p class="slightly-smaller-text">
-            5. Don't overthink
-          </p>
-          <aside class="notes">
-            <p>
-              Many projects we all work on also have complex domains that
-              require a clear understanding and implementation of the business
-              concepts.
-            </p>
-            <p>
-              To apply DDD to your own project, first identify your core domain.
-              Talk to your stakeholders and document the key terms they use
-              consistently.
-            </p>
-            <p>
-              Then, map the boundaries between different parts of your system.
-              Where does one context end and another begin?
-            </p>
-            <p>
-              Start small with value objects. Look for primitive obsession in
-              your code, places where you're passing around strings, numbers, or
-              IDs that actually represent domain concepts.
-            </p>
-            <p>
-              Separate your data access from your business logic. This makes
-              it easier to test and maintain.
-            </p>
-            <p>
-              Finally, remember that DDD is about making your code more
-              expressive and maintainable, not about following rules perfectly.
-              Prioritize what helps your team understand the domain.
             </p>
           </aside>
         </section>

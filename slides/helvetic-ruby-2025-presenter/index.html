@@ -51,7 +51,7 @@
           <aside class="notes">
             <ul>
               <li>Atmosphere refracts light</li>
-              <li>Sunset: Sun below horizon several minutes</li>
+              <li>Witness sunset: Sun has set below horizon several minutes</li>
             </ul>
           </aside>
         </section>
@@ -59,7 +59,7 @@
           <p>The Pole Star is not at the celestial pole</p>
           <aside class="notes">
             <ul>
-              <li>Pole star slightly wobbles around celestial pole</li>
+              <li>Celestial pole slightly wobbles</li>
               <li>Thousands years ago, another star was closer</li>
             </ul>
           </aside>
@@ -68,14 +68,15 @@
           <p>A day is not 24 hours</p>
           <aside class="notes">
             <ul>
+              <li>Earth rotates in</li>
               <li>23hr 56min 4sec</li>
               <li>Mean solar day</li>
-              <li>Actual solar day varies</li>
+              <li>Actual solar day varies through year</li>
             </ul>
           </aside>
         </section>
         <section>
-          <p>Build an accurate astronomy library with that</p>
+          <p>Build an accurate software with that</p>
           <p>
             <img src="img/cringe.png" style="width: 300px" alt="Cringe meme">
           </p>
@@ -132,8 +133,7 @@
           <p>Complex domain models</p>
           <aside class="notes">
             <ul>
-              <li>Astronomy complex domain</li>
-              <li>Good example of challenges of domain modelling</li>
+              <li>Challenges of domain modelling</li>
             </ul>
           </aside>
         </section>
@@ -152,7 +152,7 @@
           <aside class="notes">
             <ul>
               <li>Write code that is easy to read and understand</li>
-              <li>So that we can share it with others</li>
+              <li>Code that can be shared and help collaboration</li>
             </ul>
           </aside>
         </section>
@@ -182,9 +182,14 @@
           <aside class="notes">
             <ul>
               <li>Position major solar system bodies</li>
-              <li>times for events (rise/set)</li>
-              <li>Equinoxes and solstices</li>
-              <li>Moon phases</li>
+              <li>
+                times for events
+                <ul>
+                  <li>Rising setting celestial bodies</li>
+                  <li>Equinoxes and solstices</li>
+                  <li>Moon phases</li>
+                </ul>
+              </li>
             </ul>
           </aside>
         </section>
@@ -212,7 +217,7 @@
               <li>But basically the same</li>
               <li>Ruby not for science, Python is</li>
               <li>Ruby deserves scientific projects</li>
-              <li>Inspire others to contribute</li>
+              <li>With Astronoby, inspire others to contribute</li>
               <li>Ecosystem where science can happen</li>
             </ul>
           </aside>
@@ -254,7 +259,7 @@
                 <img
                   src="img/dead-inside.jpg"
                   alt="Dead Inside meme"
-                  style="width: 100px; border-radius: 50%; margin-top: 50px;">
+                  style="width: 100px; height: 100px; border-radius: 50%; margin-top: 50px;">
               </p>
             </div>
             <div class="col-65 small-text">
@@ -284,9 +289,6 @@
             <ul>
               <li>Many of you face more complex domains</li>
               <li>How to keep up?</li>
-              <li>Define clearly the data you manipulate</li>
-              <li>Make sure apply right corrections</li>
-              <li>Extract the right data from it</li>
             </ul>
           </aside>
         </section>
@@ -466,7 +468,7 @@ end</code></pre>
               <li>When domain is complex</li>
               <li>Collaboration is important between knowledge and tech</li>
               <li>If business experts can't recognise their own concepts</li>
-              <li>Might be abstracting too much</li>
+              <li>Might be missing concepts or abstracting too much</li>
             </ul>
           </aside>
         </section>
@@ -482,8 +484,13 @@ end</code></pre>
             <ul>
               <li>Ruby well suited</li>
               <li>Object-oriented nature and expressiveness</li>
-              <li>Module for reusable and composable components</li>
-              <li>Clear and semantic boundaries</li>
+              <li>
+                Modules
+                <ul>
+                  <li>Reusable and composable components</li>
+                  <li>Clear and semantic boundaries</li>
+                </ul>
+              </li>
               <li>Metaprogramming for domain-specific languages</li>
               <li>More expressive and easier to read</li>
             </ul>
@@ -500,7 +507,6 @@ end</code></pre>
           <aside class="notes">
             <ul>
               <li>Retrieve and store entities</li>
-              <li>Ephem holds raw data</li>
               <li>Not behaviour, not transformation</li>
               <li>Data storage</li>
             </ul>
@@ -554,7 +560,7 @@ event.rising_time
             <ul>
               <li>Holding some logic and algorithms</li>
               <li>Expose simple but intuitive API</li>
-              <li>Returns an entitu or value object with formatted data</li>
+              <li>Returns formatted data (entity, value object)</li>
             </ul>
           </aside>
         </section>
@@ -674,7 +680,12 @@ topocentric.horizontal.altitude.degrees
               <li>
                 sun is entity, generated from ephem data and instant constraint
               </li>
-              <li>observed_by topocentric position: actual astronomy term</li>
+              <li>
+                <code>observed_by</code> topocentric position
+                <ul>
+                  <li>actual astronomy term</li>
+                </ul>
+              </li>
               <li>Could be seen as domain service</li>
               <li>Horizontal coordinates as value object</li>
             </ul>
@@ -703,6 +714,7 @@ topocentric.horizontal.altitude.degrees
             <ul>
               <li>Not advocating for this constantly</li>
               <li>For Astronoby: DDD good fit</li>
+              <li>Every object corresponds to actual scientific notion</li>
             </ul>
           </aside>
         </section>
@@ -769,7 +781,7 @@ topocentric.horizontal.altitude.degrees
         </section>
         <section>
           <p>
-            <code>Comparable</code>, <code>#<=></code>, <code>#+</code>
+            <code>Comparable</code>&nbsp;&nbsp;&nbsp;<code>#<=></code>
           </p>
           <br>
           <p>
@@ -826,7 +838,7 @@ altitude = Astronoby::Angle.asin(ratio)</code></pre>
               <li>Don't worry about units</li>
               <li>Value object takes care of conversion and representation</li>
               <li>Result is value object</li>
-              <li>Easier to read, understand, maintain</li>
+              <li>Easier to read, understand, maintain, test</li>
             </ul>
           </aside>
         </section>
@@ -864,47 +876,127 @@ altitude = Astronoby::Angle.asin(ratio)</code></pre>
           </aside>
         </section>
         <section>
-          <h2>Performance</h2>
+          <p>Unit tests</p>
+          <p class="slightly-smaller-text">⬇️</p>
+          <p>Integration tests</p>
+          <p class="slightly-smaller-text">⬇️</p>
+          <p>Scientific validation</p>
+          <aside class="notes">
+            <ul>
+              <li>DDD help having a scientific approach</li>
+              <li>Would be good if we had tests in real life</li>
+              <li>
+                Unit tests: value objects / entities
+                <ul>
+                  <li>Easy to test in isolation due to clear boundaries</li>
+                </ul>
+              </li>
+              <li>
+                Integration tests: domain services / repositories
+                <ul>
+                  <li>Testing collaborations between domain objects</li>
+                </ul>
+              </li>
+              <li>
+                Scientific validation: comparing with official data
+                <ul>
+                  <li>Important to check accuracy in the end</li>
+                </ul>
+              </li>
+            </ul>
+          </aside>
+        </section>
+        <section>
+          <h2>Beyond astronomy</h2>
           <aside class="notes">
             <p>
-              As a side and last note, I would like to talk about performance.
+              As a side and last note, I would like to share how to apply DDD to
+              other projects, maybe yours.
             </p>
           </aside>
         </section>
         <section>
-          <h3>DDD & performance</h3>
-          <p>Yes, but,</p>
+          <h3>Identify</h3>
+          <p>Talk to the stakeholders</p>
+          <p>Document the vocabulary</p>
           <aside class="notes">
             <ul>
-              <li>DDD great</li>
-              <li>Nothing prevents you from performant code</li>
-              <li>But to use carefully</li>
+              <li>Identify core domains of your project</li>
+              <li>What are main concepts/processes critital to business</li>
+              <li>Talk to stakeholders</li>
+              <li>Document the vocabulary they use</li>
+              <li>Help understand relationships between concepts</li>
             </ul>
           </aside>
         </section>
         <section>
-          <h3>What is your priority?</h3>
-          <p>Readability</p>
-          <p>Accuracy</p>
-          <p>Performance</p>
+          <h3>Map the boundaries</h3>
+          <p>Create bounded contexts</p>
+          <p>Add clear interfaces</p>
           <aside class="notes">
             <ul>
-              <li>Define priorities</li>
-              <li>Astro: readability and accuracy</li>
-              <li>Performance: DDD don't provide guidance</li>
+              <li>Map boundaries different part system</li>
+              <li>Where does one context end and another begin?</li>
+              <li>Look natural divisions in language and responsibility</li>
+              <li>
+                Remember: bounded contexts often naturally occurring in how your
+                teams are shaped
+              </li>
             </ul>
           </aside>
         </section>
         <section>
-          <h3>Performance</h3>
-          <p>Algorithms</p>
-          <p>Many objects</p>
-          <p>Low-level interfaces</p>
+          <h3>Value objects</h3>
+          <p>Primitive obsession</p>
+          <p>Find literals</p>
           <aside class="notes">
             <ul>
-              <li>Algo must be optimised outside DDD</li>
-              <li>Algo perf hurt with too many objects</li>
-              <li>C extensions</li>
+              <li>Start small with value objects</li>
+              <li>Look for primitive obsession</li>
+              <li>Places where passing around strings, numbers, IDs</li>
+              <li>That actually represent domain concepts</li>
+              <li>Don't hesitate immutable is used frequantly (bugs)</li>
+              <li>Money, date ranges, emails, phone numbers</li>
+            </ul>
+          </aside>
+        </section>
+        <section>
+          <h3>Separate responsibilities</h3>
+          <p>Split the logic</p>
+          <p><em>"Tell, Don't Ask"</em></p>
+          <aside class="notes">
+            <ul>
+              <li>Repositories to abstract data access</li>
+              <li>Domain services for operations</li>
+              <li>Entities for business logic</li>
+              <li>
+                Rails avoid: Fat controllers, monolithic god-object models
+              </li>
+              <li>
+                Tell don't ask principle
+                <ul>
+                  <li>Tell objects what to do</li>
+                  <li>insead of sking them information</li>
+                  <li>and then performing operations on that information</li>
+                </ul>
+              </li>
+            </ul>
+          </aside>
+        </section>
+        <section>
+          <h3>Don't overthink</h3>
+          <p>Prioritize</p>
+          <p>Stay flexible</p>
+          <aside class="notes">
+            <ul>
+              <li>Finally, don't overthink</li>
+              <li>DDD doesn't require all building blocks</li>
+              <li>
+                Start small with one core concept or frequently changing one
+              </li>
+              <li>
+                Remember, goal is shared understanding, not architecture purity
+              </li>
             </ul>
           </aside>
         </section>
@@ -935,44 +1027,6 @@ altitude = Astronoby::Angle.asin(ratio)</code></pre>
               <li>DDD can help manage complex domains</li>
               <li>
                 Ruby expressiveness and object-oriented nature help with DDD
-              </li>
-            </ul>
-          </aside>
-        </section>
-        <section>
-          <h3>Beyond astronomy</h3>
-          <p class="slightly-smaller-text">
-            1. Identify
-          </p>
-          <p class="slightly-smaller-text">
-            2. Map the boundaries
-          </p>
-          <p class="slightly-smaller-text">
-            3. Value objects
-          </p>
-          <p class="slightly-smaller-text">
-            4. Separate
-          </p>
-          <p class="slightly-smaller-text">
-            5. Don't overthink
-          </p>
-          <aside class="notes">
-            <ul>
-              <li>Many projects require clear implem of business concepts</li>
-              <li>
-                Identify core domain, talk to stakeholders, document key terms
-              </li>
-              <li>Map boundaries of system, where ends and starts?</li>
-              <li>
-                Start small with value objects, look for primitive obsession
-                when passing around strings, numbers, or IDs
-              </li>
-              <li>
-                Separate data access from business logic for maintainability
-              </li>
-              <li>
-                DDD is just for code more expressive and maintanable. Prioritise
-                what helps your team
               </li>
             </ul>
           </aside>
