@@ -216,8 +216,16 @@
           </aside>
         </section>
         <section>
+          <p>
+            <img src="img/qr.png" alt="QR code for Astronoby" width="400">
+          </p>
+          <p>
+            <a href="https://tbot.io/astronoby">tbot.io/astronoby</a>
+          </p>
+        </section>
+        <section>
           <p>Azimuth: 123°44′47″</p>
-          <p>Altitude: 49°26′13″</p>
+          <p>Altitude: 49°26′14″</p>
           <p>
             <img
               src="img/mars.png"
@@ -382,7 +390,7 @@
                 data-fragment-index="3"
                 style="font-size: 1em"
               >
-                <small>Multiple models with explicit boudaries</small>
+                <small>Multiple models with explicit boundaries</small>
               </p>
               <p
                 class="fragment visible"
@@ -717,7 +725,7 @@ angle.cos
           <pre><code class="language-ruby" style="font-size: 0.7em; max-height: 550px;">
 ephem = Astronoby::Ephem.load("inpop19a.bsp")
 
-time = Time.utc(2025, 5, 23, 14, 45, 0)
+time = Time.utc(2025, 5, 23, 14, 30, 0)
 instant = Astronoby::Instant.from_time(time)
 
 geneva = Astronoby::Observer.new(
@@ -726,12 +734,12 @@ geneva = Astronoby::Observer.new(
   elevation: Astronoby::Distance.from_meters(375)
 )
 
-sun = Astronoby::Sun.new(instant: instant, ephem: ephem)
+mars = Astronoby::Mars.new(instant: instant, ephem: ephem)
 
-topocentric = sun.observed_by(geneva)
+topocentric = mars.observed_by(geneva)
 
 topocentric.horizontal.altitude.degrees
-# => 43.36620058310606</code></pre>
+# => 49.4371279134974</code></pre>
           <aside class="notes">
             <p>
               I would like to show you a simple example from Astronoby that
@@ -747,7 +755,7 @@ topocentric.horizontal.altitude.degrees
             data-line-numbers="2|4-5|7-11|13|15|17-18">
 ephem = Astronoby::Ephem.load("inpop19a.bsp")
 
-time = Time.utc(2025, 5, 23, 14, 45, 0)
+time = Time.utc(2025, 5, 23, 14, 30, 0)
 instant = Astronoby::Instant.from_time(time)
 
 geneva = Astronoby::Observer.new(
@@ -761,7 +769,7 @@ sun = Astronoby::Sun.new(instant: instant, ephem: ephem)
 topocentric = sun.observed_by(geneva)
 
 topocentric.horizontal.altitude.degrees
-# => 43.36620058310606</code></pre>
+# => 49.4371279134974</code></pre>
           <aside class="notes">
             <p>
               We first have an <code>ephem</code> that loads the raw data from
@@ -780,7 +788,7 @@ topocentric.horizontal.altitude.degrees
               their own values.
             </p>
             <p>
-              Then, we have the <code>sun</code>, an entity generated from the
+              Then, we have <code>mars</code>, an entity generated from the
               transformation of raw data from the <code>ephem</code> repository
               depending on the <code>instant</code> constraint.
             </p>
@@ -809,7 +817,7 @@ topocentric.horizontal.altitude.degrees
           <pre><code class="language-ruby" style="font-size: 0.7em; max-height: 550px;">
 ephem = Astronoby::Ephem.load("inpop19a.bsp")
 
-time = Time.utc(2025, 5, 23, 14, 45, 0)
+time = Time.utc(2025, 5, 23, 14, 30, 0)
 instant = Astronoby::Instant.from_time(time)
 
 geneva = Astronoby::Observer.new(
@@ -818,12 +826,12 @@ geneva = Astronoby::Observer.new(
   elevation: Astronoby::Distance.from_meters(375)
 )
 
-sun = Astronoby::Sun.new(instant: instant, ephem: ephem)
+mars = Astronoby::Mars.new(instant: instant, ephem: ephem)
 
-topocentric = sun.observed_by(geneva)
+topocentric = mars.observed_by(geneva)
 
 topocentric.horizontal.altitude.degrees
-# => 43.36620058310606</code></pre>
+# => 49.4371279134974</code></pre>
           <aside class="notes">
             <p>
               And we finally have the altitude that can be displayed in
