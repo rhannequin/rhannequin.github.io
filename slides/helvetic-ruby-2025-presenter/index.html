@@ -891,8 +891,8 @@ altitude = Astronoby::Angle.asin(ratio)</code></pre>
           <p>Scientific validation</p>
           <aside class="notes">
             <ul>
-              <li>DDD help having a scientific approach</li>
-              <li>Would be good if we had tests in real life</li>
+              <li>DDD helps having a scientific approach</li>
+              <li>Test: can cover all the range of information</li>
               <li>
                 Unit tests: value objects / entities
                 <ul>
@@ -902,7 +902,7 @@ altitude = Astronoby::Angle.asin(ratio)</code></pre>
               <li>
                 Integration tests: domain services / repositories
                 <ul>
-                  <li>Testing collaborations between domain objects</li>
+                  <li>Testing collaboration between concepts</li>
                 </ul>
               </li>
               <li>
@@ -933,7 +933,7 @@ altitude = Astronoby::Angle.asin(ratio)</code></pre>
               <li>What are main concepts/processes critital to business</li>
               <li>Talk to stakeholders</li>
               <li>Document the vocabulary they use</li>
-              <li>Help understand relationships between concepts</li>
+              <li>Helps understanding relationships between concepts</li>
             </ul>
           </aside>
         </section>
@@ -943,11 +943,11 @@ altitude = Astronoby::Angle.asin(ratio)</code></pre>
           <p>Add clear interfaces</p>
           <aside class="notes">
             <ul>
-              <li>Map boundaries different part system</li>
+              <li>Map boundaries different parts of your system</li>
               <li>Where does one context end and another begin?</li>
-              <li>Look natural divisions in language and responsibility</li>
+              <li>Look for natural divisions in language and responsibility</li>
               <li>
-                Remember: bounded contexts often naturally occurring in how your
+                Remember: bounded contexts often naturally occur in how your
                 teams are shaped
               </li>
             </ul>
@@ -961,9 +961,13 @@ altitude = Astronoby::Angle.asin(ratio)</code></pre>
             <ul>
               <li>Start small with value objects</li>
               <li>Look for primitive obsession</li>
-              <li>Places where passing around strings, numbers, IDs</li>
-              <li>That actually represent domain concepts</li>
-              <li>Don't hesitate immutable is used frequantly (bugs)</li>
+              <li>
+                Places where passing around strings, numbers, IDs
+                <ul>
+                  <li>Might represent domain concepts</li>
+                </ul>
+              </li>
+              <li>Don't hesitate immutable if used frequently (bugs)</li>
               <li>Money, date ranges, emails, phone numbers</li>
             </ul>
           </aside>
@@ -974,18 +978,21 @@ altitude = Astronoby::Angle.asin(ratio)</code></pre>
           <p><em>"Tell, Don't Ask"</em></p>
           <aside class="notes">
             <ul>
+              <li>Keep responsibilities simple and separated</li>
               <li>Repositories to abstract data access</li>
               <li>Domain services for operations</li>
               <li>Entities for business logic</li>
               <li>
-                Rails avoid: Fat controllers, monolithic god-object models
+                If Rails, avoid: Fat controllers, monolithic god-object models
               </li>
               <li>
                 Tell don't ask principle
                 <ul>
                   <li>Tell objects what to do</li>
-                  <li>insead of sking them information</li>
-                  <li>and then performing operations on that information</li>
+                  <li>
+                    instead of asking them information and then performing
+                    operations on it
+                  </li>
                 </ul>
               </li>
             </ul>
@@ -1000,7 +1007,7 @@ altitude = Astronoby::Angle.asin(ratio)</code></pre>
               <li>Finally, don't overthink</li>
               <li>DDD doesn't require all building blocks</li>
               <li>
-                Start small with one core concept or frequently changing one
+                Start small with one core concept or a frequently changing one
               </li>
               <li>
                 Remember, goal is shared understanding, not architecture purity

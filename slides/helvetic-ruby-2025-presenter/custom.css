@@ -860,5 +860,9 @@ small {
 }
 
 .reveal .hljs-ln-numbers {
-  padding: 0
+  padding: 0;
+}
+
+.reveal .hljs.has-highlights tr:not(.highlight-line) {
+  opacity: .2;
 }
