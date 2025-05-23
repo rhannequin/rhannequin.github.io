@@ -548,7 +548,7 @@ end</code></pre>
               Let's start with repositories.
             </p>
             <p>
-              They are used to retrieve and store entities.
+              They are used to retrieve and store data or entities.
             </p>
             <p>
               In Astronoby, Ephem holds the raw data. Its purpose is not
@@ -651,13 +651,13 @@ event.rising_time
         <section>
           <p><code>Angle</code></p>
           <pre><code class="language-ruby">
-angle = Astronoby::Angle.from_degres(240).hours
+    angle = Astronoby::Angle.from_degres(240)
 
-angle.hours
-# => 16.0
+    angle.hours
+    # => 16.0
 
-angle.cos
-# => -0.5</code></pre>
+    angle.cos
+    # => -0.5</code></pre>
           <aside class="notes">
             <p>
               The <code>Angle</code> value object holds the angle value and has
@@ -1241,7 +1241,7 @@ altitude = Astronoby::Angle.asin(ratio)</code></pre>
               Good models illuminate complex realities
             </p>
             <p class="slightly-smaller-text">
-              Code can be both educational and functional
+              Code can be both functional and educational
             </p>
             <p class="slightly-smaller-text">
               Ruby deserves a place in scientific computing
@@ -1255,7 +1255,7 @@ altitude = Astronoby::Angle.asin(ratio)</code></pre>
             </p>
             <p>
               With Astronoby and DDD, I've tried to show that code can be both
-              educational and functional, teaching about astronomy through its
+              functional and educational, teaching about astronomy through its
               very structure.
             </p>
             <p>
