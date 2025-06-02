@@ -485,13 +485,6 @@
   text-shadow: var(--cosmic-gold-glow);
 }
 
-/* PRINT BACKGROUND */
-@media print {
-  .backgrounds {
-    background-color: var(--cosmic-bg-dark);
-  }
-}
-
 /* CUSTOM CLASSES */
 .reveal .text-center {
   text-align: center;
