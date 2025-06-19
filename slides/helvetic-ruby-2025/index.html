@@ -385,9 +385,9 @@ geneva = Astronoby::Observer.new(
   elevation: Astronoby::Distance.from_meters(375)
 )
 
-sun = Astronoby::Sun.new(instant: instant, ephem: ephem)
+mars = Astronoby::Mars.new(instant: instant, ephem: ephem)
 
-topocentric = sun.observed_by(geneva)
+topocentric = mars.observed_by(geneva)
 
 topocentric.horizontal.altitude.degrees
 # => 49.4371279134974</code></pre>
