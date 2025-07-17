@@ -1,0 +1,13 @@
+/* Hide line numbers but keep the highlight line background */
+.hljs-ln-n {
+  display: none;
+  counter-reset: linenumber;
+}
+
+.reveal .hljs-ln-numbers {
+  padding: 0;
+}
+
+.reveal .hljs.has-highlights tr:not(.highlight-line) {
+  opacity: .2;
+}
