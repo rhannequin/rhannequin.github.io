@@ -21,6 +21,8 @@
       href="https://fonts.googleapis.com/css2?family=Prosto+One&display=swap">
 	</head>
 	<body>
+  <!-- Idea: different background colors for each section -->
+  <!-- Example: dark for the Valley of Dispair, clearer for A New Hope -->
 		<div class="reveal">
 			<div class="slides">
         <section>
@@ -64,34 +66,20 @@
           </aside>
         </section>
         <section>
-          <h2>Hi, I'm Rémy</h2>
-          <br>
           <p>@rhannequin</p>
+          <p>Senior developer at thoughtbot</p>
+          <p>🪐🍔🤖💻🍿</p>
           <aside class="notes">
             <p>
               Hello everyone, I'm Rémy, you can find me online almost anywhere
               under the handle @rhannequin.
             </p>
-          </aside>
-        </section>
-        <section>
-          <p>Senior developer at thoughtbot</p>
-          <aside class="notes">
             <p>
               I work as a senior developer at thoughtbot. thoughtbot is a
               consultancy that helps companies build great products while
               leveraging their team. We are a remote-only company and we operate
               from the EMEA region and the Americas.
             </p>
-          </aside>
-        </section>
-        <section>
-          <p>
-            Let's meet and talk
-            <br>
-            🪐🍔🤖💻🍿
-          </p>
-          <aside class="notes">
             <p>
               Don't hesitate to come and say hi so that we can talk about
               astronomy, development, food, or anything.
@@ -101,10 +89,10 @@
         <section>
           <p>What are we going to talk about?</p>
           <ol>
-            <li>Tale of side projects</li>
-            <li>Valley of despair</li>
-            <li>A New Hope</li>
-            <li>Unlocking the Treasure</li>
+            <li>💡 Tale of side projects</li>
+            <li>🫠 Valley of despair</li>
+            <li>🌅 A New Hope</li>
+            <li>💎 Unlocking the Treasure</li>
           </ol>
           <aside class="notes">
             <p>
@@ -155,20 +143,20 @@
         </section>
         <section>
           <p>
-            Sharing is caring
-          </p>
-          <p>
             <img
               src="img/bluey-sharing.webp"
-              alt="Bluey and Bingo sharing"
-              width="300">
+              alt="Bluey and Bingo hugging and sharing"
+              width="600">
+          </p>
+          <p>
+            Sharing is caring
           </p>
           <aside class="notes">
             <p>
               I like the idea that astronomical data are universal and should
               be available to everyone. So I started investigating how Chris
-              Peat was getting was able to produce such precise data and if I
-              could do it myself.
+              Peat was able to produce such precise data and if I could do it
+              myself.
             </p>
             <p>
               As the idea grew on me, I started thinking that it would be
@@ -212,13 +200,7 @@
             </p>
           </aside>
         </section>
-        <section>
-          <p>
-            <img
-              src="img/astronomy-books.jpg"
-              alt="Pile of astronomy books"
-              width="600">
-          </p>
+        <section data-background-image="img/astronomy-books.jpg">
           <aside class="notes">
             <p>
               I'm not going to tell the whole story but basically Astronoby
@@ -227,12 +209,7 @@
             </p>
           </aside>
         </section>
-        <section>
-          <p>
-            <img
-              src="img/tell-me-more-michael-scott.gif"
-              alt="Tell me more Michael Scott Meme">
-          </p>
+        <section data-background-image="img/tell-me-more-michael-scott.gif">
           <aside class="notes">
             <p>
               At this point you might be thinking "This is a nice story Rémy,
@@ -265,9 +242,9 @@
           </blockquote>
           <aside class="notes">
             Who needs to compute Moon phases in Ruby? Basically, nobody cares.
-            I'm not saying this a bitter way, this just an objective fact. It's
-            already possible to do the same in Python for years, with way better
-            performance and features.
+            I'm not saying this in a bitter way, it's just an objective fact.
+            It's already possible to do the same in Python for years, with way
+            better performance and features.
           </aside>
         </section>
         <section>
@@ -308,7 +285,7 @@
         </section>
         <section>
           <h2>
-            The unexisting value of niche open-source projects 🤡
+            The <strike>hidden</strike> no value of niche open-source projects
           </h2>
           <aside class="notes">
             <p>
@@ -316,10 +293,7 @@
             </p>
           </aside>
         </section>
-        <section>
-          <p>
-            <img src="img/false-dwight.jpg" alt="False Dwight Meme">
-          </p>
+        <section data-background-image="img/false-dwight.jpg">
           <aside class="notes">
             <p>
               I'm joking, of course. It is natural to feel this way, I believe
@@ -486,6 +460,93 @@
               I try to apply domain-driven design principles to my code? What's
               the best way to test my code?
             </p>
+          </aside>
+        </section>
+        <section>
+          <pre><code class="language-ruby">
+    angle1 = Astronoby::Angle.as_radians(Math::PI)
+    angle2 = Astronoby::Angle.as_degrees(90)
+
+    angle1.to_degrees.value == angle2.value
+          </code></pre>
+          <aside class="notes">
+            <p>
+              Let me give you a couple examples of how I used Astronoby to how
+              I applied some of these principles.
+            </p>
+            <p>
+              This code comes from Astronoby v0.1.0, the first working version.
+              To deal with angles, I had dedicated classes that were responsible
+              for converting themselves from one unit to another.
+            </p>
+            <p>
+              In use, it was not very convenient, as you had to convert
+              angles to the same unit before comparing them.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <pre><code class="language-ruby">
+    angle1 = Astronoby::Angle.from_radians(Math::PI)
+    angle2 = Astronoby::Angle.from_degrees(90)
+
+    angle1 == angle2
+          </code></pre>
+          <aside class="notes">
+            <p>
+              Then, I introduced value objects, a design pattern that
+              encapsulates a value and its unit, so that you can compare
+              angles regardless of their unit.
+            </p>
+            <p>
+              Note that I also changed the method names to reflect that an
+              angle stays an angle, regardless of its unit.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <pre><code class="language-ruby">
+            time = Astronoby::Epoch.to_utc(sun.epoch)
+
+            sun
+              .ecliptic_coordinates
+              .to_equatorial(sun.epoch)
+              .to_horizontal(
+                time: time,
+                latitude: latitude,
+                longitude: longitude
+              )
+              .altitude
+              .to_degrees
+              .value
+          </code></pre>
+          <aside class="notes">
+            <p>
+              Here's another example, this time to illustrate how I applied
+              domain-driven design principles to Astronoby.
+            </p>
+            <p>
+              The first way to get the altitude in degrees of the Sun was long
+              with many conversions, different ways to deal with time,
+              inconsistent naming.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <pre><code class="language-ruby">
+                sun
+                  .observed_by(observer)
+                  .horizontal
+                  .altitude
+                  .degrees
+          </code></pre>
+          <aside class="notes">
+            <p>
+              Then, I focused on making a nice API for the end-user, oriented
+              towards the domain. The developer doesn't have to deal with
+              conversions, they just have to call the methods that make sense
+              in the context of the problem they are trying to solve.
+            </p>
             <p>
               Your project is an awesome opportunity to try and learn new
               things, what interests you and when you decide to work on it.
@@ -496,12 +557,16 @@
           <p>New relations, new clients, new job opportunities</p>
           <aside class="notes">
             <p>
+              Another great thing about side projects is that they create
+              opportunities.
+            </p>
+            <p>
               It doesn't matter if it's niche, you actually have a lot to say
               and you're one of the few people who can say it.
             </p>
             <p>
-              While work on your project, there are opportunities to share your
-              ideas and your progress. You are going to have many blog post
+              While working on your project, there are opportunities to share
+              your ideas and your progress. You are going to have many blog post
               ideas. Why not talk about them in a podcast? Maybe do a meetup
               presentations.
             </p>
@@ -681,7 +746,7 @@
           <p>What's next</p>
           <ol>
             <li>Open-source one project</li>
-            <li>Add a README</li>
+            <li>Add a <code>README</code> and a <code>gemspec</code></li>
             <li>Share it</li>
             <li>Ask for feedback</li>
             <li>Ping me</li>
@@ -697,7 +762,7 @@
             </p>
             <p>
               And please don't hesitate to ping me, I would love to see a new
-              open-source project emerge for the community.
+              gem emerge for the community.
             </p>
             <p>
               This might be the beginning of a great adventure. And if it's not,
