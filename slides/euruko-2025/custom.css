@@ -11,3 +11,28 @@
 .reveal .hljs.has-highlights tr:not(.highlight-line) {
   opacity: .2;
 }
+
+/* No transition with slides with full background images */
+.reveal .slide-background {
+  transition: none !important;
+}
+
+.reveal .dramatic-quote {
+  font-size: 2.3em;
+  line-height: 1.5;
+  font-weight: 300;
+  width: 100%;
+  margin: 0;
+}
+
+.reveal .slightly-dramatic-quote {
+  font-size: 1.2em;
+  line-height: 1.2;
+  font-weight: 300;
+  width: 100%;
+  margin: 0 0 1em 0;
+}
+
+.reveal pre code {
+  max-height: 1000px;
+}
