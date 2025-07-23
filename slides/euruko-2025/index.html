@@ -9,11 +9,14 @@
 
 		<title>The hidden value of niche open-source projects</title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="dist/reset.css">
 		<link rel="stylesheet" href="dist/reveal.css">
-    <link rel="stylesheet" href="dist/theme/black.css">
+    <link rel="stylesheet" href="dist/theme/white.css">
     <link rel="stylesheet" href="custom.css">
-		<link rel="stylesheet" href="plugin/highlight/obsidian.css">
+		<link rel="stylesheet" href="plugin/highlight/atom-one-light.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -29,8 +32,14 @@
           <h1>
             The hidden value of niche open-source projects
           </h1>
+          <aside class="notes">
+            <p>
+              Hello everyone, and welcome to my talk about the hidden value of
+              niche open-source projects.
+            </p>
+          </aside>
         </section>
-        <section>
+        <section data-background-color="#ececec">
           <h3>🗂️</h3>
           <p>
             <code>/Users/rhannequin/code/ideas/</code>
@@ -53,7 +62,7 @@
             </p>
           </aside>
         </section>
-        <section>
+        <section data-background-color="#232949">
           <blockquote class="dramatic-quote">
             I'm wasting my time,
             <br>
@@ -69,7 +78,7 @@
             </p>
           </aside>
         </section>
-        <section>
+        <section data-background-color="#ececec">
           <p>@rhannequin</p>
           <p>Senior developer at thoughtbot</p>
           <p>🪐🍔🤖💻🍿</p>
@@ -90,7 +99,7 @@
             </p>
           </aside>
         </section>
-        <section>
+        <section data-background-color="#ececec">
           <p>What are we going to talk about?</p>
           <ol>
             <li>💡 Tale of side projects</li>
@@ -106,7 +115,7 @@
             </p>
           </aside>
         </section>
-        <section>
+        <section data-background-color="#ececec">
           <h2>Genesis</h2>
           <p>
             <img src="img/genesis.jpg" alt="Genesis" width="300">
@@ -128,7 +137,7 @@
             </p>
           </aside>
         </section>
-        <section>
+        <section data-background-color="#ececec">
           <p>
             <img
               src="img/heaven-above.png"
@@ -145,7 +154,7 @@
             </p>
           </aside>
         </section>
-        <section>
+        <section data-background-color="#ececec">
           <p>
             <img
               src="img/bluey-sharing.webp"
@@ -170,7 +179,7 @@
             </p>
           </aside>
         </section>
-        <section>
+        <section data-background-color="#ececec">
           <p>
             <img
               src="img/astronoby-first-commit.png"
@@ -186,16 +195,19 @@
             </p>
           </aside>
         </section>
-        <section>
-          <pre><code class="language-ruby">
-  mars = Astronoby::Mars.new(instant: instant, ephem: ephem)
+        <section data-background-color="#ececec">
+          <pre class="large"><code class="language-ruby large">
+        mars = Astronoby::Mars.new(
+          instant: instant,
+          ephem: ephem
+        )
 
-  topocentric = mars.observed_by(geneva)
+        topocentric = mars.observed_by(geneva)
 
-  horizontal = topocentric.horizontal
+        horizontal = topocentric.horizontal
 
-  puts "Mars is #{horizontal.altitude.round(2)}°
-        high in the sky"
+        puts "Mars is #{horizontal.altitude.round(2)}°
+              high in the sky"
           </code></pre>
           <aside class="notes">
             <p>
@@ -204,7 +216,7 @@
             </p>
           </aside>
         </section>
-        <section>
+        <section data-background-color="#ececec">
           <p>
             <img
               src="img/astronomy-books.jpg"
@@ -230,7 +242,7 @@
             </p>
           </aside>
         </section>
-        <section>
+        <section data-background-color="#ececec">
           <p>
             <img
               src="img/astronoby-versions.png"
@@ -246,7 +258,7 @@
             </p>
           </aside>
         </section>
-        <section>
+        <section data-background-color="#232949">
           <blockquote class="dramatic-quote">
             Who needs this?
           </blockquote>
@@ -257,7 +269,7 @@
             better performance and features.
           </aside>
         </section>
-        <section>
+        <section data-background-color="#232949">
           <blockquote class="dramatic-quote">
             I'm not doing this right
           </blockquote>
@@ -269,14 +281,22 @@
             </p>
           </aside>
         </section>
-        <section>
+        <section data-background-color="#232949">
           <blockquote class="dramatic-quote">
             So much effort
             <br>
             and no feedback
           </blockquote>
+          <aside class="notes">
+            <p>
+              This one sometimes hurts your feelings. Working hard on features,
+              improvements, code quality, and it sometimes remains unnoticed.
+              You know how much effort you put into it, but there is nobody to
+              witness it.
+            </p>
+          </aside>
         </section>
-        <section>
+        <section data-background-color="#232949">
           <p>
             <img
               src="img/no-likes-post.png"
@@ -290,12 +310,12 @@
             </p>
             <p>
               I barely got any feedback, no likes, no comments. I said it
-              earlier, nobody cares about this. There is a limited interest for
-              this.
+              earlier, nobody really cares about this. There is a limited
+              interest for this.
             </p>
           </aside>
         </section>
-        <section>
+        <section data-background-color="#2e3647">
           <h2>
             The <strike>hidden</strike> no value of niche open-source projects
           </h2>
@@ -305,7 +325,7 @@
             </p>
           </aside>
         </section>
-        <section>
+        <section data-background-color="#2e3647">
           <p>
             <img
               src="img/michael-scott-laughing.gif"
@@ -320,7 +340,7 @@
             </p>
           </aside>
         </section>
-        <section>
+        <section data-background-color="#e5f4e3">
           <h2>Staying motivated</h2>
           <aside class="notes">
             <p>
@@ -328,7 +348,7 @@
             </p>
           </aside>
         </section>
-        <section>
+        <section data-background-color="#e5f4e3">
           <p>
             Work with passion
             <br>
@@ -350,7 +370,7 @@
             </p>
           </aside>
         </section>
-        <section>
+        <section data-background-color="#e5f4e3">
           <p>
             Personal mission and challenge
           </p>
@@ -365,7 +385,7 @@
             </p>
           </aside>
         </section>
-        <section>
+        <section data-background-color="#e5f4e3">
           <p>Set up achievable goals 🎯</p>
           <p>🎉Celebrate wins</p>
           <p>Talk about it 💬</p>
@@ -383,7 +403,7 @@
             </p>
           </aside>
         </section>
-        <section>
+        <section data-background-color="#e5f4e3">
           <p>Look at what already worked</p>
           <ul>
             <li>Faker</li>
@@ -411,7 +431,7 @@
             </p>
           </aside>
         </section>
-        <section>
+        <section data-background-color="#40b7f9">
           <h2>Unlocking personal and professional growth</h2>
           <p>
             <img
@@ -426,7 +446,7 @@
             </p>
           </aside>
         </section>
-        <section>
+        <section data-background-color="#40b7f9">
           <p>Open-source best practices</p>
           <p>Versioning, documentation, code quality</p>
           <aside class="notes">
@@ -463,7 +483,7 @@
             </p>
           </aside>
         </section>
-        <section>
+        <section data-background-color="#40b7f9">
           <p>New technical skills</p>
           <aside class="notes">
             <p>
@@ -480,8 +500,8 @@
             </p>
           </aside>
         </section>
-        <section>
-          <pre><code class="language-ruby">
+        <section data-background-color="#40b7f9">
+          <pre class="large"><code class="language-ruby large">
     angle1 = Astronoby::Angle.as_radians(Math::PI)
     angle2 = Astronoby::Angle.as_degrees(90)
 
@@ -503,8 +523,8 @@
             </p>
           </aside>
         </section>
-        <section>
-          <pre><code class="language-ruby">
+        <section data-background-color="#40b7f9">
+          <pre class="large"><code class="language-ruby large">
     angle1 = Astronoby::Angle.from_radians(Math::PI)
     angle2 = Astronoby::Angle.from_degrees(90)
 
@@ -522,21 +542,21 @@
             </p>
           </aside>
         </section>
-        <section>
-          <pre><code class="language-ruby">
-            time = Astronoby::Epoch.to_utc(sun.epoch)
+        <section data-background-color="#40b7f9">
+          <pre class="large"><code class="language-ruby large">
+          time = Astronoby::Epoch.to_utc(sun.epoch)
 
-            sun
-              .ecliptic_coordinates
-              .to_equatorial(sun.epoch)
-              .to_horizontal(
-                time: time,
-                latitude: latitude,
-                longitude: longitude
-              )
-              .altitude
-              .to_degrees
-              .value
+          sun
+            .ecliptic_coordinates
+            .to_equatorial(sun.epoch)
+            .to_horizontal(
+              time: time,
+              latitude: latitude,
+              longitude: longitude
+            )
+            .altitude
+            .to_degrees
+            .value
           </code></pre>
           <aside class="notes">
             <p>
@@ -550,13 +570,13 @@
             </p>
           </aside>
         </section>
-        <section>
-          <pre><code class="language-ruby">
-                sun
-                  .observed_by(observer)
-                  .horizontal
-                  .altitude
-                  .degrees
+        <section data-background-color="#40b7f9">
+          <pre class="large"><code class="language-ruby extra-large">
+              sun
+                .observed_by(observer)
+                .horizontal
+                .altitude
+                .degrees
           </code></pre>
           <aside class="notes">
             <p>
@@ -571,7 +591,7 @@
             </p>
           </aside>
         </section>
-        <section>
+        <section data-background-color="#40b7f9">
           <p>New relations</p>
           <p>New clients</p>
           <p>New job opportunities</p>
@@ -592,7 +612,7 @@
             </p>
           </aside>
         </section>
-        <section>
+        <section data-background-color="#40b7f9">
           <p>
             <img src="img/euruko-acceptance.png" alt="EuRuKo acceptance email">
           </p>
@@ -630,7 +650,7 @@
             </p>
           </aside>
         </section>
-        <section>
+        <section data-background-color="#48e071">
           <blockquote class="slightly-dramatic-quote">
             <strike>
               I'm wasting my time,
@@ -649,7 +669,7 @@
             </p>
           </aside>
         </section>
-        <section>
+        <section data-background-color="#48e071">
           <blockquote class="slightly-dramatic-quote">
             <strike>Who needs this?</strike>
           </blockquote>
@@ -674,11 +694,15 @@
             </p>
           </aside>
         </section>
-        <section>
+        <section data-background-color="#48e071">
           <p>
             <img
-              src="img/hello-weather.jpeg"
-              alt="Hello Weather app screenshot"
+              src="img/hello-weather-sun.jpg"
+              alt="Hello Weather app Sun sub-screen screenshot"
+              height="600">
+            <img
+              src="img/hello-weather-moon.jpg"
+              alt="Hello Weather app Moon sub-screen screenshot"
               height="600">
           </p>
           <aside class="notes">
@@ -688,7 +712,7 @@
             a weather application with many users.
           </aside>
         </section>
-        <section>
+        <section data-background-color="#48e071">
           <blockquote class="slightly-dramatic-quote">
             <strike>I'm not doing this right</strike>
           </blockquote>
@@ -704,7 +728,7 @@
             </p>
           </aside>
         </section>
-        <section>
+        <section data-background-color="#48e071">
           <blockquote class="slightly-dramatic-quote">
             <strike>
               So much effort
@@ -722,7 +746,7 @@
             </p>
           </aside>
         </section>
-        <section>
+        <section data-background-color="#ffb830">
           <h2>Conclusion</h2>
           <aside class="notes">
             <p>
@@ -731,7 +755,7 @@
             </p>
           </aside>
         </section>
-        <section>
+        <section data-background-color="#ffb830">
           <p>There are many obstacles</p>
           <p>If you love it, do it</p>
           <p>There's so much to take on the way</p>
@@ -748,7 +772,7 @@
             </p>
           </aside>
         </section>
-        <section>
+        <section data-background-color="#ffb830">
           <p>
             <img
               src="img/astronoby-performance-degradation.png"
@@ -768,7 +792,7 @@
             </p>
           </aside>
         </section>
-        <section>
+        <section data-background-color="#ffb830">
           <p>What's next</p>
           <ol>
             <li>Open-source one project</li>
@@ -796,11 +820,11 @@
             </p>
           </aside>
         </section>
-        <section>
-          <pre><code>
-                  cd /Users/rhannequin/code/
+        <section data-background-color="#ffb830">
+          <pre class="large"><code class="extra-large">
+              cd /Users/rhannequin/code/
 
-                  mv ideas projects
+              mv ideas projects
           </code></pre>
           <aside class="notes">
             <p>
@@ -810,7 +834,13 @@
             </p>
           </aside>
         </section>
-        <section>
+        <section data-background-color="#ececec">
+          <p>
+            <img
+              src="img/euruko.svg"
+              alt="EuRuKo logo"
+              width="200">
+          </p>
           <h2>Thank you</h2>
           <hr>
           <p>@rhannequin</p>
