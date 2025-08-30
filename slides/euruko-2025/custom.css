@@ -4,6 +4,18 @@ body, .reveal {
   font-style: normal;
 }
 
+.reveal p {
+  font-size: 1.75em;
+}
+
+.reveal h2 {
+  font-size: 2.1em;
+}
+
+.reveal h3 {
+  font-size: 1.9em;
+}
+
 /* Hide line numbers but keep the highlight line background */
 .hljs-ln-n {
   display: none;
