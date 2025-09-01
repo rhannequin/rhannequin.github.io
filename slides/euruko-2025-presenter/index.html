@@ -1,0 +1,951 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <title>The hidden value of niche open-source projects</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="dist/reset.css">
+  <link rel="stylesheet" href="dist/reveal.css">
+  <link rel="stylesheet" href="dist/theme/white.css">
+  <link rel="stylesheet" href="custom.css">
+  <link rel="stylesheet" href="plugin/highlight/atom-one-light.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Prosto+One&display=swap">
+</head>
+
+<body>
+  <!-- Idea: different background colors for each section -->
+  <!-- Example: dark for the Valley of Dispair, clearer for A New Hope -->
+  <div class="reveal">
+    <div class="slides">
+      <section>
+        <h1>
+          The hidden value of niche open-source projects
+        </h1>
+        <aside class="notes">
+          <ul>
+            <li>Hello everyone</li>
+            <li>Welcome to my talk</li>
+            <li>About hidden value of niche open-source projects</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-background-color="#ececec">
+        <h3>🗂️</h3>
+        <p>
+          <code>/Users/rhannequin/code/ideas/</code>
+        </p>
+        <aside class="notes">
+          <ul>
+            <li>Quick poll - raise your hand if you have a folder called projects, ideas, or side...</li>
+            <li>Yes, as expected, many of us</li>
+            <li>Keep your hand up if you've touched a project in that folder in the last month</li>
+            <li>Not so many hands up now, right?</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-background-color="#232949">
+        <blockquote class="dramatic-quote">
+          I'm wasting my time,
+          <br>
+          nobody cares about this
+        </blockquote>
+        <aside class="notes">
+          <ul>
+            <li>This might seem familiar</li>
+            <li>Made it appear as a quote because this is exactly what I told myself</li>
+            <li>This is what I want to talk about today</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-background-color="#ececec">
+        <p>@rhannequin</p>
+        <p>
+          Senior developer at <span style="color: #e03131">thoughtbot</span>
+        </p>
+        <p>🪐🍔🤖💻🍿</p>
+        <aside class="notes">
+          <ul>
+            <li>I'm Rémy</li>
+            <li>Find me online under @rhannequin</li>
+            <li>Senior developer at thoughtbot</li>
+            <li>Consultancy helping companies build great products</li>
+            <li>Remote-only company, EMEA and Americas</li>
+            <li>Don't hesitate to say Hi</li>
+            <li>Can hardly resist talking about astronomy and great food</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-background-color="#ececec">
+        <p>What are we going to talk about?</p>
+        <ol>
+          <li>💡 Tale of side projects</li>
+          <li>🫠 Valley of despair</li>
+          <li>🌅 A new hope</li>
+          <li>💎 Unlocking the treasure</li>
+        </ol>
+        <aside class="notes">
+          <ul>
+            <li>This talk is about the path many side projects take</li>
+            <li>The obstacles we face</li>
+            <li>How we can overcome them</li>
+            <li>Find value in our projects</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-background-color="#ececec">
+        <h2>Genesis</h2>
+        <p>
+          <img src="img/genesis.jpg" alt="Genesis" width="300">
+        </p>
+        <p>
+          🪐 + 💻
+        </p>
+        <aside class="notes">
+          <ul>
+            <li>Let's start at the beginning</li>
+            <li>I love astronomy</li>
+            <li>Been trying to do coding and apps related to it for a while</li>
+            <li>When I started, only a few data was available online</li>
+            <li>Often in a format that was not easy to use</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-background-color="#ececec">
+        <p>
+          <img src="img/heaven-above.png" alt="Heavens Above website" width="500">
+        </p>
+        <aside class="notes">
+          <ul>
+            <li>Screenshot from Heavens Above website</li>
+            <li>Provides a lot of data about the sky</li>
+            <li>Work done by Chris Peat is amazing</li>
+            <li>But this is HTML</li>
+            <li>To access this data, I would have to scrape the website</li>
+            <li>Not very nice, quite a pain to do</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-background-color="#ececec">
+        <p>
+          <img src="img/bluey-sharing.webp" alt="Bluey and Bingo hugging and sharing" width="600">
+        </p>
+        <p>
+          Sharing is caring
+        </p>
+        <aside class="notes">
+          <ul>
+            <li>I like the idea that astronomical data is universal</li>
+            <li>Should be available to everyone</li>
+            <li>Started investigating how Chris Peat was able to produce such precise data</li>
+            <li>If I could do it myself</li>
+            <li>As the idea grew on me, started thinking it would be great to have the code open source</li>
+            <li>So someone else could do the same if they wanted</li>
+            <li>Try to explain how celestial mechanics work while I learn some of it</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-background-color="#ececec">
+        <p>
+          <img src="img/astronoby-first-commit.png" alt="First commit from Astronoby">
+        </p>
+        <aside class="notes">
+          <ul>
+            <li>This is how I started Astronoby</li>
+            <li>Open source Ruby library</li>
+            <li>Provides astronomical data and events</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-background-color="#ececec">
+        <pre class="large"><code class="language-ruby large">
+        mars = Astronoby::Mars.new(
+          instant: instant,
+          ephem: ephem
+        )
+
+        topocentric = mars.observed_by(observer)
+
+        horizontal = topocentric.horizontal
+
+        puts "Mars is #{horizontal.altitude.round(2)}°
+              high in the sky"
+          </code></pre>
+        <aside class="notes">
+          <ul>
+            <li>Enables to compute position of planets</li>
+            <li>Times of when they rise and set</li>
+            <li>Moon phases and much more</li>
+            <li>Here for example, exact altitude in degrees of Mars</li>
+            <li>As seen from an observer somewhere on Earth at a given time</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-background-color="#ececec">
+        <p>
+          <img src="img/astronomy-books.jpg" alt="Pile of astronomy books" width="800">
+        </p>
+        <aside class="notes">
+          <ul>
+            <li>Not going to tell the whole story</li>
+            <li>Basically Astronoby started out of many books</li>
+            <li>With mathematical formulas on how to compute data and events</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-background-color="#ececec">
+        <p>
+          <img src="img/astronoby-versions.png" alt="List of versions of Astronoby">
+        </p>
+        <aside class="notes">
+          <ul>
+            <li>Took me almost 2 years to release the first minor version</li>
+            <li>This is the first thing about side projects</li>
+            <li>It takes time</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-background-color="#232949">
+        <blockquote class="dramatic-quote">
+          Who needs this?
+        </blockquote>
+        <aside class="notes">
+          <ul>
+            <li>Who needs this?</li>
+            <li>Who actually needs to compute Moon phases in Ruby?</li>
+            <li>Basically, nobody cares</li>
+            <li>Not saying this in a bitter way, it's just an objective fact</li>
+            <li>Already possible to do the same in Python for years</li>
+            <li>With way better performance and features</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-background-color="#232949">
+        <blockquote class="dramatic-quote">
+          I'm not doing this right
+        </blockquote>
+        <aside class="notes">
+          <ul>
+            <li>The classical imposter syndrome</li>
+            <li>I am not an astronomer or a scientist</li>
+            <li>How can I pretend to calculate this data right?</li>
+            <li>Who is going to trust me?</li>
+            <li>This is a real concern</li>
+            <li>Hard to trust ourselves and find legitimacy</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-background-color="#232949">
+        <blockquote class="dramatic-quote">
+          So much effort
+          <br>
+          and no feedback
+        </blockquote>
+        <aside class="notes">
+          <ul>
+            <li>This one sometimes hurts your feelings</li>
+            <li>Working hard on features, improvements, code quality</li>
+            <li>And it remains unnoticed</li>
+            <li>You know how much effort and love you put into it</li>
+            <li>But there is nobody to witness it</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-background-color="#232949">
+        <p>
+          <img src="img/no-likes-post.png" alt="Screenshot of a post with no likes">
+        </p>
+        <aside class="notes">
+          <ul>
+            <li>Wrote a blog post after the biggest refactoring of Astronoby</li>
+            <li>Took me months</li>
+            <li>Enabled some of the most important features brought to the library</li>
+            <li>Barely got any feedback or reaction</li>
+            <li>Said it earlier, there is a limited interest for this</li>
+            <li>Often very different from your own emotional attachment</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-background-color="#2e3647">
+        <h2>
+          The <strike>hidden</strike> no value of niche open-source projects
+        </h2>
+        <br>
+        <p>
+          <img src="img/andy-cringe.gif" alt="Andy Bernard cringing" width="200">
+        </p>
+        <aside class="notes">
+          <ul>
+            <li>At this point, you might be wondering that the value in these projects is actually none</li>
+            <li>It is natural to feel this way</li>
+            <li>I believe we all do at some point</li>
+            <li>But my main point today is the next part</li>
+            <li>Now that I have destroyed all hopes and dreams, let's build them back up</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-background-color="#e5f4e3">
+        <h2>Staying motivated</h2>
+        <aside class="notes">
+          <ul>
+            <li>First, let's see how we can boost and keep the motivation</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-background-color="#e5f4e3">
+        <p>
+          Work with passion
+          <br>
+          when passion is your work
+        </p>
+        <aside class="notes">
+          <ul>
+            <li>Let's start easy even if we tend to forget it</li>
+            <li>Why did you start working on this project in the first place?</li>
+            <li>You actually like this topic</li>
+            <li>It is exciting and you are having a good time</li>
+            <li>We could actually stop here</li>
+            <li>If you are having a good time, why would you stop?</li>
+            <li>You can take advantage of any interest you have to help you stay motivated and excited</li>
+            <li>But things get even more interesting when you start thinking about everything this project brings you
+            </li>
+          </ul>
+        </aside>
+      </section>
+      <section data-background-color="#e5f4e3">
+        <p>
+          Personal mission and challenge
+        </p>
+        <aside class="notes">
+          <ul>
+            <li>When I started my studies, I didn't know what I wanted to do</li>
+            <li>Turns out programming was giving me the same thrill of solving problems as my high school math exercises
+            </li>
+            <li>This might be just me, I know I'm weird</li>
+            <li>But the sense of challenge</li>
+            <li>And the will to achieve my goal of providing astronomical data in Ruby</li>
+            <li>That got me excited</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-background-color="#e5f4e3">
+        <p>Set up achievable goals 🎯</p>
+        <p>🎉 Celebrate wins</p>
+        <p>Talk about it 💬</p>
+        <aside class="notes">
+          <ul>
+            <li>Can help to add a tiny bit of project management</li>
+            <li>Think of small thresholds that you can achieve</li>
+            <li>And celebrate them</li>
+            <li>You can also use the community to help you stay motivated</li>
+            <li>As a witness of your progress</li>
+            <li>When I wanted to lose weight, I told others I started eating healthier</li>
+            <li>Through accountability I was more likely to stick to it</li>
+            <li>Well, it didn't work, but it was worth trying</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-background-color="#e5f4e3">
+        <p>Look at what already worked</p>
+        <ul>
+          <li>Faker</li>
+          <li>SQLite</li>
+          <li>Cowsay</li>
+        </ul>
+        <aside class="notes">
+          <ul>
+            <li>The community is full of examples of people who started niche projects and made them successful</li>
+            <li>For example, the Faker gem</li>
+            <li>Started almost 20 years ago</li>
+            <li>Initially a very niche need</li>
+            <li>Now a very popular gem with hundreds of individual contributors</li>
+            <li>Thousands of stars</li>
+            <li>Used for testing, seeding, development, fun and more</li>
+            <li>SQLite started as a small library to provide a lightweight database engine</li>
+            <li>Now it is even used by NASA on a Mars rover</li>
+            <li>And Cowsay! Started as an easter egg</li>
+            <li>But you can find it in many systems now even just to check system status</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-background-color="#40b7f9">
+        <h2>Unlocking personal and professional growth</h2>
+        <p>
+          <img src="img/power-up-mario.gif" alt="Mario eating a power-up" width="300">
+        </p>
+        <aside class="notes">
+          <ul>
+            <li>And now comes the most interesting part</li>
+            <li>The hidden value of niche open-source projects is that it makes you grow</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-background-color="#40b7f9">
+        <h3>Open-source best practices</h3>
+        <aside class="notes">
+          <ul>
+            <li>First, you're going to learn a lot about open-source development</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-background-color="#40b7f9">
+        <p>Versioning</p>
+        <aside class="notes">
+          <ul>
+            <li>What is versioning</li>
+            <li>How do you deal with breaking changes?</li>
+            <li>These are things we don't always have the opportunity to work on in our day-to-day job</li>
+            <li>Once you publish a library, the public API is set in stone</li>
+            <li>And your own project becomes a dependency for others</li>
+            <li>This completely changes the way you think about your code</li>
+            <li>And it is really exciting</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-background-color="#40b7f9">
+        <p>Documentation</p>
+        <aside class="notes">
+          <ul>
+            <li>Documentation is another opportunity that emerges from open-source projects</li>
+            <li>Your niche interest is also the interest of others</li>
+            <li>You want to help them understand your project, how to use it</li>
+            <li>You also want to make yourself in the future a favour</li>
+            <li>Because it's easy to get lost in your own code</li>
+            <li>You will learn how to write a good README</li>
+            <li>How to structure your documentation</li>
+            <li>Discover what's important in a CHANGELOG</li>
+            <li>How to document the evolution of your project</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-background-color="#40b7f9">
+        <p>Code quality</p>
+        <aside class="notes">
+          <ul>
+            <li>How to write maintainable code?</li>
+            <li>How to make it readable?</li>
+            <li>What about performance?</li>
+            <li>I can't answer these questions now</li>
+            <li>But working on open-source projects will give you some answers</li>
+            <li>In the Ruby community, we have a strong appeal for code quality</li>
+            <li>And a big expertise about testing</li>
+            <li>So this is the opportunity to build strong programming skills</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-background-color="#40b7f9">
+        <p>Community</p>
+        <aside class="notes">
+          <ul>
+            <li>You might be thinking "I have to learn all this??"</li>
+            <li>Well, you don't have to, it will come naturally as you work on your project</li>
+            <li>Open-source is not just about writing public code</li>
+            <li>Even if there is already a lot of value for the community</li>
+            <li>It is about sharing knowledge, collaborating</li>
+            <li>And building a community around your project</li>
+            <li>An open-source library means people can use it, look into it</li>
+            <li>Contribute to it, have opinions, and build on top of it</li>
+            <li>By making your project open-source, you are contributing to the community</li>
+            <li>And you become responsible for something that didn't exist before</li>
+            <li>This is also a great way to enter the world of open-source at your own pace</li>
+            <li>You don't have to be a Rails contributor to be a Ruby open-source developer</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-background-color="#40b7f9">
+        <h3>New technical skills</h3>
+        <aside class="notes">
+          <ul>
+            <li>With your code being public, you might want to make it better</li>
+            <li>More efficient, more elegant</li>
+            <li>Either you are already a very experienced developer and you are going to show-off your skills</li>
+            <li>Or, you are going to learn on the way</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-background-color="#40b7f9">
+        <p>OOP</p>
+        <p>API design</p>
+        <p>Testing</p>
+        <p>DDD?</p>
+        <aside class="notes">
+          <ul>
+            <li>How can I apply object-oriented programming principles to my algorithm?</li>
+            <li>How can I design a nice API for the end-user?</li>
+            <li>What's the best way to test my code?</li>
+            <li>What if I try to apply domain-driven design principles to my code?</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-background-color="#40b7f9">
+        <pre class="large"><code class="language-ruby large">
+    angle1 = Astronoby::Angle.as_radians(Math::PI)
+    angle2 = Astronoby::Angle.as_degrees(90)
+
+    angle1.to_degrees.value == angle2.value
+          </code></pre>
+        <aside class="notes">
+          <ul>
+            <li>These were questions I asked myself working on Astronoby</li>
+            <li>Would like to show you how your project can help you learn new concepts</li>
+            <li>This code comes from Astronoby, the first working version</li>
+            <li>To deal with angles, I had dedicated classes</li>
+            <li>That were responsible for converting themselves from one unit to another</li>
+            <li>You had to convert angles to the same unit before comparing the attribute value</li>
+            <li>It works but it's not very elegant</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-background-color="#40b7f9">
+        <pre class="large"><code class="language-ruby large">
+    angle1 = Astronoby::Angle.from_radians(Math::PI)
+    angle2 = Astronoby::Angle.from_degrees(90)
+
+    angle1 == angle2
+          </code></pre>
+        <aside class="notes">
+          <ul>
+            <li>Then, I introduced value objects</li>
+            <li>A design pattern that encapsulates a value and its unit</li>
+            <li>So that you can compare angles regardless of their unit</li>
+            <li>Now I can use the equality operator to compare two angles</li>
+            <li>Without worrying about how they were initialised</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-background-color="#40b7f9">
+        <pre class="large"><code class="language-ruby large">
+          time = Astronoby::Epoch.to_utc(sun.epoch)
+
+          sun
+            .ecliptic_coordinates
+            .to_equatorial(sun.epoch)
+            .to_horizontal(
+              time: time,
+              latitude: latitude,
+              longitude: longitude
+            )
+            .altitude
+            .to_degrees
+            .value
+          </code></pre>
+        <aside class="notes">
+          <ul>
+            <li>Here's another example</li>
+            <li>But this time to illustrate domain-driven design principles</li>
+            <li>The first way to get the altitude in degrees of the Sun was long</li>
+            <li>With many conversions</li>
+            <li>I can let you read the code but I bet it won't help you understand what's going on</li>
+            <li>It requires quite some knowledge already to get to the right information</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-background-color="#40b7f9">
+        <pre class="large"><code class="language-ruby extra-large">
+              sun
+                .observed_by(observer)
+                .horizontal
+                .altitude
+                .degrees
+          </code></pre>
+        <aside class="notes">
+          <ul>
+            <li>Then, I focused on making a nice API for the end-user</li>
+            <li>Oriented towards the domain</li>
+            <li>The developer doesn't have to deal with conversions</li>
+            <li>They just have to call the methods that make sense</li>
+            <li>In the context of the problem they are trying to solve</li>
+            <li>I guess horizontal still needs some explaining</li>
+            <li>It's a kind of coordinates up-and-down, left-and-right</li>
+            <li>But overall, the API is a tool to express the domain</li>
+            <li>And give you answers instead of forcing you do some manipulations</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-background-color="#40b7f9">
+        <p>What Astronoby taught me</p>
+        <ul>
+          <li>Value objects</li>
+          <li>Domain-driven design</li>
+          <li>Timescales</li>
+          <li>Numeric types</li>
+          <li><code>Matrix</code></li>
+        </ul>
+        <aside class="notes">
+          <ul>
+            <li>Your project is an awesome opportunity to try and learn new things</li>
+            <li>What interests you and when you decide to work on it</li>
+            <li>Among other things, Astronoby taught me about value objects as I just presented</li>
+            <li>And domain-driven design</li>
+            <li>I also learnt on the way about how to deal with different timescales and time zones</li>
+            <li>How to deal with time in Ruby</li>
+            <li>Precision being important, I learnt more about numeric types</li>
+            <li>And how to deal with precision issues</li>
+            <li>These are just examples of things I didn't plan to learn but got in the way</li>
+            <li>This is learning through serendipity</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-background-color="#40b7f9">
+        <p>New relations</p>
+        <p>New clients</p>
+        <p>New job opportunities</p>
+        <aside class="notes">
+          <ul>
+            <li>Another great thing about side projects is that they create opportunities</li>
+            <li>It doesn't matter if it's niche</li>
+            <li>You actually have a lot to say</li>
+            <li>And you're one of the few people who can say it</li>
+            <li>While working on your project, there are opportunities to share your ideas and your progress</li>
+            <li>You are going to have many blog post ideas</li>
+            <li>Why not talk about them in a podcast?</li>
+            <li>Maybe do a meetup presentations</li>
+            <li>Each of these happened to me thanks to open source work</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-background-color="#40b7f9">
+        <h3>Learning in public</h3>
+        <aside class="notes">
+          <ul>
+            <li>One thing I strongly recommend is to learn in public</li>
+            <li>We are lucky to work in an industry where a lot of knowledge is shared publicly</li>
+            <li>And we can learn from each other</li>
+            <li>Being part of this initiative is really rewarding</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-background-color="#40b7f9">
+        <p>Toots, blogs, podcasts, meetups</p>
+        <aside class="notes">
+          <ul>
+            <li>Learning in public is about sharing what you learn</li>
+            <li>Structuring your thoughts</li>
+            <li>And getting feedback from others</li>
+            <li>It is a great way to share where your interests are</li>
+            <li>It can inspire others</li>
+            <li>And it favours feedback and collaboration</li>
+            <li>You can start with small things</li>
+            <li>Like a toot on Mastodon about something you just learnt</li>
+            <li>Yes, it's very unlikely you are the first person to learn this</li>
+            <li>But it doesn't matter</li>
+            <li>If you just learnt it, then you have already a bit more experience to share with the rest of the world
+            </li>
+            <li>Write a blog post about a feature you developed or a problem you solved</li>
+            <li>You can also do a podcast episode and just talk about anything that got you excited recently</li>
+            <li>I know I have a lot of progress to make about writing in English</li>
+            <li>And as you can hear with my English accent too</li>
+            <li>But practice helps!</li>
+            <li>Meetups are always looking for speakers and topics of all levels</li>
+            <li>With original content or about frequent core topics</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-background-color="#40b7f9">
+        <p>
+          <img src="img/euruko-acceptance.png" alt="EuRuKo acceptance email">
+        </p>
+        <aside class="notes">
+          <ul>
+            <li>Who knows, maybe you can try to submit a talk to a conference</li>
+            <li>Get lucky and then be absolutely terrified about being on stage</li>
+            <li>This is going to make you meet people</li>
+            <li>Expand your visibility</li>
+            <li>And create new opportunities</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-background-color="#40b7f9">
+        <p>
+          <img src="img/message-from-trevor.png" alt="Screenshot of a tweet about work with Astronoby" width="600">
+        </p>
+        <aside class="notes">
+          <ul>
+            <li>Last year, someone contacted me on a social network about Astronoby</li>
+            <li>As they wanted to use it in their project</li>
+            <li>I didn't get to work with them specifically on Astronoby</li>
+            <li>But I ended up as a consultant for thoughtbot on their project</li>
+            <li>This can be an idea to sell open source development time at your company</li>
+            <li>It might bring new client opportunities</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-background-image="img/porco-rosso-chilling.jpg" data-transition="none">
+        <aside class="notes">
+          <ul>
+            <li>One more point, you don't have to take yourself seriously</li>
+            <li>If this is niche and you feel like you are all alone doing your thing</li>
+            <li>It also means that you can take your time</li>
+            <li>Try things and make mistakes</li>
+            <li>Nobody is expecting anything from you</li>
+            <li>So you can focus on what you want</li>
+            <li>Either it's the code, the features, the sharing, the community, the fun, or all of it</li>
+            <li>And if you don't do side projects, that is very fine too</li>
+            <li>I know this talk is very much oriented towards side projects</li>
+            <li>But there are many other occasions where perseverance and passion are welcome</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-background-color="#48e071">
+        <blockquote class="slightly-dramatic-quote">
+          <strike>
+            I'm wasting my time,
+            <br>
+            nobody cares about this
+          </strike>
+        </blockquote>
+        <p>
+          You are having fun
+        </p>
+        <aside class="notes">
+          <ul>
+            <li>So, you are not wasting your time</li>
+            <li>You are having fun, you are learning, you are growing</li>
+            <li>You don't need appreciation to have a good time</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-background-color="#48e071">
+        <blockquote class="slightly-dramatic-quote">
+          <strike>Who needs this?</strike>
+        </blockquote>
+        <p>
+          You are not alone
+        </p>
+        <p>
+          You are the Ruby community
+        </p>
+        <aside class="notes">
+          <ul>
+            <li>Who needs it? You do!</li>
+            <li>As we sometimes say, if it's useless, then it's indispensable</li>
+            <li>The fact that you are doing it means that there is at least one person who needs it</li>
+            <li>And you will be surprised to see how many people are actually sharing your interest</li>
+            <li>Maybe we do need to be able to compute astronomical data in Ruby</li>
+            <li>Ruby is such a great language, so expressive, so elegant</li>
+            <li>But yet it is not used much in the scientific community</li>
+            <li>That can change now</li>
+            <li>We are all part of the Ruby community</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-background-color="#48e071">
+        <p>
+          <img src="img/hello-weather-sun.jpg" alt="Hello Weather app Sun sub-screen screenshot" height="600">
+          <img src="img/hello-weather-moon.jpg" alt="Hello Weather app Moon sub-screen screenshot" height="600">
+        </p>
+        <aside class="notes">
+          <ul>
+            <li>It turns out there is a weather application that very much needs astronomical data</li>
+            <li>And today, Astronoby is used in production by Hello Weather</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-background-color="#48e071">
+        <blockquote class="slightly-dramatic-quote">
+          <strike>I'm not doing this right</strike>
+        </blockquote>
+        <p>
+          You are doing it your way, an original way
+        </p>
+        <aside class="notes">
+          <ul>
+            <li>I agree getting rid of the imposter syndrome is hard</li>
+            <li>We often want to do things right and we are afraid of making mistakes</li>
+            <li>But there are many definitions of "right"</li>
+            <li>By doing it your way, you are bringing your own style, your own vision</li>
+            <li>This might become the new "right" way</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-background-color="#48e071">
+        <blockquote class="slightly-dramatic-quote">
+          <strike>
+            So much effort
+            <br>
+            and no feedback
+          </strike>
+        </blockquote>
+        <p>Your efforts are paying in many unsuspected ways</p>
+        <aside class="notes">
+          <ul>
+            <li>Finally, my favourite one is asking yourself if it's worth it</li>
+            <li>You are learning, you are growing</li>
+            <li>You are meeting people, you are having fun</li>
+            <li>So, yes, this is very much worth it</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-background-color="#ffb830">
+        <h2>Conclusion</h2>
+        <aside class="notes">
+          <ul>
+            <li>I hope I didn't turn this talk into some kind of life-style program</li>
+            <li>All I wanted is to share my experience</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-background-color="#ffb830">
+        <p>There are many obstacles</p>
+        <p>If you love it, do it</p>
+        <p>There's so much to take on the way</p>
+        <aside class="notes">
+          <ul>
+            <li>It's true it's not always easy</li>
+            <li>You're going to face moments of doubt</li>
+            <li>You might want to give up</li>
+            <li>And you might feel like it is not worth it</li>
+            <li>But if you love it, if you are learning, then do it</li>
+            <li>You will be surprised by how much you can learn</li>
+            <li>And how much you can grow</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-background-color="#ffb830">
+        <p>Expect to develop a taste for it</p>
+        <p>[pictures of astronoby, ephem, opale, almanac, caelus]</p>
+        <aside class="notes">
+          <ul>
+            <li>Don't be surprised if you develop a taste for it</li>
+            <li>I mentioned starting Astronoby 4 years ago</li>
+            <li>But in the last 10 months it made me hungry for more projects</li>
+            <li>And I'm now developing four other projects</li>
+            <li>And as many occasions to learn new things</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-background-color="#ffb830">
+        <p>
+          <img src="img/astronoby-performance-degradation.png"
+            alt="Screenshot of GitHub issue about performance degradation" width="700">
+        </p>
+        <p>
+          <img src="img/michael-scott-cry.webp" alt="Michael Scott tearing up" width="200">
+        </p>
+        <aside class="notes">
+          <ul>
+            <li>One day you might receive a GitHub issue with bad news</li>
+            <li>And you will be incredibly happy just to have someone using your project</li>
+            <li>So weird how someone finding performance issue in your code can make your day</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-background-color="#ffb830">
+        <p>Where do you start?</p>
+        <ol>
+          <li>Open-source one project</li>
+          <li>Add a <code>README</code> and a <code>gemspec</code></li>
+          <li>Share it</li>
+          <li>Ask for feedback</li>
+          <li>Ping me</li>
+        </ol>
+        <aside class="notes">
+          <ul>
+            <li>Remember the folder I asked you about at the beginning?</li>
+            <li>Take one of your projects, the one you love the most</li>
+            <li>Put it on GitHub publicly</li>
+            <li>Add a README</li>
+            <li>Share it with your friends</li>
+            <li>And ask for one piece of feedback</li>
+            <li>And here it begins</li>
+            <li>Please don't hesitate to ping me</li>
+            <li>I would love to see a new gem emerge for the community</li>
+            <li>This might be the beginning of a great adventure</li>
+            <li>And if it's not, at least you will have shared something you love with the world</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-background-color="#ffb830">
+        <p>
+          Ask on socials
+          <br>
+          -
+          <br>
+          firstrubyfriend.org
+        </p>
+        <aside class="notes">
+          <ul>
+            <li>Don't hesitate to use social medias to ask for help and feedback</li>
+            <li>I believe we are a friendly and open community</li>
+            <li>You can also use initiatives like First Ruby Friend to find a mentor</li>
+            <li>To help you get started</li>
+            <li>I think the program is closed for 2025 but will return next year</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-background-color="#ffb830">
+        <p>
+          <img src="img/thoughtbot-open-summit.png" alt="thoughtbot Open Summit" width="500">
+          <br>
+          October 31
+        </p>
+        <aside class="notes">
+          <ul>
+            <li>And if you are very excited about open source</li>
+            <li>thoughtbot is organising a new online Open Summit on October 31st</li>
+            <li>With many workshops and talks</li>
+            <li>About the open source made with thoughtbot and with the community</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-background-color="#ffb830">
+        <pre class="large"><code class="extra-large">
+              cd /Users/rhannequin/code/
+
+              mv ideas projects
+          </code></pre>
+        <aside class="notes">
+          <ul>
+            <li>To conclude, I invite you to let your passions guide you</li>
+            <li>Niche open source projects are the best</li>
+            <li>They will make you grow and be excited about work</li>
+            <li>Which is not something to take for granted</li>
+            <li>Worst case scenario, you will have a new folder called projects</li>
+            <li>With a bit more experience and a bit more confidence</li>
+          </ul>
+        </aside>
+      </section>
+      <section data-background-color="#ececec">
+        <p>
+          <img src="img/euruko.svg" alt="EuRuKo logo" width="200">
+        </p>
+        <h2>Thank you</h2>
+        <hr>
+        <p>@rhannequin</p>
+      </section>
+    </div>
+  </div>
+
+  <script src="dist/reveal.js"></script>
+  <script src="plugin/notes/notes.js"></script>
+  <script src="plugin/markdown/markdown.js"></script>
+  <script src="plugin/highlight/highlight.js"></script>
+  <script>
+    // More info about initialization & config:
+    // - https://revealjs.com/initialization/
+    // - https://revealjs.com/config/
+    Reveal.initialize({
+      hash: true,
+      controls: false,
+      transition: 'none',
+      progress: true,
+      // slideNumber: true,
+
+      // Learn about plugins: https://revealjs.com/plugins/
+      plugins: [
+        RevealMarkdown,
+        RevealHighlight,
+        RevealNotes,
+      ]
+    });
+  </script>
+</body>
+
+</html>

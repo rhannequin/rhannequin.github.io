@@ -1,0 +1,72 @@
+body, .reveal {
+  font-family: "Lexend", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+.reveal p {
+  font-size: 1.75em;
+}
+
+.reveal h2 {
+  font-size: 2.1em;
+}
+
+.reveal h3 {
+  font-size: 1.9em;
+}
+
+/* Hide line numbers but keep the highlight line background */
+.hljs-ln-n {
+  display: none;
+  counter-reset: linenumber;
+}
+
+.reveal .hljs-ln-numbers {
+  padding: 0;
+}
+
+.reveal .hljs.has-highlights tr:not(.highlight-line) {
+  opacity: .2;
+}
+
+/* No transition with slides with full background images */
+.reveal .slide-background {
+  transition: none !important;
+}
+
+.reveal .dramatic-quote {
+  font-size: 1.9em;
+  line-height: 1.5;
+  font-weight: 300;
+  width: 100%;
+  margin: 0;
+  padding: 0 20px;
+  border-left: 8px solid #f0f0f0;
+}
+
+.reveal .slightly-dramatic-quote {
+  font-size: 1.2em;
+  line-height: 1.2;
+  font-weight: 300;
+  width: 100%;
+  margin: 0 0 1em 0;
+  padding: 0 10px;
+  border-left: 6px solid #488046;
+}
+
+.reveal pre code {
+  max-height: 1000px;
+}
+
+.reveal pre.large {
+  width: 100%;
+}
+
+.reveal pre code.large {
+  font-size: 115%;
+}
+
+.reveal pre code.extra-large {
+  font-size: 130%;
+}
